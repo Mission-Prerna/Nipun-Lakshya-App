@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>Relevance and calculate loop</h:title>
+        <model odk:xforms-version="1.0.0">
+            <instance>
+                <data id="form-list-relevance-issue">
+                    <group>
+                        <name>A</name>
+                        <fullName/>
+                        <middleName>third</middleName>
+                    </group>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </data>
+            </instance>
+            <bind nodeset="/data/group/name" type="string"/>
+            <!-- The form design issue is that calculates can't be used as dynamic defaults because they're reevaluated continuously -->
+            <bind calculate=" /data/group/name " nodeset="/data/group/fullName" type="string"/>
+            <bind nodeset="/data/group/middleName" relevant=" /data/group/name != /data/group/fullName " type="string"/>
+            <bind jr:preload="uid" nodeset="/data/meta/instanceID" readonly="true()" type="string"/>
+        </model>
+    </h:head>
+    <h:body>
+        <group appearance="field-list" ref="/data/group">
+            <input ref="/data/group/name">
+                <label>What is your first name</label>
+            </input>
+            <input ref="/data/group/fullName">
+                <label>Please add your second name to have your full name</label>
+            </input>
+            <input ref="/data/group/middleName">
+                <label>Please add your middle name if you have one</label>
+                <hint>Display if full name is different than first name</hint>
+            </input>
+        </group>
+    </h:body>
+</h:html>

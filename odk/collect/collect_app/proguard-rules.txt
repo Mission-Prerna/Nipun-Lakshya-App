@@ -1,0 +1,25 @@
+-dontwarn com.google.**
+-dontwarn au.com.bytecode.**
+-dontwarn org.joda.time.**
+-dontwarn org.osmdroid.**
+-dontwarn org.xmlpull.v1.**
+-dontwarn org.hamcrest.**
+-dontwarn com.rarepebble.**
+
+-keep class org.javarosa.**
+-keep class org.odk.collect.android.logic.actions.**
+-keep class android.support.v7.widget.** { *; }
+-keep class org.mp4parser.boxes.** { *; }
+-keepclassmembers class * {
+  @com.google.api.client.util.Key <fields>;
+}
+-keep class * extends androidx.fragment.app.Fragment{}
+
+-dontobfuscate
+
+# recommended okhttp rules
+# https://github.com/square/okhttp#r8--proguard
+-dontwarn javax.annotation.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+-dontwarn okhttp3.internal.platform.ConscryptPlatform

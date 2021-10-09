@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item_clicked"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:background="@drawable/bg_black_outline_white_fill"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:letterSpacing=".02"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="Question 1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rl_result"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rl_result"
+            android:elevation="4dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:background="@drawable/bg_black_outline_white_fill"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_question"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight=".7"
+            app:layout_constraintStart_toEndOf="@+id/tv_question"
+            app:layout_constraintTop_toTopOf="@+id/tv_question">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/smv_image"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="@dimen/margin_10dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_result"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:src="@drawable/ic_check_mark"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:elevation="4dp"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:letterSpacing=".02"
+                android:paddingHorizontal="@dimen/margin_8dp"
+                android:paddingVertical="@dimen/padding_14dp"
+                android:text="correct 1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/smv_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/smv_image"
+                app:layout_constraintTop_toTopOf="@+id/smv_image" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

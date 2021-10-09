@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headerTextSize">22sp</dimen>
+    <dimen name="newsMoreTextSize">12sp</dimen>
+    <dimen name="loginCardRadius">4dp</dimen>
+    <!-- padding -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_6dp">6dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_14dp">14dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="padding_extra_large">24dp</dimen>
+    <dimen name="padding_button">40dp</dimen>
+
+    <!-- margin -->
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_extra_small">2dp</dimen>
+    <dimen name="margin_medium">14dp</dimen>
+    <dimen name="margin_semi_med_12">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_extra_large">24dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_title">70dp</dimen>
+
+    <!-- fontSize -->
+    <dimen name="text_size_extra_exta_small">11sp</dimen>
+    <dimen name="text_size_extra_small">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_36sp">36sp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_medium">40sp</dimen>
+    <dimen name="edit_text_size">18sp</dimen>
+    <dimen name="text_size_20dp">20dp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_extra_large">28sp</dimen>
+
+    <!-- elevation -->
+    <dimen name="elevation_switch">1dp</dimen>
+    <dimen name="elevation_card_resting">2dp</dimen>
+    <dimen name="elevation_card_raised">8dp</dimen>
+    <dimen name="elevation_raised_button_resting">2dp</dimen>
+    <dimen name="elevation_raised_button">8dp</dimen>
+    <dimen name="elevation_search_bar_resting">2dp</dimen>
+    <dimen name="elevation_search_bar_scrolling">3dp</dimen>
+    <dimen name="elevation_refresh_indicator">3dp</dimen>
+    <dimen name="elevation_appbar">4dp</dimen>
+    <dimen name="elevation_snackbar">6dp</dimen>
+    <dimen name="elevation_fab_resting">6dp</dimen>
+    <dimen name="elevation_fab_clicked">12dp</dimen>
+    <dimen name="elevation_menu">8dp</dimen>
+    <dimen name="elevation_nav_drawer">16dp</dimen>
+    <dimen name="elevation_bottom_modal_sheet">16dp</dimen>
+    <dimen name="elevation_right_drawer">16dp</dimen>
+    <dimen name="elevation_dialog">24dp</dimen>
+    <dimen name="elevation_picker">24dp</dimen>
+
+    <!-- touch target -->
+    <dimen name="touch_target_size">48dp</dimen>
+    <dimen name="padding_touch_target_minimum">8dp</dimen>
+    <dimen name="divider_accidental_tap">8dp</dimen>
+
+    <!-- corner radius -->
+    <dimen name="corner_radius">2dp</dimen>
+
+    <dimen name="select_item_border">4dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="footer_height">80dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_long_button">40dp</dimen>
+    <dimen name="pin_et_margin">90dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="radius_4dp">4dp</dimen>
+    <dimen name="radius_5dp">5dp</dimen>
+    <dimen name="width_1dp">1dp</dimen>
+    <dimen name="width_8dp">8dp</dimen>
+    <dimen name="btn_close_width">32dp</dimen>
+    <dimen name="btn_close_height">32dp</dimen>
+    <dimen name="bottom_sheet_icon_width">55dp</dimen>
+    <dimen name="bottom_sheet_icon_height">55dp</dimen>
+    <dimen name="otp_box_width">68dp</dimen>
+    <dimen name="otp_box_height">72dp</dimen>
+    <dimen name="height_button">50dp</dimen>
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="version_name_size">11sp</dimen>
+    <dimen name="card_corner_radius_8dp">8dp</dimen>
+    <dimen name="select_user_image_width">40dp</dimen>
+    <dimen name="select_user_image_height">40dp</dimen>
+    <dimen name="horizontal_side_margin">20dp</dimen>
+
+
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<h:html xmlns:h="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:jr="http://openrosa.org/javarosa" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>cascading select test</h:title>
+    <model odk:xforms-version="1.0.0">
+      <itext>
+        <translation lang="English">
+          <text id="/data/state:label">
+            <value>state</value>
+          </text>
+          <text id="/data/state/a1:label">
+            <value>Texas</value>
+          </text>
+          <text id="/data/state/a2:label">
+            <value>Washington</value>
+          </text>
+          <text id="/data/county:label">
+            <value>county</value>
+          </text>
+          <text id="/data/city:label">
+            <value>city</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="cascading_select_test">
+          <state />
+          <county />
+          <city />
+          <meta>
+            <instanceID />
+          </meta>
+        </data>
+      </instance>
+      <bind nodeset="/data/state" type="string" />
+      <bind nodeset="/data/county" type="string" />
+      <bind nodeset="/data/city" type="string" />
+      <bind jr:preload="uid" nodeset="/data/meta/instanceID" readonly="true()" type="string" />
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/data/state">
+      <label ref="jr:itext('/data/state:label')" />
+      <item>
+        <label ref="jr:itext('/data/state/a1:label')" />
+        <value>a1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/state/a2:label')" />
+        <value>a2</value>
+      </item>
+    </select1>
+    <input query="instance('counties')/root/item[state= /data/state ]" ref="/data/county">
+      <label ref="jr:itext('/data/county:label')" />
+    </input>
+    <input query="instance('cities')/root/item[state= /data/state  and county= /data/county ]" ref="/data/city">
+      <label ref="jr:itext('/data/city:label')" />
+    </input>
+  </h:body>
+</h:html>

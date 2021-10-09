@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_score_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txv_target_title"
+                style="@style/text_16_gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/according_to_success_target" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txv_target"
+                    style="@style/text_16_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="kdbsfsf sdb sjf" />
+
+                <TextView
+                    android:id="@+id/txv_target_per"
+                    style="@style/text_16_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="kdbsfsf sdb sjf"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txv_score_title"
+                style="@style/text_16_gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_black_outline_white_fill"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="@dimen/margin_4dp"
+                android:layout_marginStart="@dimen/margin_4dp"
+                android:layout_marginEnd="@dimen/margin_8dp"
+                android:layout_weight="1"
+                android:elevation="@dimen/margin_4dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingVertical="@dimen/padding_14dp"
+                android:text="@string/words_read_correct"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/margin_4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txv_score"
+                    style="@style/text_16_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_black_outline_white_fill"
+                    android:layout_marginVertical="@dimen/margin_4dp"
+                    android:layout_marginStart="@dimen/margin_4dp"
+                    android:layout_marginEnd="@dimen/margin_4dp"
+                    android:elevation="@dimen/margin_4dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingVertical="@dimen/padding_14dp"
+                    android:text="30"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txv_score_per"
+                    style="@style/text_16_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:text="znc xncmx "
+                    android:textColor="@color/color_78BDB0"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,52 @@
+def configDir = "${project.rootDir}/config"
+def reportsDir = "${project.buildDir}/reports"
+
+//------------------------Checkstyle------------------------//
+
+apply plugin: 'checkstyle'
+
+checkstyle.toolVersion = '8.30'
+
+tasks.register("checkstyle", Checkstyle) {
+    configFile file("$configDir/checkstyle.xml")
+
+    ignoreFailures false // Fail early
+    showViolations true
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+}
+
+//------------------------Pmd------------------------//
+
+apply plugin: 'pmd'
+
+pmd {
+    toolVersion = '6.22.0'
+}
+
+tasks.register("pmd", Pmd) {
+    ignoreFailures = false // Fail early
+    ruleSetFiles = files("$configDir/pmd-ruleset.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            setDestination new File("$reportsDir/pmd/pmd.xml")
+        }
+        html {
+            setDestination new File("$reportsDir/pmd/pmd.html")
+        }
+    }
+}
+
+//------------------------Lint------------------------//
+

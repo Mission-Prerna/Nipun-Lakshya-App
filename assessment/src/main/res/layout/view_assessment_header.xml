@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_background"
+        android:padding="@dimen/margin_8dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text_header_style"
+            android:ellipsize="end"
+            android:maxLength="20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="School: XYZ " />
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/text_header_style"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Date: 1/1/1" />
+
+        <TextView
+            android:id="@+id/tv_identifier"
+            style="@style/text_header_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="UDISE: 222" />
+
+        <TextView
+            android:id="@+id/tv_actor"
+            style="@style/text_header_style"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_identifier"
+            tools:text="Teacher: XYZ" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

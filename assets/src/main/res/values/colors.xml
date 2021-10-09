@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="gray_disabled">#CACACA</color>
+    <color name="gray_">#818181</color>
+    <color name="gray_disabled_drawer">#E6E6E6</color>
+    <color name="colorPrimaryTranslucent">#E4FFFFFF</color>
+    <color name="gray_border">#E8E8E8</color>
+
+</resources>

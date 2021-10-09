@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="storage_permission_needed">Storage permission is needed to download media.</string>
+    <string name="allow">Allow</string>
+    <string name="could_not_save_image">Could not save image. Please try again later</string>
+    <string name="image_saved">Image saved to downloads!</string>
+    <string name="video_saved">Video saved to downloads!</string>
+    <string name="document_saved">Document saved to downloads!</string>
+    <string name="saved_to_downloads">Saved to downloads!</string>
+    <string name="view">View</string>
+    <string name="failed_download">Download failed. Please try again later.</string>
+    <string name="chatbot_notification_channel_name">Nipun Lakshya Bot</string>
+    <string name="downloading_video">Downloading Video</string>
+    <string name="downloading_image">Downloading Image</string>
+    <string name="downloading_doc">Downloading Document</string>
+    <string name="downloading">Downloading</string>
+    <string name="failed_load_bot">Could not load bots. Please try again later</string>
+    <string name="no_app_found">No application found to open this file.</string>
+</resources>

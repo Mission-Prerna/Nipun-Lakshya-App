@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3e9fcc</color>
+    <color name="colorPrimaryVariant">#00719b</color>
+    <color name="colorOnPrimary">#ffffff</color>
+
+    <color name="colorError">#D42C2C</color>
+    <color name="colorOnError">#ffffff</color>
+
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceVariant">#dce3e9</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorSurfaceContainerLow">#F7F7FA</color>
+
+    <bool name="lightStatusBar">true</bool>
+
+    <!-- This color is used for buttons that should have a similar color to colorSurface (but still
+    stand out from the background).
+
+    {@deprecated These components should be replaced with material ones and this
+    color should be deleted} -->
+    <color name="surfaceButtonColor">#f7f7f7</color>
+</resources>

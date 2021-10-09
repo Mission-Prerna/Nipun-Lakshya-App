@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/experimental">
+
+    <SwitchPreferenceCompat
+        android:title="@string/predicate_caching"
+        android:key="predicate_caching" />
+
+    <Preference
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/entities_title"
+        android:key="entities"
+        app:persistent="false"/>
+
+    <Preference
+        android:icon="@drawable/ic_outline_settings_applications_accent_24"
+        android:title="@string/dev_tools"
+        android:key="dev_tools"
+        app:persistent="false"/>
+
+</PreferenceScreen>

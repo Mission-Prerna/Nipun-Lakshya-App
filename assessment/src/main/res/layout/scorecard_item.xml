@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scorecardItemCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:cardBackgroundColor="#80009045"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/blue_2f3293"
+        app:strokeWidth="@dimen/width_1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_12dp">
+
+            <TextView
+                android:id="@+id/tvCompetencyDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center"
+                android:textColor="@color/blue_2f3293"
+                android:textSize="@dimen/text_size_14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/llCompetencyLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="आखरी आकलन : 20/07/23" />
+
+            <LinearLayout
+                android:id="@+id/llCompetencyLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_rect_border_scorecard_item"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/padding_14dp"
+                android:paddingEnd="@dimen/padding_14dp"
+                android:paddingTop="@dimen/padding_extra_small"
+                android:paddingBottom="@dimen/padding_extra_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCompetencyDescription">
+
+                <TextView
+                    android:id="@+id/tvCompetencyScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="4/5"
+                    android:textColor="@color/blue_2f3293"
+                    android:textSize="@dimen/font_size_15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCompetencyScoreDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_8dp"
+                    android:gravity="center"
+                    android:text="शब्द"
+                    android:textStyle="normal"
+                    android:textColor="@color/blue_2f3293"
+                    android:textSize="@dimen/font_size_11" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

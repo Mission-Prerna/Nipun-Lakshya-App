@@ -1,0 +1,990 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!--Text for the topmost button on the main screen. It should be short and action-oriented.-->
+  <string name="enter_data">Mulai formulir baru</string>
+  <!--Text for an action button on the main screen.-->
+  <string name="review_data">Draf</string>
+  <!--Text for an action button on the main screen.-->
+  <string name="send_data">Siap dikirim</string>
+  <!--Text for an action button on the main screen.-->
+  <string name="view_sent_forms">Terkirim</string>
+  <!--Text for an action button on the main screen.-->
+  <string name="get_forms">Unduh formulir</string>
+  <!--Text for an action button on the main screen.-->
+  <string name="manage_files">Hapus formulir</string>
+  <string name="saved_forms">Formulir tersimpan</string>
+  <string name="version_number">Versi: %s</string>
+  <string name="id_number">ID: %s</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="added_on_date_at_time">\'Ditambahkan pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="updated_on_date_at_time">\'Diperbarui pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="saved_on_date_at_time">\'Disimpan pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="finalized_on_date_at_time">\'Difinalisasi pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="sent_on_date_at_time">\'Dikirim pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="sending_failed_on_date_at_time">\'Pengiriman tidak berhasil pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="deleted_on_date_at_time">\'Dihapus pada\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <string name="submission_deleted">Pengiriman dihapus</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="modified_on_date_at_time">\'Diubah pada tanggal\' EEE, dd MMM yyyy\', pukul\' HH:mm</string>
+  <string name="encrypted_form">Formulir terenkripsi</string>
+  <string name="deleted_form">Hapus formulir</string>
+  <string name="sort_the_list">Urutkan daftar</string>
+  <string name="sort_by">Urutkan dengan</string>
+  <string name="sort_by_name_asc">Nama, A-Z</string>
+  <string name="sort_by_name_desc">Nama, Z-A</string>
+  <string name="sort_by_date_desc">Tanggal, baru ke lama</string>
+  <string name="sort_by_date_asc">Tanggal, lama ke baru</string>
+  <!--A sort option for blank forms. When this option is selected, the form for which a filled instance was last filled will go first.-->
+  <string name="sort_by_last_saved">Terakhir disimpan dulu</string>
+  <string name="filter_the_list">Pilah daftar</string>
+  <!--Displayed in search boxes for form lists or question types that involve search-->
+  <string name="search">Cari</string>
+  <string name="no_items_display">Tidak ada yang dapat ditampilkan.</string>
+  <string name="no_items_display_forms">Tidak ada yang dapat ditampilkan.\n\nCoba kembali mengunduh dan mengisi formulir yang masih kosong.</string>
+  <string name="no_items_display_sent_forms">Tidak ada yang dapat ditampilkan.\n\nCoba kirim formulir yang telah terfinalisasi sebelum melihat ke sini.</string>
+  <string name="no_items_display_instances">Tidak ada yang dapat ditampilkan.\n\nCoba finalisasi draf sebelum mengirim.</string>
+  <string name="not_granted_permission">Aktivitas yang sedang Anda coba memerlukan izin yang belum Anda diberikan.</string>
+  <string name="storage_runtime_permission_denied_title">Perizinan penyimpanan</string>
+  <string name="storage_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses formulir Anda atau pun menyimpan jawabannya. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
+  <string name="location_runtime_permissions_denied_title">Izin untuk mengakses lokasi</string>
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <string name="location_runtime_permissions_denied_desc">Tanpa izin <b> Lokasi Akurat </b>, Collect tidak dapat merekam lokasi anda. Silakan coba lagi ketika anda siap untuk memberikan izin.</string>
+  <string name="camera_runtime_permission_denied_title">Izin untuk mengakses Kamera</string>
+  <string name="camera_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses kamera. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
+  <string name="record_audio_runtime_permission_denied_title">Izin untuk merekam suara</string>
+  <string name="record_audio_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses mikrofon pada perangkat. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
+  <string name="get_accounts_runtime_permission_denied_title">Izin untuk mengakses akun</string>
+  <string name="get_accounts_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses akun. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
+  <!--##############################################
+    # FILL BLANK FORM
+    ##############################################-->
+  <!--Accessibility description of the form map button (e.g. used by screen readers). This button is shown next to every form definition in Fill Blank Form. When tapped, a map of all filled forms for that form definition is shown.-->
+  <string name="open_form_map">Buka peta formulir</string>
+  <string name="instance_scan_count">Formulir %1$d ditambahkan.</string>
+  <string name="finished_disk_scan">Seluruh formulir telah berhasil dimuat.</string>
+  <string name="xform_parse_error">XForm parse bermasalah pada %1$s: %2$s hilang atau tidak valid</string>
+  <string name="loading_form">Memuat Formulir</string>
+  <string name="survey_loading_reading_form_message">Membaca definisi formulir…</string>
+  <string name="survey_loading_reading_data_message">Membaca data survei…</string>
+  <string name="survey_loading_reading_csv_message">Membaca berkas CSV…</string>
+  <string name="parse_error">Maaf, formulir tidak dapat terbaca.</string>
+  <string name="loading_form_failed">Kesalahan terjadi saat membuka formulir. Mohon coba lagi.</string>
+  <string name="parent_form_not_present">Draf ini tidak dapat diubah karena formulir kosong terkait tidak ada atau telah dihapus.\n\nID Formulir:%1$s</string>
+  <string name="cannot_edit_completed_form">Formulir yang sudah difinalisasi tidak dapat diubah karena sudah terenkripsi.</string>
+  <!--Displayed when loading a form if that form was previously filled but closed because of a crash or system failure-->
+  <string name="savepoint_used">Perubahan yang belum tersimpan dipulihkan dari savepoint</string>
+  <!--Displayed in the form filling menu when a form definition specifies multiple languages-->
+  <string name="change_language">Ubah Bahasa</string>
+  <!--Text for button displayed in the form filling menu to see the form's table of contents-->
+  <string name="view_hierarchy">Daftar Isi</string>
+  <!--Text for button displayed in the form filling menu to save the form-->
+  <string name="save_all_answers">Simpan sebagai draf</string>
+  <!--Text of button from the form's table of contents to jump to the beginning of the form-->
+  <string name="jump_to_beginning">Awal</string>
+  <!--Text of button from the form's table of contents to jump to the end of the form-->
+  <string name="jump_to_end">Akhir</string>
+  <!--Text of button from the form's table of contents to navigate out of a group or a repeat-->
+  <string name="jump_to_previous">Atas</string>
+  <!--Displayed below group names in a form's table of contents-->
+  <string name="group_label">Grup</string>
+  <!--Displayed below repeat names in a form's table of contents-->
+  <string name="repeatable_group_label">Grup Perulangan</string>
+  <string name="exit">Keluar</string>
+  <!--This sentence is used in the dialog for adding repeats and will be completed by a singular noun usually. Examples would be ‘Add “observation”?’ or ‘Add “Reading”?’. If the phrase doesn’t make sense in your language you can add a word like “new”, being careful of gender/plural.-->
+  <string name="add_repeat_question">Tambah \"%s\"?</string>
+  <string name="add_repeat">Tambah</string>
+  <string name="dont_add_repeat">Batal tambah</string>
+  <string name="add_another_menu">Tambah lainnya</string>
+  <!--Title of overlay menu displayed when long pressing on a question in a form-->
+  <string name="edit_prompt">Ubah Risalah</string>
+  <string name="clearanswer_confirm">Hapus jawaban atas \"%s\"?</string>
+  <string name="clear_answer">Hapus jawaban</string>
+  <string name="clear_answer_ask">Hapus Jawaban Ini?</string>
+  <string name="clear_answer_no">Batal</string>
+  <string name="discard_answer">Hapus jawaban</string>
+  <string name="discard_group">Hapus grup</string>
+  <string name="delete_repeat">Hapus grup</string>
+  <string name="delete_repeat_ask">Hapus Grup Ini?</string>
+  <string name="delete_repeat_confirm">Hapus grup \"%s\" dan semua sub-grup?</string>
+  <string name="delete_repeat_no">Batal</string>
+  <string name="invalid_answer_error">Maaf, jawaban tersebut tidak valid.</string>
+  <string name="required_answer_error">Maaf, jawaban ini dibutuhkan.</string>
+  <string name="success_form_validation">Sukses! Tidak ada kesalahan yang ditemukan dalam formulir anda.</string>
+  <string name="invalid_space_in_answer_singular">Peringatan: Nilai %s mengandung spasi</string>
+  <string name="invalid_space_in_answer_plural">Peringatan: Nilai %s mengandung spasi</string>
+  <string name="too_complex_form">Formulir ini terlalu rumit untuk perangkat ini. Coba sederhanakan ekspresi atau minta bantuan di forum.</string>
+  <string name="survey_internal_error">Kesalahan internal: langkah menuju risalah tidak berhasil.</string>
+  <string name="save_enter_data_description">Anda berada di akhir dari formulir\n\"%s\".</string>
+  <string name="form_edits_warning_only_finalize_enabled">Anda tidak akan dapat melakukan perubahan setelah anda memfinalisasi.</string>
+  <string name="form_edits_warning_save_as_draft_and_finalize_enabled">Anda tidak akan dapat melakukan perubahan setelah anda memfinalisasi. Jika anda perlu melakukan perubahan, \"Simpan sebagai draf\" hingga anda siap mengirim.</string>
+  <string name="form_edits_warning_save_as_draft_and_finalize_with_auto_send_enabled">Anda tidak akan dapat melakukan perubahan setelah anda kirim. Jika anda perlu melakukan perubahan, \"Simpan sebagai draf\" hingga anda siap mengirim.</string>
+  <string name="save_as_draft">Simpan sebagai draf</string>
+  <string name="finalize">Finalisasi</string>
+  <string name="send">Kirim</string>
+  <string name="data_saved_error">Maaf, tidak berhasil menyimpan formulir.</string>
+  <string name="data_saved_ok">Formulir berhasil disimpan.</string>
+  <string name="save_point_error">Terjadi kesalahan saat menyimpan titik pemulihan: %s</string>
+  <!--Dialog title when exiting a drawing view. The name of the kind of drawing will be included-->
+  <string name="quit_application">Keluar dari %s</string>
+  <!--Used when exiting a form filling session in which a form was not properly loaded. &lt; and &gt; surrounds the text so it will appear as <no form loaded>-->
+  <string name="do_not_save">Buang Formulir</string>
+  <string name="discard_changes">Buang Perubahan</string>
+  <string name="keep_changes">Simpan perubahan</string>
+  <string name="keep_editing">Terus mengubah</string>
+  <string name="quit_form_title">Simpan formulir?</string>
+  <string name="save_explanation">Anda dapat menyimpan formulir ini dan mengaksesnya dari draf anda kapan saja.</string>
+  <string name="save_explanation_with_last_saved">\'Formulir ini terakhir disimpan pada\' EEE, dd MMM yyyy\', pukul\' HH:mm\'. Simpan sebagai draf untuk menyimpan perubahan.\'</string>
+  <string name="quit_form_continue_title">Lanjutkan pengubahan?</string>
+  <string name="discard_form_warning">Jika anda membuang formulir, anda akan kehilangan perubahan yang telah anda buat sejauh ini.</string>
+  <string name="discard_changes_warning">\'Formulir ini terakhir disimpan pada\' EEE, dd MMM yyyy\', pukul\' HH:mm\'. Jika anda membuang perubahan, anda akan kehilangan perubahan yang telah anda buat sejak saat itu.\'</string>
+  <string name="saving_form">Menyimpan Formulir</string>
+  <string name="survey_saving_validating_message">Memvalidasi jawaban…</string>
+  <string name="survey_saving_collecting_message">Menghimpun data…</string>
+  <string name="survey_saving_saving_message">Menyimpan ke SD card…</string>
+  <string name="survey_saving_finalizing_message">Melakukan finalisasi ke SD card…</string>
+  <string name="survey_saving_encrypting_message">Mengenkripsi data…</string>
+  <string name="not_exactly_one_record_for_this_instance">Instance ini tidak memuat tepat satu record.</string>
+  <string name="not_exactly_one_blank_form_for_this_form_id">jr_form_id ini tidak sesuai dengan tepat satu formulir kosong.</string>
+  <string name="no_form_id_specified">FormId tidak ditentukan?</string>
+  <string name="phone_does_not_support_rsa">Ponsel tidak mendukung enkripsi RSA.</string>
+  <string name="invalid_rsa_public_key">RSA public key tidak valid.</string>
+  <string name="encryption_error_message">Formulir %s belum tersimpan dan terfinalisasi.</string>
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI is incorrect-->
+  <string name="bad_uri">URI salah: %s</string>
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI mime type is unknown-->
+  <string name="unrecognized_uri">URI tidak dikenal: %s</string>
+  <!--Text displayed when audio recording fails to start-->
+  <string name="start_recording_failed">Tidak dapat mulai merekam.</string>
+  <!--Text displayed when user tries to start recording while the mic is already in use-->
+  <string name="mic_in_use">Pengeras suara telah digunakan</string>
+  <!--Error message displayed when copying media from a temporary directory fails-->
+  <string name="answer_file_copy_failed_message">Media tidak dapat dilampirkan ke formulir tetapi tetap tersedia di %1$s</string>
+  <!--Text displayed in the audio bar when background audio recording is explicitly disabled from the options menu. Should be as short as possible. The inserted string is ⋮ which indicates the options menu.-->
+  <string name="recording_disabled">Perekaman dinonaktifkan. Aktifkan dalam %s</string>
+  <!--Error displayed when opened filled form has been deleted on disk-->
+  <string name="instance_deleted_message">Formulir terisi telah dihapus!</string>
+  <!--Error displayed when something bad happens during updating widgets in a field-list group-->
+  <string name="update_widgets_error">Gagal mencoba memperbarui nilai. Ini biasanya karena penggunaan perhitungan yang salah dalam desain formulir.\n\nJika Anda terus mengalami masalah ini, laporkan kepada orang yang meminta Anda untuk mengumpulkan data</string>
+  <!--##############################################
+    # FORM FEATURES
+    ##############################################-->
+  <!--Name of button displayed when a screen contains multiple questions populated by an external app: https://docs.getodk.org/launch-apps-from-collect/#launching-external-apps-to-populate-multiple-fields-->
+  <string name="launch_app">Buka Aplikasi</string>
+  <string name="activity_not_found">Tidak ditemukan aktivitas untuk diselesaikan: %s</string>
+  <string name="no_app">Aplikasi yang dibutuhkan tidak tersedia. Silahkan pasang secara manual.</string>
+  <string name="null_intent_value">Aplikasi eksternal tidak menyediakan informasi yang dibutuhkan.</string>
+  <string name="launch_printer">Memulai Pencetakan</string>
+  <string name="no_printer">Printer yang dipilih belum terinstal. Mohon instal printer terlebih dahulu.</string>
+  <string name="open_url">Buka URL</string>
+  <string name="capture_osm">Jalankan OpenMapKit</string>
+  <string name="recapture_osm">Tandai Ulang OSM</string>
+  <string name="edited_osm_file">Ubah berkas OSM XML</string>
+  <string name="invalid_osm_data">Terjadi kesalahan. Kami tidak mendapatkan data OSM yang valid.</string>
+  <string name="alert">Peringatan</string>
+  <string name="install_openmapkit">Mohon instal OpenMapKit.</string>
+  <string name="get_barcode">Ambil Barcode</string>
+  <string name="replace_barcode">Ubah Barcode</string>
+  <string name="barcode_scanner_prompt">Posisikan barcode ke dalam kotak</string>
+  <string name="open_file">Buka berkas</string>
+  <string name="rank_items">Peringkat item</string>
+  <string name="number_picker_title">Pemilihan nomor</string>
+  <string name="invalid_range_widget">Widget ini memiliki parameter yang tidak valid.</string>
+  <string name="svg_file_does_not_exist">Berkas SVG tidak ada.</string>
+  <string name="capture_image">Ambil Foto</string>
+  <string name="choose_image">Pilih Gambar</string>
+  <string name="selected_invalid_image">Berkas terpilih bukan gambar yang valid</string>
+  <string name="take_picture_instruction">Sentuh layar untuk ambil gambar</string>
+  <string name="error_front_camera_unavailable">Kamera depan tidak tersedia dalam perangkat ini.</string>
+  <string name="camera_error">Terjadi kesalahan saat mengambil gambar</string>
+  <string name="camera_failed_to_initialize">Tidak dapat menginisialisasi kamera!</string>
+  <string name="annotate_image">Menganotasi Gambar</string>
+  <string name="invalid_file_type">Aplikasi tidak mengenali tipe file</string>
+  <!--Dialog heading for saving annotated image-->
+  <string name="save_and_close">Simpan dan Tutup</string>
+  <string name="signature_capture">Ambil Tanda Tangan</string>
+  <string name="sign_button">Minta Tanda Tangan</string>
+  <string name="markup_image">Tandai Gambar</string>
+  <string name="draw_image">Gambar Sketsa</string>
+  <string name="reset_image">Set Ulang</string>
+  <string name="set_color">Atur Warna</string>
+  <string name="capture_video">Rekam Video</string>
+  <string name="choose_video">Pilih Video</string>
+  <string name="play_video">Mainkan video</string>
+  <string name="choose_file">Pilih Berkas</string>
+  <!--Text for button that deletes a file that is the answer to a question-->
+  <string name="delete_answer_file">Hapus</string>
+  <!--Text for button that starts recording sound-->
+  <string name="capture_audio">Rekam Suara</string>
+  <!--Text for button that lets the user choose a sound file on their device-->
+  <string name="choose_sound">Pilih Suara</string>
+  <!--Description text for button that that pauses recording sound-->
+  <string name="pause_recording">Jeda</string>
+  <!--Description text for button that that resumes recording sound-->
+  <string name="resume_recording">Lanjut</string>
+  <!--Text next to checkbox to allow the user to toggle audio recording on and off-->
+  <string name="record_audio">Rekam suara</string>
+  <string name="background_audio_permission_explanation">Formulir ini merekam suara di latar belakang. Anda harus memberikan izin untuk bisa menggunakan mikrofon Anda. Jika tidak, Anda tidak akan dapat membuka formulir ini.</string>
+  <!--Text asking the user to confirm whether they want to stop recording or not (which deletes the recording file)-->
+  <string name="stop_recording_confirmation">Formulir ini meminta perekaman suara latar belakang. Menonaktifkannya akan menghentikan perekaman dan membuang suara yang terekam. Anda yakin ingin melanjutkan?</string>
+  <!--Button text for the dialog confirming whether the user wants to disable background recording-->
+  <string name="disable_recording">Nonaktfikan perekaman</string>
+  <!--Text warning that user after they're reenabled background audio recording that it won't start again until they re-open the form-->
+  <string name="background_audio_recording_enabled_explanation">Perekaman tidak akan dimulai. Anda harus membuka kembali formulir untuk merekam.</string>
+  <!--Title for dialog asking the user if they want to delete a file-->
+  <string name="delete_answer_file_question">Hapus berkas?</string>
+  <!--Dialog text warning the user they won't be able to recover a file once deleted-->
+  <string name="answer_file_delete_warning">Anda tidak akan dapat memulihkan berkas ini setelah dihapus. Anda yakin ingin melanjutkan?</string>
+  <!--Text for button that stops audio recording-->
+  <string name="stop_recording">Berhenti</string>
+  <!--Text to let the user know a recording is in progress-->
+  <string name="recording">Rekaman…</string>
+  <!--Title of Android Notification Channel for audio recording notifications-->
+  <string name="recording_channel">Rekaman audio</string>
+  <!--Text for button that plays audio clip-->
+  <string name="play_audio">Putar audio</string>
+  <!--Text to let the user know a file is being saved-->
+  <string name="saving_file">Menyimpan file</string>
+  <!--Text in dialog that instructs the user to stop recording audio before leaving the form-->
+  <string name="recording_warning">Anda harus berhenti merekam sebelum meninggalkan layar ini.</string>
+  <string name="error_attaching_binary_file">Terjadi kesalahan saat memasukkan berkas media: %s</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="select_value">Pilih nilai</string>
+  <string name="select_answer">Pilih Jawaban</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="edit_value">Ubah nilai</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="no_value_selected">Tidak ada nilai terpilih</string>
+  <string name="selected">Terpilih:</string>
+  <string name="trigger">OK. Lanjut.</string>
+  <string name="ext_file_no_data_error">Berkas tidak memiliki data</string>
+  <string name="ext_conflicting_columns_error">Semua kolom %s telah sesuai</string>
+  <string name="ext_sortBy_numeric_error">Kolom terfilter anda harus hanya berisi nilai numerik. Nilai yang  konflik adalah \'%s\'.</string>
+  <string name="ext_search_wrong_arguments_error">Kesalahan sintaks pada fungsi search(): Fungsi membutuhkan 1, 4 atau 6 argumen.</string>
+  <string name="ext_search_wrong_function_error">Kesalahan sintaks pada fungsi search(): fungsi tidak memiliki kategori \'%s\'.</string>
+  <string name="ext_search_bad_function_error">Kesalahan sintaks pada fungsi search(): \'%s\' tidak dapat dievaluasi sebagai fungsi.</string>
+  <string name="ext_search_return_error">Pengendali pencarian mengembalikan tipe obyek \'%s\'.</string>
+  <string name="ext_import_generic_error">Tidak dapat mengimpor data dari %1$s. Penyebab: %2$s</string>
+  <string name="ext_import_progress_message">Pra-memuat data dari \'%1$s\', mohon tunggu… %2$s</string>
+  <string name="ext_import_cancelled_message">Pembacaan data dibatalkan.</string>
+  <string name="ext_import_finalizing_message">Finalisasi pra-memuat data…</string>
+  <string name="ext_import_completed_message">Pembacaan data selesai.</string>
+  <string name="ext_not_initialized_error">ExternalDataManager belum diinisialisasi.</string>
+  <string name="ext_import_csv_missing_error">Data eksternal untuk %1$s belum diimpor. Mungkin Anda lupa untuk memasukkan berkas %2$s.csv dengan formulir Anda?</string>
+  <string name="ext_search_generic_error">Kesalahan sintaks pada fungsi search(): %s</string>
+  <string name="ext_assign_value_error">Tidak dapat memberikan nilai pada \'%s\'.</string>
+  <string name="parser_exception">Pengecualian XPathParser: \"%s\"</string>
+  <string name="get_bearing">Rekam Penentuan Posisi</string>
+  <string name="replace_bearing">Ganti Penentuan Posisi</string>
+  <string name="getting_bearing">Memuat Penentuan Posisi</string>
+  <string name="accept_bearing">Rekam Penentuan Posisi</string>
+  <string name="bearing">Penentuan Posisi: %.3f</string>
+  <string name="direction">Arah: %s</string>
+  <string name="bearing_lack_of_sensors">Penentuan posisi tidak dapat dikumpulkan: perangkat tidak memiliki akselerometer dan sensor medan magnet atau keduanya.</string>
+  <string name="select_date">Pilih tanggal</string>
+  <string name="select_time">Pilih waktu</string>
+  <string name="no_date_selected">Tanggal tidak dipilih</string>
+  <string name="no_time_selected">Waktu tidak dipilih</string>
+  <string name="ethiopian_month_1">Meskerem</string>
+  <string name="ethiopian_month_2">Tikimt</string>
+  <string name="ethiopian_month_3">Hidar</string>
+  <string name="ethiopian_month_4">Tahsas</string>
+  <string name="ethiopian_month_5">Tir</string>
+  <string name="ethiopian_month_6">Yekatit</string>
+  <string name="ethiopian_month_7">Megabit</string>
+  <string name="ethiopian_month_8">Miazia</string>
+  <string name="ethiopian_month_9">Ginbot</string>
+  <string name="ethiopian_month_10">Senie</string>
+  <string name="ethiopian_month_11">Hamlie</string>
+  <string name="ethiopian_month_12">Nehasie</string>
+  <string name="ethiopian_month_13">Pagumien</string>
+  <string name="coptic_month_1">Thout</string>
+  <string name="coptic_month_2">Paopi</string>
+  <string name="coptic_month_3">Hathor</string>
+  <string name="coptic_month_4">Koiak</string>
+  <string name="coptic_month_5">Tobi</string>
+  <string name="coptic_month_6">Meshir</string>
+  <string name="coptic_month_7">Paremhat</string>
+  <string name="coptic_month_8">Parmouti</string>
+  <string name="coptic_month_9">Pashons</string>
+  <string name="coptic_month_10">Paoni</string>
+  <string name="coptic_month_11">Epip</string>
+  <string name="coptic_month_12">Mesori</string>
+  <string name="coptic_month_13">Pi Kogi Enavot</string>
+  <string name="islamic_month_1">Muharram</string>
+  <string name="islamic_month_2">Shafar</string>
+  <string name="islamic_month_3">Rabi\'ul Awal</string>
+  <string name="islamic_month_4">Rabi\'ul Akhir</string>
+  <string name="islamic_month_5">Jumadil Awal</string>
+  <string name="islamic_month_6">Jumadil Akhir</string>
+  <string name="islamic_month_7">Rajab</string>
+  <string name="islamic_month_8">Sya\'ban</string>
+  <string name="islamic_month_9">Ramadhan</string>
+  <string name="islamic_month_10">Syawwal</string>
+  <string name="islamic_month_11">Dzulqa’dah</string>
+  <string name="islamic_month_12">Dzulhijjah</string>
+  <string name="persian_month_1">Farvardin</string>
+  <string name="persian_month_2">Ordibehesht</string>
+  <string name="persian_month_3">Khordad</string>
+  <string name="persian_month_4">Tir</string>
+  <string name="persian_month_5">Mordad</string>
+  <string name="persian_month_6">Shahrivar</string>
+  <string name="persian_month_7">Mehr</string>
+  <string name="persian_month_8">Aban</string>
+  <string name="persian_month_9">Azar</string>
+  <string name="persian_month_10">Dey</string>
+  <string name="persian_month_11">Bahman</string>
+  <string name="persian_month_12">Esfand</string>
+  <!--Displays dates in specialized calendars with the Gregorian dates in parentheses. This is translated so right-to-left languages can specify the correct order-->
+  <string name="custom_date">%1$s (%2$s)</string>
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is invalid-->
+  <string name="file_invalid">Berkas: %s tidak valid.</string>
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is missing-->
+  <string name="file_missing">Berkas: %s tidak ditemukan.</string>
+  <!--Heading for a dialog which prompts the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <string name="enter_identity">Masukan identitas</string>
+  <!--Label for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <string name="identity">Identitas</string>
+  <!--Explanation for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <string name="enter_identity_description">Formulir ini mengharuskan Anda untuk mengidentifikasi diri Anda sendiri</string>
+  <!--Action to close a full screen dialog-->
+  <string name="close">Tutup</string>
+  <!--Heading for a dialog which prompts the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <string name="reason_for_changes">Alasan perubahan</string>
+  <!--Label for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <string name="reason">Alasan</string>
+  <!--Explanation for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <string name="reason_for_changes_description">Anda perlu menjelaskan alasan atas perubahan yang terjadi pada formulir ini</string>
+  <!--Action to save the contents of a full screen dialog-->
+  <string name="save">Simpan</string>
+  <!--Button text to select a place from a list presented on a map-->
+  <string name="select_place">Pilih tempat</string>
+  <string name="choices">Pilihan</string>
+  <!--##############################################
+    # GEO
+    ##############################################-->
+  <!--TODO(ping): Delete these openmap_* strings when we're ready to move on from OSMDroid.
+   These strings are only being used to preserve compatibility with pre-existing
+    tile caches, and are not shown in the UI.-->
+  <string name="openmap_usgs_topo">USGS National Map Topo</string>
+  <string name="openmap_usgs_sat">Peta Nasional Gabungan USGS</string>
+  <string name="openmap_usgs_img">Citra Peta Nasional USGS</string>
+  <string name="openmap_stamen_terrain">Stamen Terrain</string>
+  <string name="openmap_cartodb_positron">CartoDB Positron</string>
+  <string name="openmap_cartodb_darkmatter">CartoDB Dark Matter</string>
+  <string name="basemap">Peta dasar</string>
+  <string name="basemap_source">Sumber</string>
+  <string name="basemap_source_unavailable">Maaf, peta dasar %s tidak tersedia pada perangkat ini. Silakan pilih peta dasar lainnya di Pengaturan &gt; Peta.</string>
+  <string name="map_style_label">Gaya peta %s</string>
+  <string name="streets">Jalan</string>
+  <string name="terrain">Lahan</string>
+  <string name="hybrid">Hibrida</string>
+  <string name="satellite">Satelit</string>
+  <string name="light" tools:ignore="UnusedResources">Terang</string>
+  <string name="dark" tools:ignore="UnusedResources">Gelap</string>
+  <string name="outdoors" tools:ignore="UnusedResources">Tempat terbuka</string>
+  <string name="topographic">Topografi</string>
+  <string name="google_play_services_error_occured">Tidak dapat mengakses Google Maps. Apakah Google Play Services telah terinstal?</string>
+  <string name="carto_map_style_positron">Positron</string>
+  <string name="carto_map_style_dark_matter">Dark Matter</string>
+  <string name="reference_layer">Lapisan referensi</string>
+  <string name="layer_data_file">Berkas data lapisan</string>
+  <string name="view_change_location">Lihat atau Ubah Lokasi</string>
+  <string name="change_location">Ubah Lokasi</string>
+  <string name="record_geopoint">Rekam titik</string>
+  <string name="location_accuracy">Tingkat akurasi adalah %1$s meter</string>
+  <string name="location_provider">Lokasi penyedia jasa: %s</string>
+  <string name="get_location">Rekam Lokasi</string>
+  <string name="provider_disabled_error">Maaf, penyedia lokasi belum diaktifkan</string>
+  <string name="gps_result">Lintang: %1$s\nBujur: %2$s\nKetinggian: %3$s m\nAkurasi: %4$s m</string>
+  <string name="google_play_services_not_available">Formulir ini hendak merekam pergerakan lokasi Anda, tetapi Google Play Service tidak tersedia.</string>
+  <string name="location_providers_disabled_dialog_message">Formulir ini hendak merekam pergerakan lokasi Anda, tetapi layanan lokasi tidak aktif. Mohon aktifkan terlebih dahulu di pengaturan Android.</string>
+  <!--Action to go to Android settings. Displayed when location providers are disabled.-->
+  <string name="go_to_settings">Pergi ke pengaturan</string>
+  <!--Label for a menu item that can be toggled to turn background location tracking on and off during form filling-->
+  <string name="track_location">Rekam pergerakan lokasi</string>
+  <string name="background_location_disabled">Formulir ini hendak melacak lokasi Anda, tetapi pelacakan lokasi tidak aktif. Mohon aktifkan melalui menu %1$s di atas.</string>
+  <string name="background_location_enabled">Formulir ini melacak lokasi Anda. Anda dapat menonaktifkan pelacakan melalui menu %1$s di atas.</string>
+  <!--Text of an option available when filling out a form. Tapping this option checks the form for constraint or required violations and navigates the user back to the first field with an error.-->
+  <string name="validate">Periksa kesalahan</string>
+  <string name="get_point">Mulai GeoPoint</string>
+  <string name="geopoint_view_read_only">Lihat GeoPoint</string>
+  <string name="geoshape_view_read_only">Lihat GeoShape</string>
+  <string name="geotrace_view_read_only">Lihat GeoTrace</string>
+  <string name="get_shape">Mulai GeoShape</string>
+  <string name="get_trace">Mulai GeoTrace</string>
+  <!--%1$s is the time taken so far in hh:mm:ss-->
+  <string name="time_elapsed">Waktu berlalu: %1$s</string>
+  <!--%1$s is the accuracy required for a point to be automatically saved-->
+  <string name="point_will_be_saved">Titik akan tersimpan pada saat %1$s</string>
+  <!--%1$s is the number of satellites being used to get location-->
+  <string name="satellites">Jumlah Satelit: %1$s</string>
+  <string name="waiting_for_location">Mencoba untuk mendapatkan lokasi. Harap tunggu.</string>
+  <string name="poor_accuracy">Akurasi buruk. Harap tunggu.</string>
+  <string name="unacceptable_accuracy">Akurasi yang tidak dapat diterima. Harap tunggu.</string>
+  <string name="improving_accuracy">Meningkatkan akurasi. Harap tunggu.</string>
+  <string name="accuracy_status_title">Mendapatkan Lokasi</string>
+  <!--The accuracy of a location fix in meters-->
+  <string name="accuracy_m">%1$sm</string>
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in W 18°48'8"-->
+  <string name="west">B %1$s%2$s%3$s</string>
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in E 18°48'8"-->
+  <string name="east">T %1$s%2$s%3$s</string>
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in S 18°48'8"-->
+  <string name="south">S %1$s%2$s%3$s</string>
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in N 18°48'8"-->
+  <string name="north">U %1$s%2$s%3$s</string>
+  <string name="geoshape_title">GeoShape</string>
+  <string name="input_method">Metode masukan</string>
+  <string name="start">Mulai</string>
+  <string name="enable_gps">Aktifkan GPS</string>
+  <string name="geotrace_title">Lacak GeoTrace </string>
+  <string name="gps_enable_message">GPS dinonaktifkan pada perangkat Anda. Apakah Anda ingin mengaktifkannya?</string>
+  <string name="geo_clear_warning">Fitur sudah dibuat. Apakah Anda ingin menghapus fitur ini?</string>
+  <string name="geo_exit_warning">Buang perubahan dan kembali ke ODK?</string>
+  <string name="polygon_validator">Setidaknya dibutuhkan 3 titik untuk membuat Polygon.</string>
+  <string name="polyline_validator">Setidaknya dibutuhkan 2 titik untuk membuat Poyline.</string>
+  <string name="clear">Hapus</string>
+  <string name="placement_mode">Penempatan dengan sentuhan</string>
+  <string name="manual_mode">Rekam lokasi secara manual</string>
+  <string name="automatic_mode">Rekam lokasi secara otomatis</string>
+  <string name="recording_interval">Interval rekaman:</string>
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <plurals name="number_of_seconds">
+    <item quantity="other">%d detik</item>
+  </plurals>
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <plurals name="number_of_minutes">
+    <item quantity="other">%d menit</item>
+  </plurals>
+  <string name="accuracy_requirement">Persyaratan akurasi:</string>
+  <string name="none">Tidak ada</string>
+  <!--Used to display choices for accuracy requirements in geotrace and geoshape questions-->
+  <plurals name="number_of_meters">
+    <item quantity="other">%d meter</item>
+  </plurals>
+  <string name="location_status_searching">Sedang mencari lokasi, mohon menunggu…</string>
+  <string name="location_status_accuracy">Akurasi GPS: %.2f m</string>
+  <string name="location_status_acceptable">Akurasi GPS: %.2f m (GPS Sesuai)</string>
+  <string name="location_status_unacceptable">Akurasi GPS: %.2f m (GPS tidak sesuai)</string>
+  <string name="collection_status_paused">Titik yang dimasukkan: %d</string>
+  <string name="collection_status_placement">Titik yang dimasukkan: %d (sentuh untuk menempatkan poin)</string>
+  <string name="collection_status_manual">Titik yang dimasukkan: %d (rekaman manual)</string>
+  <string name="collection_status_auto_seconds">Titik yang dimasukkan: %1$d (rekaman tiap %2$d detik)</string>
+  <string name="collection_status_auto_minutes">Titik yang dimasukkan: %1$d (rekaman tiap %2$d menit)</string>
+  <string name="collection_status_auto_seconds_accuracy">Titik yang dimasukkan: %1$d (rekaman tiap %2$d detik, akurasi %3$d m)</string>
+  <string name="collection_status_auto_minutes_accuracy">Titik yang dimasukkan: %1$d (rekaman tiap %2$d menit, akurasi %3$d m)</string>
+  <string name="geopoint_instruction">Sentuh lama untuk menandai atau sentuh tombol tambah penanda.</string>
+  <string name="geopoint_no_draggable_instruction">Sentuh tombol tambah penanda.</string>
+  <string name="discard">Buang</string>
+  <string name="geoshape_view_change_location">Lihat atau Ubah GeoShape</string>
+  <string name="geotrace_view_change_location">Lihat atau Ubah GeoTrace</string>
+  <string name="select_item_count">%s: %d (%d ditampilkan di peta)</string>
+  <string name="select_item">Pilih</string>
+  <string name="new_item">Barang baru</string>
+  <!--Name of an action button-->
+  <string name="edit_data">Ubah Draf</string>
+  <string name="view_data">Lihat Formulir Tersimpan</string>
+  <!--Name for the location tracking notifications. Will be seen in Android settings.-->
+  <string name="location_tracking_notification_channel_name">Melacak lokasi</string>
+  <!--Title for notification that lets user know their location is currently being tracked-->
+  <string name="location_tracking_notification_title">Lokasi pelacakan</string>
+  <!--Text of button user can press to get help when setting up Reference Layers-->
+  <string name="get_help_with_reference_layers">Minta bantuan untuk Lapisan Referensi</string>
+  <!--Description for button that zooms to the user's current location on a map-->
+  <string name="show_my_location">Tunjukkan lokasi saya</string>
+  <!--Description for button that zooms a map so that it shows all items-->
+  <string name="zoom_to_fit_all">Perbesar hingga muat semua</string>
+  <!--Description for button that pauses automatic location recording-->
+  <string name="pause_location_recording">Jeda</string>
+  <!--Description for button that removes the last recorded point-->
+  <string name="remove_last_point">Hapus titik terakhir</string>
+  <!--##############################################
+    # SEND FINALIZED FORM
+    ##############################################-->
+  <string name="uploading_data">Mengirim Formulir</string>
+  <string name="noselect_error">Maaf, anda belum memilih formulir</string>
+  <string name="no_connection">Koneksi internet tidak tersedia</string>
+  <string name="sending_items">Sedang mengirim %1$s dari %2$s total formulir</string>
+  <string name="send_selected_data">Kirim Terpilih</string>
+  <string name="server_auth_credentials">Nama pengguna atau sandi untuk server tidak valid: %s</string>
+  <string name="server_requires_auth">Server Membutuhkan Autentikasi</string>
+  <string name="no_forms_uploaded">Maaf, tidak ada formulir yang telah diunggah.</string>
+  <string name="upload_results">Unggahan</string>
+  <!--Name of option in Send Finalized Form menu to show only unsent forms (default) or show sent and unsent forms-->
+  <string name="change_view">Ubah Tampilan</string>
+  <string name="show_sent_and_unsent_forms">Tampilkan Formulir Terkirim dan Belum Terkirim</string>
+  <string name="show_unsent_forms">Tampilkan Formulir Belum Terkirim</string>
+  <string name="media_upload_error">Tidak berhasil mengunggah berkas media yang tidak ditemukan: %1$s</string>
+  <string name="send_in_progress">Pengiriman sedang berlangsung, mohon coba beberapa saat lagi.</string>
+  <string name="odk_permissions_fail">Izin pengiriman otomatis tidak berhasil, mohon pastikan semua izin yang dibutuhkan telah diberikan.</string>
+  <string name="forms_upload_succeeded">Pengunggahan formulir berhasil</string>
+  <string name="forms_upload_failed">Pengunggahan formulir gagal</string>
+  <string name="all_uploads_succeeded">Semua unggahan berhasil!</string>
+  <string name="some_uploads_failed">%1$s dari %2$s unggahan gagal!</string>
+  <!--##############################################
+    # GET BLANK FORM
+    ##############################################-->
+  <string name="refresh">Memuat Ulang</string>
+  <string name="download">Unduh Terpilih</string>
+  <string name="download_forms_result">Hasil Unduhan</string>
+  <string name="downloading_data">Menghubungkan ke Server</string>
+  <string name="fetching_file">Mengunduh %1$s.\n\nFormulir %2$s dari %3$s formulir.</string>
+  <string name="form_download_progress">%1$s. Sedang mengunduh berkas media: %2$s dari %3$s</string>
+  <string name="version">Versi:</string>
+  <string name="form_updates_available">Tersedia pembaruan formulir</string>
+  <string name="newer_version_of_a_form_info">Ini adalah pembaruan dari formulir yang kamu miliki</string>
+  <string name="form_update_error">Pembaruan formulir tidak berhasil</string>
+  <string name="form_update_succeeded">Pembaruan formulir berhasil</string>
+  <string name="load_remote_form_error">Unduhan daftar formulir tidak berhasil</string>
+  <string name="forms_download_succeeded">Pengunduhan formulir berhasil</string>
+  <string name="forms_download_failed">Pengunduhan formulir gagal</string>
+  <string name="all_downloads_succeeded">Seluruh unduhan telah berhasil!</string>
+  <string name="some_downloads_failed">%1$s dari %2$s unduhan tidak berhasil!</string>
+  <!--Part of form download dialog. Clicking it displays additional information about a form that failed-->
+  <string name="form_details">ID: %1$s Versi: %2$s</string>
+  <!--##############################################
+    # GET BLANK FORM - ERROR MESSAGES
+    ##############################################-->
+  <string name="report_to_project_lead">Jika anda terus mengalami masalah ini, laporkan ke orang yang meminta anda untuk mengumpulkan data.</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="unreachable_error">ODK Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="security_error">ODK Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="server_error">Peladen %1$s rmengembalikan kode status %2$s.</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="invalid_response">Peladen %s mengembalikan respon tidak valid.</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="form_with_no_hash_error">Server tidak menyediakan hash untuk formulir ini.</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="form_parsing_error">Formulir ini tidak dapat diproses.</string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="form_save_disk_error">Terjadi kesalahan penyimpanan pada perangkat saat mengunduh formulir ini. </string>
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <string name="form_with_invalid_submission_error">Formulir ini memiliki URL pengiriman yang tidak valid.</string>
+  <!--##############################################
+    # DELETE SAVED FORM
+    ##############################################-->
+  <!--Title of a section in "Delete Saved Forms" for deleting filled/saved forms (as opposed to blank forms)-->
+  <string name="data">Formulir Tersimpan</string>
+  <!--Title of a section in "Delete Saved Forms" for deleting blank forms (as opposed to filled/saved forms)-->
+  <string name="forms">Formulir Kosong</string>
+  <string name="delete_confirm">Hapus %s formulir?</string>
+  <string name="delete_file">Hapus Terpilih</string>
+  <string name="delete_no">Batal Hapus</string>
+  <string name="delete_yes">Hapus Formulir</string>
+  <string name="file_deleted_error">Maaf, %1$s dari %2$s formulir terpilih, tidak berhasil dihapus.</string>
+  <string name="form_delete_message">Menghapus form terpilih</string>
+  <string name="deleting_form_dialog_update_message">Menghapus form: %1$d dari %2$d</string>
+  <string name="file_deleted_ok">%s formulir telah berhasil dihapus.</string>
+  <string name="file_delete_in_progress">Maaf, proses penghapusan formulir sedang berlangsung.</string>
+  <!--##############################################
+    # UNPROTECTED SETTINGS
+    ##############################################-->
+  <string name="project_settings">Pengaturan proyek</string>
+  <!--Title of a settings section-->
+  <string name="server_settings_title">Server</string>
+  <!--Subtext of a settings section-->
+  <string name="server_settings_subtext">Alamat website, nama pengguna, kata sandi</string>
+  <!--Title of a settings section-->
+  <string name="project_display_title">Tampilan proyek</string>
+  <!--Subtext of a settings section-->
+  <string name="project_display_subtext">Nama, simbol, warna</string>
+  <!--Title of a settings section-->
+  <string name="client">Antarmuka pengguna</string>
+  <!--Subtext of a settings section-->
+  <string name="user_interface_settings_subtext">Bahasa aplikasi, tema, ukuran huruf</string>
+  <!--Title of a settings section-->
+  <string name="maps">Peta</string>
+  <!--Subtext of a settings section-->
+  <string name="maps_settings_subtext">Peta dasar, gaya, lapisan</string>
+  <!--Title of a settings section-->
+  <string name="form_management_preferences">Manajemen Formulir</string>
+  <!--Subtext of a settings section-->
+  <string name="form_management_settings_subtext">Pembaruan otomatis, kirim otomatis, hapus otomatis</string>
+  <!--Title of a settings section-->
+  <string name="user_and_device_identity_title">Identitas perangkat dan pengguna</string>
+  <!--Subtext of a settings section-->
+  <string name="user_and_device_identity_settings_subtext">Nama Pengguna, nomor telepon, ID perangkat</string>
+  <!--Title of a settings section only available in beta or development builds.-->
+  <string name="experimental">Eksperimental</string>
+  <string name="protected_settings">Terlindung</string>
+  <!--Title of a settings section-->
+  <string name="unlock_protected_settings_section_title">Buka kunci pengaturan yang dilindungi </string>
+  <!--Subtext of a settings section-->
+  <string name="unlock_protected_settings_section_subtext">Ubah kata sandi, atur kontrol akses</string>
+  <string name="set_admin_password">Atur kata sandi admin</string>
+  <!--Title of a settings section-->
+  <string name="project_management_section_title">Manajemen proyek</string>
+  <!--Subtext of a settings section-->
+  <string name="project_management_section_subtext">Konfigurasi ulang, pengaturan ulang, hapus</string>
+  <!--Title of a settings section-->
+  <string name="access_control_section_title">Kontrol akses</string>
+  <!--Subtext of a settings section-->
+  <string name="access_control_section_subtext">Batas antarmuka pengguna</string>
+  <string name="server_preferences">Pengaturan Server</string>
+  <!--Label for server type setting-->
+  <string name="type">Tipe</string>
+  <string name="server_url">URL</string>
+  <!--Title of dialog for configuring server URL-->
+  <string name="change_server_url">Server URL</string>
+  <string name="url_error">Maaf, URL tidak valid.</string>
+  <string name="username">Nama Pengguna</string>
+  <string name="change_username">Nama Pengguna ODK</string>
+  <string name="password">Kata sandi</string>
+  <string name="change_password">Kata Sandi ODK</string>
+  <string name="password_error_whitespace">Tidak diperkenankan menggunakan spasi pada kata sandi</string>
+  <string name="username_error_whitespace">Tidak diperkenankan menggunakan spasi pada nama pengguna</string>
+  <string name="server_platform_google_sheets">Google Drive, Google Sheets</string>
+  <string name="selected_google_account_text">Akun Google</string>
+  <!--To use Google Drive, forms must set a submission URL. If they don't, this URL will be used.-->
+  <string name="google_sheets_url">URL kembali setelah pengiriman</string>
+  <!--Description for Fallback submission URL setting-->
+  <string name="google_sheets_url_hint">URL pengiriman harus ditetapkan pada formulir. Jika tidak, URL ini yang akan digunakan.</string>
+  <string name="app_theme">Tema</string>
+  <string name="theme_light">Tema terang</string>
+  <string name="theme_dark">Tema gelap</string>
+  <string name="theme_system">Gunakan tema perangkat</string>
+  <string name="language">Bahasa</string>
+  <string name="use_device_language">Gunakan bahasa perangkat</string>
+  <string name="font_size">Ukuran teks font</string>
+  <string name="change_font_size">Ukuran teks font</string>
+  <string name="font_size_extra_large">Sangat Besar</string>
+  <string name="font_size_large">Besar</string>
+  <string name="font_size_medium">Sedang</string>
+  <string name="font_size_small">Kecil</string>
+  <string name="font_size_extra_small">Sangat kecil</string>
+  <string name="navigation">Navigasi</string>
+  <string name="swipe_navigation">Gunakan sentuhan ke kanan/kiri</string>
+  <string name="buttons_navigation">Gunakan tombol lanjut/kembali</string>
+  <string name="swipe_buttons_navigation">Gunakan sentuhan dan tombol</string>
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <string name="form_forward">Lanjut</string>
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <string name="form_backward">Kembali</string>
+  <!--Heading for the settings category about updating blank forms-->
+  <string name="form_update_category">Pembaruan formulir</string>
+  <!--Name of the setting that defines how blank forms are updated from the server.-->
+  <string name="form_update_mode_title">Mode pembaruan formulir kosong</string>
+  <!--One of the possible settings values for "Blank form update mode". Manual update mode means forms have to be explicitly downloaded from Get Blank Forms.-->
+  <string name="manual">Manual</string>
+  <!--One of the possible settings values for "Blank form update mode". "Previously downloaded" update mode means forms that have been manually downloaded will be kept up to date.-->
+  <string name="previously_downloaded_only">Hanya formulir yang diunduh sebelumnya</string>
+  <!--One of the possible settings values for "Blank form update mode". "Exactly match server" update mode means that new forms or form updates on the server will be downloaded and forms that the server doesn't know about will be removed.-->
+  <string name="match_exactly">Sama dengan server</string>
+  <!--Name of the setting that defines how often blank forms are updated from the server.-->
+  <string name="form_update_frequency_title">Frekuensi pembaruan otomatis</string>
+  <!--Frequency for requesting blank form updates from the server-->
+  <string name="every_fifteen_minutes">Tiap 15 menit</string>
+  <!--Frequency for requesting blank form updates from the server-->
+  <string name="every_one_hour">Tiap 1 jam</string>
+  <!--Frequency for requesting blank form updates from the server-->
+  <string name="every_six_hours">Tiap 6 jam</string>
+  <!--Frequency for requesting blank form updates from the server-->
+  <string name="every_24_hours">Tiap 24 jam</string>
+  <!--Name of setting that defines whether form updates should be automatically downloaded when in "previously downloaded forms only" download mode-->
+  <string name="automatic_download">Unduh otomatis</string>
+  <string name="automatic_download_summary">Otomatis unduh versi formulir terkini</string>
+  <string name="hide_old_form_versions_setting_title">Sembunyikan versi formulir lawas</string>
+  <string name="hide_old_form_versions_setting_summary">Hanya versi terbaru yang akan muncul di menu Isi Formulir Kosong</string>
+  <string name="form_submission_category">Pengiriman Formulir</string>
+  <string name="autosend_selector_title">Kirim otomatis</string>
+  <string name="autosend">Kirim otomatis</string>
+  <string name="off">Mati</string>
+  <string name="wifi_autosend">Hanya Wifi</string>
+  <string name="cellular_autosend">Hanya Selular</string>
+  <string name="wifi_cellular_autosend">Wifi atau selular</string>
+  <string name="delete_after_send">Hapus setelah kirim</string>
+  <string name="delete_after_send_summary">Hapus media dan formulir yang terfinalisasi setelah dikirim ke server</string>
+  <string name="form_filling_category">Mengisi Formulir</string>
+  <string name="constraint_behavior_title">Pemrosesan konstrain</string>
+  <string name="constraint_behavior">Konstrain perilaku pemrosesan</string>
+  <string name="constraint_behavior_on_swipe">Validasi pada saat menggeser layar ke kanan</string>
+  <string name="constraint_behavior_on_finalize">Menunda validasi sampai terfinalisasi</string>
+  <string name="high_resolution_title">Video resolusi tinggi</string>
+  <string name="high_resolution_summary">Mengaktifkan perekaman video beresolusi tinggi</string>
+  <string name="image_size_title">Ukuran gambar</string>
+  <string name="image_size_dialog_title">Pixel maksimum pada sisi gambar yang paling panjang</string>
+  <string name="image_size_large">Besar (3072px)</string>
+  <string name="image_size_medium">Sedang (2048px)</string>
+  <string name="image_size_small">Kecil (1024px)</string>
+  <string name="image_size_very_small">Sangat kecil (640px)</string>
+  <string name="image_size_original">Ukuran asli dari kamera (bawaan)</string>
+  <!--Name of setting for enabling guidance hints while filling forms. Guidance hints are meant for training or other specialized contexts.-->
+  <string name="guidance_hint_title">Tampilkan bantuan atas pertanyaan</string>
+  <string name="guidance_no">Tidak</string>
+  <string name="guidance_yes">Ya - selalu tunjukkan</string>
+  <!--Guidance hints can be displayed behind an icon that must be tapped to reveal the hint.-->
+  <string name="guidance_yes_collapsed">Ya - sembunyikan</string>
+  <!--Title for setting to let the user switch between using Collect or another app (on the device) for recording audio-->
+  <string name="external_app_recording">Gunakan aplikasi eksternal untuk merekam audio</string>
+  <string name="form_import_category">Impor Formulir</string>
+  <string name="instance_sync">Selesaikan formulir saat impor</string>
+  <string name="instance_sync_summary">Formulir yang rusak akan langsung ditambahkan ke berkas instance</string>
+  <string name="analytics_preferences">Penggunaan data</string>
+  <string name="analytics">Kumpulkan data pengguna anonim</string>
+  <string name="analytics_summary">Data penggunaan anonim membantu tim ODK untuk memprioritaskan perbaikan dan fitur.</string>
+  <string name="form_metadata_title">Metadata Formulir</string>
+  <string name="form_metadata">Metadata formulir</string>
+  <string name="form_metadata_summary">Semua nilai ini akan ditambahkan ke formulir yang menyediakan field nama pengguna, email dan/atau telepon untuk mengidentifikasi orang yang mengirimkan data.</string>
+  <string name="user_defined">Ditentukan-pengguna</string>
+  <string name="phone_number">Nomor Telepon</string>
+  <string name="email">Alamat Email</string>
+  <string name="invalid_email_address">Alamat email tidak valid</string>
+  <string name="device_defined">Ditentukan-perangkat</string>
+  <string name="device_id">ID Perangkat</string>
+  <!--Displayed when a device property such as the phone number is not available-->
+  <string name="preference_not_available">Tidak tersedia</string>
+  <!--Label for an item displayed in the project settings menu to unlock settings-->
+  <string name="unlock_settings">Buka kunci pengaturan</string>
+  <!--Label for an item displayed in the project settings menu to indicate that settings are unlocked-->
+  <string name="settings_unlocked">Pengaturan tidak terkunci</string>
+  <!--##############################################
+     # PROTECTED SETTINGS
+     ##############################################-->
+  <string name="enter_new_password">Masukan Kata Sandi Baru</string>
+  <string name="admin_password">Kata Sandi Admin</string>
+  <string name="admin_password_changed">Kata sandi admin berhasil diubah</string>
+  <string name="admin_password_disabled">Kata sandi admin ditiadakan</string>
+  <string name="admin_password_incorrect">Maaf, kata sandi tidak tepat.</string>
+  <string name="enter_admin_password">Masukan Kata Sandi Admin</string>
+  <string name="change_admin_password">Ubah Kata sandi Admin</string>
+  <string name="show_password">Tunjukan kata sandi</string>
+  <string name="found_in_main">Hapus centang untuk menyembunyikan dari Menu Utama</string>
+  <string name="found_in_settings">Hapus centang untuk menyembunyikan dari Pengaturan yang Tidak Dilindungi</string>
+  <string name="form_entry">Hapus centang untuk menyembunyikan dari Pengisian Formulir</string>
+  <string name="form_end">Hapus centang untuk menyembunyikan dari Akhir Formulir.</string>
+  <string name="reset_project_settings_title">Set Ulang</string>
+  <string name="reset_project_settings_subtext">Pilih dari pengaturan, formulir, data</string>
+  <string name="delete_project">Hapus</string>
+  <string name="select_all">Pilih Semua</string>
+  <string name="clear_all">Batal Pilih</string>
+  <string name="reset_settings">Seluruh pengaturan (pengaturan internal, pengaturan tersimpan)</string>
+  <string name="reset_saved_forms">Formulir tersimpan (folder instances, database instances)</string>
+  <string name="reset_blank_forms">Formulir kosong (folder formulir, database formulir, database itemsets)</string>
+  <string name="reset_layers">Lapisan peta (folder lapisan)</string>
+  <string name="reset_cache">Cache formulir yang dimuat (folder .cache)</string>
+  <string name="reset_settings_dialog_title">Pilih apa yang ingin di set ulang</string>
+  <string name="reset_settings_button_reset">Set Ulang</string>
+  <string name="reset_in_progress">Mengeset ulang…</string>
+  <string name="reset_app_state_result">Set ulang hasil</string>
+  <string name="reset_app_state_warning">Semua data terpilih akan dihapus secara permanen dan tidak dapat dikembalikan.</string>
+  <string name="reset_settings_result">Seluruh pengaturan: %s</string>
+  <string name="reset_saved_forms_result">Simpan formulir :: %s</string>
+  <string name="reset_blank_forms_result">Formulir kosong :: %s</string>
+  <string name="reset_layers_result">Lapisan peta :: %s</string>
+  <string name="reset_cache_result">Cache formulir yang dimuat :: %s</string>
+  <string name="main_menu_settings">Pengaturan Menu Utama</string>
+  <string name="main_menu_settings_summary">Tampilkan atau sembunyikan tombol</string>
+  <string name="user_settings">Pengaturan Pengguna</string>
+  <string name="user_setting_summary">Tampilkan atau sembunyikan pengaturan</string>
+  <string name="form_entry_setting">Pengaturan Pengisian Formulir</string>
+  <string name="form_entry_settings_summary">Tampilkan atau sembunyikan langkah</string>
+  <!--Name of a setting that determines whether users can navigate backwards in a form-->
+  <string name="moving_backwards_title">Kembali ke halaman sebelumnya</string>
+  <string name="moving_backwards_disabled_title">Kembali ke halaman sebelumnya dinonaktifkan</string>
+  <string name="moving_backwards_disabled_message">Mengkonfigurasi perangkat untuk mencegah pengguna melewati pengaturan ini?\n\nPerubahan yang dilakukan:\n\u2022 Menonaktifkan Ubah Draf\n\u2022 Menonaktifkan Simpan sebagai draf\n\u2022 Menonaktifkan Daftar Isi\n\u2022 Aktifkan pemrosesan konstrain untuk memvalidasi pada saat menggeser layar ke kanan</string>
+  <string name="yes">Ya</string>
+  <string name="no">Tidak</string>
+  <string name="moving_backwards_enabled_title">Kembali ke halaman sebelumnya diaktifkan</string>
+  <string name="moving_backwards_enabled_message">Anda mungkin ingin meninjau pengaturan berikut:\n\n\u2022 Ubah Draf\n\u2022 Simpan sebagai draf\n\u2022 Daftar Isi\n\u2022 Pemrosesan konstrain</string>
+  <!--Protected setting. When enabled, users are allowed to save forms while filling them. When disabled, users are only allowed to save forms when they reach their end-->
+  <string name="save_mid">Simpan sebagai draf</string>
+  <string name="save_mid_summary">Icon simpan di bilah atas dan tombol \"Simpan sebagai draf\" saat keluar dari formulir.</string>
+  <!--##############################################
+     # GOOGLE DRIVE, GOOGLE SHEETS
+     ##############################################-->
+  <!--Title of the screen that lists forms in user's Google Drive-->
+  <string name="go_drive">Drive saya</string>
+  <!--Title of the screen that lists forms shared with Google Drive user-->
+  <string name="go_shared">Berbagi dengan saya</string>
+  <!--Button for navigating across Google Drive folders-->
+  <string name="download_selected">Unduh Pilihan</string>
+  <string name="go_back">Kembali</string>
+  <string name="google_auth_io_exception_msg">Tidak dapat memanggil API. Jika Anda menjalankan kompilasi lokal, mohon baca project readme.</string>
+  <string name="reading_files">Membaca berkas</string>
+  <string name="drive_get_file">Mendapatkan %1$s dan berkas media.</string>
+  <string name="no_google_account">Tidak ada Akun Google yang dipilih.</string>
+  <string name="google_set_account">Google Sheets telah dipilih sebagai server anda, mohon tentukan akun Google pada Pengaturan sebelum melanjutkan</string>
+  <string name="google_search_browse">Mencari formulir. Atau memilih \'My Drive\' di bawah ini untuk browse.</string>
+  <string name="invalid_sheet_id">Id sheet tidak valid: %1$s</string>
+  <string name="missing_submission_url">URL pengiriman tidak ditemukan.</string>
+  <string name="google_sheets_access_denied">Akses ditolak. Pastikan pemilik spreadsheet memberikan Anda akses untuk mengubah.</string>
+  <string name="google_sheets_missing_columns">Kolom yang dimaksud pada spreadsheet tidak ditemukan: %1$s</string>
+  <string name="google_sheets_encrypted_message">Formulir terenkripsi tidak dapat dikirimkan ke Google Sheets.</string>
+  <string name="missing_google_account_dialog_desc">Untuk dapat mengirim formulir melalui Google Sheet Anda harus mengatur akun Google Anda di pengaturan Server.</string>
+  <!--Text shown in dialog when a Google Sheets form upload was canceled before completion-->
+  <string name="instance_upload_cancelled">Permintaan unggah dibatalkan</string>
+  <string name="no_columns_to_upload">Tidak ada kolom yang ditemukan di dalam formulir untuk diunggah.</string>
+  <string name="missing_google_account_dialog_title">Akun Google belum diatur</string>
+  <string name="multiple_media_folders_detected_notification">Lebih dari satu folder media terdeteksi, mohon hapus salah satu dan coba lagi.</string>
+  <!--##############################################
+     # ABOUT
+     ##############################################-->
+  <string name="about_preferences">Tentang</string>
+  <string name="tell_your_friends">Bagikan ODK Collect</string>
+  <string name="tell_your_friends_msg">Apakah rekan Anda masih menggunakan kertas untuk pengumpulan data? Kabari mereka untuk menggunakan ODK Collect.</string>
+  <string name="leave_a_review">Berikan ulasan di Play Store</string>
+  <string name="leave_a_review_msg">Ulasan Anda (semoga positif) dapat mempromosikan aplikasi ODK di Play Store.</string>
+  <string name="odk_website">Kunjungi situs ODK </string>
+  <string name="odk_website_summary">ODK digunakan sebagai pengumpulan data untuk kepentingan sosial di lingkungan yang menantang.</string>
+  <string name="odk_forum">Gabung forum ODK</string>
+  <string name="odk_forum_summary">Bergabung di Forum untuk mendapatkan bantuan, permintaan fitur, berkontribusi kode program/terjemahan!</string>
+  <string name="all_open_source_licenses">Lisensi/pustaka sumber terbuka</string>
+  <string name="all_open_source_licenses_msg">Kita menjadi besar karena berkolaborasi bersama!</string>
+  <!--##############################################
+     # SETTINGS IMPORT
+     ##############################################-->
+  <string name="reconfigure_with_qr_code_settings_title">Konfigurasi ulang menggunakan kode QR</string>
+  <string name="reconfigure_with_qr_code_settings_subtext">Ganti seluruh pengaturan yang ada</string>
+  <string name="qr_code">Konfigurasi kode QR</string>
+  <string name="scan_qr_code_fragment_title">Pemindaian</string>
+  <string name="view_qr_code_fragment_title">Kode QR</string>
+  <string name="import_qrcode_sd">Impor kode QR</string>
+  <string name="successfully_imported_settings">Pengaturan berhasil diimpor</string>
+  <string name="encoding_max_limit" tools:ignore="UnusedResources">Batas karakter maksimum tercapai: QR code tidak dapat dibuat untuk seluruh pengaturan</string>
+  <string name="share">Bagikan</string>
+  <string name="turn_on_flashlight">Nyalakan senter</string>
+  <string name="turn_off_flashlight">Matikan senter</string>
+  <string name="qrcode_with_both_passwords">Berisi informasi sensitif: <b>admin</b> dan <b>kata sandi server</b></string>
+  <string name="qrcode_without_passwords">Kode QR tidak berisi <b>admin</b> atau kata sandi <b>server</b>. Sentuh untuk konfigurasi</string>
+  <string name="qrcode_with_admin_password">Berisi informasi sensitif: kata sandi <b>admin</b></string>
+  <string name="qrcode_with_server_password">Berisi informasi sensitif: kata sandi <b>server</b></string>
+  <string name="server_password">Kata Santi Server</string>
+  <string name="include_password_dialog">Kata Sandi Disertakan dalam Kode</string>
+  <string name="generate">Generate</string>
+  <string name="invalid_qrcode">QR code tidak mengandung pengaturan yang benar</string>
+  <string name="qr_code_not_found">Kode QR tidak ditemukan pada gambar terpilih</string>
+  <string name="corrupt_imported_preferences_error">Pengaturan yang sekarang bermasalah. Dari pengaturan manajemen proyek, atur ulang pengaturan atau impor pengaturan.</string>
+  <string name="settings_with_gd_protocol">Proyek Google Drive/Sheets tidak dapat dibuat lagi</string>
+  <!--##############################################
+     # MISC
+     ##############################################-->
+  <string name="ok">OK</string>
+  <!--Used in many dialogs to dismiss the dialog without taking any action-->
+  <string name="cancel">Batal</string>
+  <string name="cancel_loading_form">Batal</string>
+  <string name="cancel_location">Batal</string>
+  <string name="do_not_change">Batal</string>
+  <string name="do_not_exit">Batal</string>
+  <string name="canceling">Membatalkan</string>
+  <string name="notification_channel_name">Pemberitahuan umum</string>
+  <string name="success">Berhasil</string>
+  <string name="error_occured">Terjadi Kesalahan</string>
+  <string name="please_wait">Mohon tunggu sebentar…</string>
+  <string name="please_wait_long">Mohon tunggu. Proses ini membutuhkan waktu beberapa menit.</string>
+  <string name="fs_delete_media_path_if_file_error">Tidak dapat menghapus \'%s\'. Mohon hapus berkas secara manual dan unduh ulang formulirnya.</string>
+  <string name="fs_create_media_folder_error">Tidak dapat membuat folder media \'%s\'.</string>
+  <string name="fs_file_copy_error">Tidak dapat menyalin \'%1$s\' terhadap \'%2$s\'. Penyebab: %3$s</string>
+  <string name="survey_multiple_forms_error">Anda mengunduh dua formulir berbeda, tetapi memiliki ID dan versi formulir yang sama. Kemungkinan keduanya adalah formulir yang sama dan diunggah pada saat yang berbeda atau pada server yang berbeda. Pada kasus ini, hapus salah satu formulir.</string>
+  <string name="select_odk_shortcut">Pilih pintasan ODK</string>
+  <string name="background_audio_help">Formulir ini merekam suara dari perangkat mikrofon Anda. Anda dapat menggunakan indikator volume untuk memastikan bahwa mikrofon sudah cukup dekat dengan suara yang ingin Anda rekam. Untuk menghentikan perekaman mohon keluar dari formulir ini. Untuk informasi lebih lanjut mohon hubungi orang yang meminta anda untuk mengumpulkan data.</string>
+  <string name="loading">Memuat…</string>
+  <!--##############################################
+     # Projects
+     ##############################################-->
+  <string name="projects">Proyek</string>
+  <string name="settings">Pengaturan</string>
+  <string name="add_project">Tambahkan proyek</string>
+  <string name="add">Tambah</string>
+  <!--Title of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <string name="duplicate_project">Salin proyek</string>
+  <!--Detail text of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <string name="duplicate_project_details">Anda sudah memiliki proyek dengan pengaturan koneksi ini. Apa Anda ingin beralih ke proyek yang ada atau menambah baru?</string>
+  <!--Button text for adding a duplicate project-->
+  <string name="add_duplicate_project">Tambahkan salinan proyek</string>
+  <!--Buton text for switching to an existing project-->
+  <string name="switch_to_existing">Beralih ke proyek yang ada</string>
+  <string name="project_name">Nama Proyek</string>
+  <string name="project_icon">Simbol Proyek</string>
+  <string name="project_color">Warna Proyek</string>
+  <!--Toast text shown when the current project is changed-->
+  <string name="switched_project">Telah beralih ke %s</string>
+  <!--Description for screen readers of which project is in use. This is part of the project selection dialog-->
+  <string name="using_project">Menggunakan %s</string>
+  <!--Description for screen readers of the action to switch to a different existing project. This is part of the project selection dialog-->
+  <string name="switch_to_project">Beralih ke %s</string>
+  <string name="delete_project_confirm_message">Seluruh formulir kosong, kiriman dan pengaturan akan dihapus secara permanen</string>
+  <string name="delete_google_drive_project_confirm_message">&lt;font fgcolor="#D42C2C"&gt;Ini adalah proyek Google Drive/Sheets. Setelah anda menghapusnya, anda tidak akan dapat membuatnya lagi.&lt;/font&gt;\n\nSemua formulir kosong, kiriman, dan pengaturan akan dihapus secara permanen.</string>
+  <string name="delete_project_yes">Ya</string>
+  <string name="delete_project_no">Tidak</string>
+  <string name="cannot_delete_project_title">Proyek tidak bisa dihapus</string>
+  <string name="cannot_delete_project_message_one">Anda memiliki kiriman yang belum terkirim. Untuk menghapus proyek tersebut, Anda harus mengirim atau menghapus kiriman tersebut terlebih dahulu.</string>
+  <string name="cannot_delete_project_message_two">Tugas latar belakang sedang berjalan. Silakan coba lagi nanti</string>
+  <string name="or">ATAU</string>
+  <string name="hex_color">Warna heksagonal</string>
+  <string name="invalid_hex_code">Kode heksa tidak valid</string>
+  <!--##############################################
+     # First launch and initial configuration
+     ##############################################-->
+  <!--Tag line displayed on the first launch screen. The text should be split into two lines with \n. Please
+    select the wording and where to put the \n for maximum impact in your language.-->
+  <string name="tagline">Kumpulkan data di mana saja</string>
+  <!--Text for the button that allows for configuring a project by scanning a QR code. Should be short-->
+  <string name="configure_with_qr_code">Konfigurasi dengan QR kode</string>
+  <!--Text for the button that allows for manually entering project details. Should be short-->
+  <string name="configure_manually">Masukkan rincian proyek secara manual</string>
+  <string name="project_config_tip">Setelah anda menambahkan proyek anda, anda dapat mengatur konfigurasinya di Pengaturan.</string>
+  <!--Immediately followed by "Try Collect" which is a link to create a demo project-->
+  <string name="dont_have_project">Belum memliki proyek?</string>
+  <!--Preceded by "Don't have a project yet?" question-->
+  <string name="try_demo">Coba tampilan</string>
+  <string name="scan_configuration_qr_code">Pindai kode QR konfigurasi</string>
+  <!--Error shown when a user tries to open a form that's in a different project-->
+  <string name="wrong_project_selected_for_form">Untuk membuka formulir ini, Anda harus membuka ODK Collect dan beralih ke proyek yang memuatnya.</string>
+  <!--Error shown when a user tries to open a form when there are no projects-->
+  <string name="app_not_configured">ODK Collect belum dikonfigurasi. Cobalah membuka ODK Collect dan mengatur konfigurasinya.\n\nJika anda mengetuk pintasan, anda mungkin perlu membuatnya kembali setelah mengkonfigurasi ODK Collect.</string>
+  <!--##############################################
+    # Errors
+    ##############################################-->
+  <string name="show_details">Tampilkan rincian</string>
+  <string name="errors">Kesalahan</string>
+  <!--##############################################
+    # Permissions
+    ##############################################-->
+  <string name="open_settings">Buka Pengaturan</string>
+  <!--An entity is any person, place or thing that a form can be about. This title appears on an experimental settings screen to view entities managed in the current project.-->
+  <string name="entities_title">Entitas</string>
+  <!--##############################################
+    # Crash handling
+    ##############################################-->
+  <string name="crash_last_run">Terjadi kegagalan sistem saat aplikasi berjalan terakhir kali!</string>
+  <string name="cant_start_app">Tidak dapat memulai aplikasi!</string>
+  <!--##############################################
+    # Google Drive deprecation
+    ##############################################-->
+  <string name="google_drive_deprecation_message">Proyek ini menggunakan Google Drive. Fungsi ini akan dihapus pada pembaruan aplikasi berikutnya.</string>
+  <string name="learn_more_button_text">Pelajari lebih lanjut</string>
+  <string name="dismiss_button_text">Singkirkan</string>
+  <!--##############################################
+    # Developer tools
+    ##############################################-->
+  <!--Section title in settings-->
+  <string name="dev_tools">Alat pengembang</string>
+  <!--Option provided in the Developer tools settings to force an application crash-->
+  <string name="crash_app">Paksa aplikasi untuk crash</string>
+  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <string name="crash_app_summary">Memaksa terjadinya pengecualian yang tidak ditangani sehingga aplikasi berhenti secara tiba-tiba</string>
+  <string name="predicate_caching">Caching predikat</string>
+  <string name="permission_dialog_title">Tentang izin</string>
+  <string name="permission_dialog_text">Anda akan diminta untuk mengizinkan ODK Collect mengakses fitur-fitur di bawah ini, pilih “izinkan” jika anda ingin menggunakannya.</string>
+  <string name="notifications">Notifikasi</string>
+  <string name="required_for_notifications">Diperlukan untuk menampilkan pembaruan saat formulir diunduh, diperbarui, dan dikirimkan.</string>
+  <!--##############################################
+    # Form saved Snackbar
+    ##############################################-->
+  <string name="form_saved_as_draft">Formulir anda telah disimpan sebagai draf.</string>
+  <string name="form_saved">Formulir anda telah disimpan.</string>
+  <string name="form_sending">Kirim formulir…</string>
+  <string name="edit_form">Ubah</string>
+  <string name="view_form">Lihat</string>
+  <string name="close_snackbar">Tutup snackbar</string>
+
+  <string name="edit_finalized_form_warning">Setelah tanggal 30 September, Anda tidak akan dapat mengedit formulir yang telah diselesaikan. Simpan formulir sebagai draf untuk diedit nanti.\n\nAnda dapat memeriksa kesalahan dalam formulir draf dengan mengetuk tiga titik (⋮) lalu Periksa kesalahan.</string>
+</resources>

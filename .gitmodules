@@ -1,0 +1,3 @@
+[submodule "network-module-app"]
+	path = network-module-app
+	url = git@github.com:Samagra-Development/network-module-app.git

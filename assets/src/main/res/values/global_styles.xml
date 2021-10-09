@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Global Color Pallets-->
+    <color name="color1">#FF000000</color>
+    <color name="color2">#FFC32627</color>
+    <color name="green">#014d3f</color>
+    <color name="color3">#FFE6E6E6</color>
+    <color name="color4">#FFFFFFFF</color>
+    <color name="color5">#FFB1B1B1</color>
+    <color name="color6">#FF272727</color>
+    <color name="color7">#80FFFFFF</color>
+    <color name="color8">#80000000</color>
+    <color name="color_yellow">#FFFCDB</color>
+    <color name="teal">#008080</color>
+    <color name="trans">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#444c80</color>
+    <color name="color_primary">#2e3192</color>
+    <color name="color_primary_light">#444c80</color>
+    <color name="color_primary_dark">#444c80</color>
+    <color name="color_secondary">#880E4F</color>
+    <color name="color_secondary_light">#F8BBD0</color>
+    <color name="color_secondary_dark">#2e3192</color>
+    <color name="primary_text_color">#ffffff</color>
+    <color name="secondary_text_color">#ffffff</color>
+    <color name="light_grey">#E5E5E5</color>
+    <color name="accent">#f8ea6f</color>
+    <color name="accent1">#FFE699</color>
+    <color name="light_blue">#cdf7f4</color>
+    <color name="blue_2e3192">#2e3192</color>
+    <color name="blue_shadow">#8baaff</color>
+    <color name="orange_ed7d31">#ed7d31</color>
+    <color name="dark_yellow_bf9000">#bf9000</color>
+    <color name="dark_yellow_FBB040">#FBB040</color>
+
+    <style name="LoginTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:colorAccent">@color/color4</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorSecondary">@color/blue_2e3192</item>
+        <item name="android:textColorPrimary">@color/blue_2e3192</item>
+        <!--        <item name="android:textColorSecondary">@color/secondary_text_color</item>-->
+        <!--        <item name="radioButtonStyle">@style/Widget.AppCompat.CompoundButton.RadioButton</item>-->
+        <item name="colorPrimaryDark">@color/blue_2e3192</item>
+        <item name="colorSecondaryVariant">@color/blue_2e3192</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+        <item name="materialButtonStyle">@style/MyButtonStyle</item>
+    </style>
+
+    <style name="MyTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/hind</item>
+    </style>
+
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/hind</item>
+    </style>
+
+    <style name="scrollbar_shape_style">
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/scrollbar_vertical_track</item>
+        <item name="android:scrollbarSize">12dp</item>
+        <item name="android:scrollbarFadeDuration">2000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
+    </style>
+
+    <style name="EditTextAppStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColorHint">@color/color5</item>
+        <item name="colorControlActivated">@color/color1</item>
+        <item name="hintTextColor">@color/color5</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">viewStart</item>
+        <!--        <item name="android:textAppearance">@style/</item>-->
+        <item name="boxStrokeColor">@color/color_primary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="errorTextColor">@color/color2</item>
+        <item name="android:colorActivatedHighlight">@color/color_primary</item>
+    </style>
+
+    <!--Global Font Sizes-->
+    <dimen name="font_size_extra_small">9sp</dimen>
+    <dimen name="font_size_small">10sp</dimen>
+    <dimen name="font_size_medium">12sp</dimen>
+    <dimen name="font_size_large">13.5sp</dimen>
+    <dimen name="font_size_extra_large">17sp</dimen>
+
+    <!--Global Letter Spacing (in em)-->
+    <fraction name="letter_spacing_normal">0.024</fraction>
+    <!--letter_spacing_extra_small = 0.2sp or 0.2*0.062 = 0.0124em-->
+    <fraction name="letter_spacing_extra_small">0.0124</fraction>
+    <fraction name="letter_spacing_small">0.042</fraction>
+    <fraction name="letter_spacing_medium">0.062</fraction>
+
+
+    <!--Line Spacing-->
+    <fraction name="line_spacing_medium">1.42</fraction>
+
+    <!--Line Height-->
+    <dimen name="line_height_extra_small">13sp</dimen>
+    <dimen name="line_height_small">14sp</dimen>
+    <dimen name="line_height_medium">17sp</dimen>
+    <dimen name="line_height_large">22sp</dimen>
+    <dimen name="line_height_extra_large">25sp</dimen>
+
+
+    <!--ALL BUTTON STYLES-->
+    <!--Solid Button-->
+    <style name="ButtonStyle1" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/buttonstyle1_text_color_selector</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/custom_button
+        </item> <!--Made compatible with Android 4.4-->
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+    <style name="buttomShape" parent="@style/Widget.MaterialComponents.Button">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ButtonStyleGrey" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/buttonstyle1_text_color_selector</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="backgroundTint">@color/light_grey</item>-->
+        <item name="android:background">@drawable/your_disabled_drawable
+        </item> <!--Made compatible with Android 4.4-->
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+    <!--Hollow Button-->
+    <style name="ButtonStyle2" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/buttonstyle2_text_color_selector</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/buttonstyle2_background</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+    <!-- Linked Border Less Button : Signup, Forgot-->
+    <style name="ButtonStyle3" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:textSize">@dimen/font_size_extra_small</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+    <!-- Buttons on Filter Item -->
+    <style name="ButtonStyle4" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/buttonstyle4_text_color</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:background">@drawable/buttonstyle4_background_selector</item>
+        <item name="android:focusable">true</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+        <item name="android:lineSpacingMultiplier">1.40</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_small</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+    </style>
+
+    <style name="ButtonStyle5" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:background">@drawable/buttonstyle4_background</item>
+        <item name="android:focusable">true</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+        <item name="android:lineSpacingMultiplier">1.40</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_small</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+    </style>
+
+
+    <!--ALL LABEL STYLES-->
+    <!--Use in Screen Titles-->
+    <style name="LabelStyle1" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_small
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_medium</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Use in Closet Screen - Product Item : Brand Name-->
+    <!--Use in RN Bulk - message and Brand Name-->
+    <!--Use in Filter Brand Screen - Initial Letter 'A', 'B' on left-->
+    <!--Use in TTB - message and Brand Name-->
+    <style name="LabelStyle2" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_normal
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_large</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Use in Closet Screen : All Product info labels except Brand Name  in At Home, On Rack, On Hold, Price-->
+    <!--Use in TTB Screen, TTB Thank you-->
+    <!--Use in RN ACM/BCM screens-->
+
+    <style name="LabelStyle3" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_small
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_large</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <style name="LabelStyle4" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color_primary</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_large</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Use in Closet: Grey Text at Closet at Home-->
+    <!--Use in : Login Screen OR label-->
+    <!--Use in RN : OR Label-->
+    <!--Use in Collection Filter : Filter Applied Grey Text-->
+    <!--TTB Confirmation : Grey Text-->
+    <style name="LabelStyle5" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_small</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Use in Alert Messages. Use in RN BCM alert Messages, Collection Not Found Messages-->
+    <style name="LabelStyle6" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15.5sp</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_normal
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_large</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <style name="LabelStyle16" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_normal
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_large</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Collection Filter : Side Selector -->
+    <style name="LabelStyle7" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color2</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15.5sp</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_normal
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_medium</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <style name="LabelStyle8" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color1</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_small</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--For error text in email and Password login-->
+    <style name="LabelStyle9" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color2</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_small</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+    </style>
+
+    <!--Bottom Menu Item Text Style-->
+    <style name="LabelStyle10" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/primary_text_color</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_medium
+        </item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_small</item>
+        <item name="android:lineSpacingMultiplier">1.40</item>
+    </style>
+
+    <!--ALL EDIT TEXT STYLES-->
+    <!--For User Name and Password-->
+    <style name="EditTextStyle1" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColorHint">@color/color5</item>
+        <item name="colorControlActivated">@color/color_primary</item>
+        <item name="hintTextColor">@color/color5</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">viewStart</item>
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="boxStrokeColor">@color/color_primary</item>
+        <item name="errorTextColor">@color/color2</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="actionModeCopyDrawable">@color/light_grey</item>
+        <item name="android:colorActivatedHighlight">@color/color_primary</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <!--ALL SPINNER STYLES-->
+    <style name="DropdownStyle1" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:textAlignment">textStart</item>
+        <!--            <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:paddingStart">16.5dp</item>
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+
+    <style name="PriorityBadgeRectangularTextViewStyle" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color4</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/color1</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_large</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_small
+        </item>
+    </style>
+
+    <style name="SwitchStyle1" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="thumbTint">@color/switch_thumb_color</item>
+        <item name="trackTint">@color/switch_track_color</item>
+        <item name="android:textOn">@string/present</item>
+        <item name="android:textOff">@string/absent</item>
+    </style>
+
+    <style name="MyMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Add attributes here -->
+        <item name="android:colorPrimary">@color/color_primary</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="android:colorSecondary" tools:targetApi="n_mr1">@color/color_secondary</item>
+        <item name="colorAccent">@color/color_primary_light</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="spinnerDropDownItemStyle">@style/DropdownStyle1</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_dark</item>
+    </style>
+
+    <style name="TabStyle1" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/color1</item>
+        <item name="tabTextAppearance">@style/TabStyle1TextAppearance</item>
+        <item name="tabSelectedTextColor">@color/color1</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- for text -->
+    <style name="TabStyle1TextAppearance" parent="LabelStyle1">
+        <item name="android:textColor">@color/color8</item>
+    </style>
+
+    <style name="MyActionBarTheme" parent="@style/Widget.MaterialComponents.ActionBar.Solid">
+        <item name="background">@color/color_primary</item>
+    </style>
+
+    <style name="MyActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!--<item name="colorControlNormal">@color/amber_500</item>-->
+        <item name="backgroundColor">@color/color_primary</item>
+    </style>
+
+    <string name="present">P</string>
+    <string name="absent">A</string>
+
+    <style name="text_title_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="assessment_toolbar_style" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:fontFamily">@font/hind</item>
+        <item name="android:background">@color/blue_2e3192</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="text_result_heading_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_report_heading_style" parent="@style/text_result_heading_style">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="text_result_heading_extra_bold_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/orange_ed7d31</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">60sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_heading_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_extra_small</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_count_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_student_name_report" parent="@style/text_count_style">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_student_subtext_report" parent="@style/text_count_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="text_header_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MaterialButtonEnabledStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/state_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/margin_long_button</item>
+        <item name="android:layout_marginStart">@dimen/margin_long_button</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+    </style>
+
+    <style name="MaterialButtonEnabledTranslucentStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/state_button</item>
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/margin_long_button</item>
+        <item name="android:layout_marginStart">@dimen/margin_long_button</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+    </style>
+
+    <style name="translucentButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/state_button_translucent</item>
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/margin_long_button</item>
+        <item name="android:layout_marginStart">@dimen/margin_long_button</item>
+        <item name="android:layout_height">@dimen/back_btn_height</item>
+    </style>
+
+    <style name="MyShapeAppearance" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="button_long_style" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:shadowColor">#8baaff</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:backgroundTint">@color/blue_2e3192</item>
+        <item name="cornerRadius">25dp</item>
+
+    </style>
+
+
+    <style name="button_long_style_2" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:shadowColor">#8baaff</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/blue_2e3192</item>
+
+    </style>
+
+    <style name="style_selected_competency" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/blue_2e3192</item>
+    </style>
+
+    <style name="button_thick_style" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_height">@dimen/height_button_thick</item>
+        <item name="android:backgroundTint">@color/blue_2e3192</item>
+    </style>
+
+    <style name="button_thick_style_yellow" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_height">@dimen/height_button_thick</item>
+        <item name="android:backgroundTint">#ffce07</item>
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/spinner_drawable</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:popupBackground">#ffffff</item>
+    </style>
+
+    <dimen name="text_size_home_count">30sp</dimen>
+    <dimen name="back_btn_width">140dp</dimen>
+    <dimen name="back_btn_height">50dp</dimen>
+    <dimen name="height_button_thick">80dp</dimen>
+</resources>

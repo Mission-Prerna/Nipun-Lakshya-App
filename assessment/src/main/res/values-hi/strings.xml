@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_a_class"><u>कृपया एक कक्षा चुनें</u></string>
+    <string name="class_1">कक्षा 1</string>
+    <string name="class_2">कक्षा 2</string>
+    <string name="class_3">कक्षा 3</string>
+    <string name="month_january">जनवरी</string>
+    <string name="month_february">फरवरी</string>
+    <string name="month_march">मार्च</string>
+    <string name="month_april">अप्रैल</string>
+    <string name="month_may">मई</string>
+    <string name="month_june">जून</string>
+    <string name="month_july">जुलाई</string>
+    <string name="month_august">अगस्त</string>
+    <string name="month_september">सितम्बर</string>
+    <string name="month_october">अक्टूबर</string>
+    <string name="month_november">नवम्बर</string>
+    <string name="month_december">दिसम्बर</string>
+    <string name="student_name_not_found">विद्यार्थी का नाम सूची में नहीं है?</string>
+    <string name="assessment_without_registration">चयन बिना आकलन करें !</string>
+    <string name="assess_next_student">अगले विद्यार्थी का आकलन करें</string>
+    <string name="search_by_udice_code">स्कूल UDISE Code सर्च करें।</string>
+    <string name="rural">Rural</string>
+    <string name="urban">Urban</string>
+    <string name="select_school_to_start_visit">Select school to start visit</string>
+    <string name="remove_schools_already_visited">विज़िट किये गए स्कूलों को छोड़ दें</string>
+    <string name="do_assessment">आकलन करें</string>
+    <string name="not_nipun_text">निपुण नहीं</string>
+    <string name="nipun_text">निपुण</string>
+    <string name="assessment_count_with_place_holder">आकलन स्थिति : %s</string>
+    <string name="are_these_students_absent">क्या निम्नलिखित छात्र अनुपस्थित हैं?</string>
+    <string name="please_try_again_later">Please try again later.</string>
+</resources>

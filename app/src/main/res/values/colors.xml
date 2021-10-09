@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#303765</color>
+
+    <color name="blue_2e3192">#2e3192</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_f6f6f6">#F6F6F6</color>
+    <color name="gray_a400">#777777</color>
+    <color name="gray_background">#f9f9f9</color>
+    <color name="gray_ed">#ededed</color>
+    <color name="gray_disabled_light">#80E4E4E4</color>
+    <color name="light_blue">#ddeaf6</color>
+    <color name="menu_gray">#7C7C7C</color>
+    <color name="orange">#FFCE07</color>
+    <color name="box_title_color">#2e3192</color>
+    <color name="orange_ffce07">#FFCE07</color>
+    <color name="color_faq_ques_bg">#e7e6e6</color>
+
+
+<!--    workflow colors -->
+    <color name="text_gray">#9D9C9C</color>
+    <color name="color_19191B">#19191B</color>
+    <color name="color_78BDB0">#78BDB0</color>
+    <color name="color_FDCC32">#FDCC32</color>
+    <color name="color_014D3F">#014D3F</color>
+    <color name="red">#E82A2A</color>
+    <color name="color_306F63">#306F63</color>
+    <color name="color_FAB409">#FAB409</color>
+    <color name="wrong_answer">#C92929</color>
+    <color name="gray">#6e6e6e</color>
+    <color name="color_AAD1CA">#AAD1CA</color>
+    <color name="hint_gray">#F0BFBCBC</color>
+    <color name="version_name_color">#515151</color>
+    <color name="color_A7CAC4">#BFA7CAC4</color>
+    <color name="yellow_dark">#FCE281</color>
+
+    <!-- Dark Theme Palette -->
+
+    <!-- Light Theme Palette -->
+
+    <!-- Background colors in the GeoTrace status bar, under white text. -->
+
+    <!-- Colors for location indicators on the map; chosen to resemble the -->
+    <!-- bright blue location dot on Google Maps and Apple Maps and the -->
+    <!-- shaded blue accuracy circle in OSMDroid. -->
+
+    <!-- Colors for recorded points and lines drawn on the map. -->
+
+</resources>

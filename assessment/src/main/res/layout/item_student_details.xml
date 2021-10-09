@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:cardBackgroundColor="#80009045"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/blue_31328f"
+        app:strokeWidth="@dimen/width_1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clStudentDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_31328f"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvStudentLastAssessmentDate"
+                tools:text="आकाश यादव" />
+
+            <TextView
+                android:id="@+id/tvStudentRollNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_31328f"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/margin_4dp"
+                app:layout_constraintStart_toEndOf="@id/tvStudentName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvStudentLastAssessmentDate"
+                tools:text="(12345)" />
+
+            <TextView
+                android:id="@+id/tvStudentLastAssessmentDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_31328f"
+                android:textSize="@dimen/text_size_14sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStudentName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="आखरी आकलन : 20/07/23" />
+
+            <TextView
+                android:id="@+id/btTakeAssessment"
+                android:layout_width="86dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_rect_border_student_item"
+                android:gravity="center"
+                android:text="आकलन करें !"
+                android:textColor="@color/blue_2e3192"
+                android:textSize="@dimen/text_size_extra_small"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

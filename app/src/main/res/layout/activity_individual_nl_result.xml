@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.samagra.parent.ui.individualresultnl.ResultsVM" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/scrollbar_shape_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background"
+        android:fillViewport="true"
+        android:scrollbarSize="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/school_info"
+                layout="@layout/student_information_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/text_result_heading_style"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="@string/score_card" />
+
+            <include
+                android:id="@+id/inc_grade_no"
+                layout="@layout/layout_selected_competency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_flying_bird" />
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_large"
+                android:gravity="center"
+                android:letterSpacing="0.072"
+                android:shadowColor="@color/white"
+                android:shadowDx="10"
+                android:shadowDy="4"
+                android:shadowRadius="8"
+                android:textColor="@color/red_500"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="बधाई हो, आपके बालक/बालिका ने कक्षा x  गणित/भाषा के निपुण लक्ष्य को हासिल कर लिए है |" />
+
+
+            <TextView
+                android:id="@+id/tv_expand_view"
+                style="@style/titleViewLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/padding_large"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:text="test" />
+
+            <!--<ExpandableListView
+                android:id="@+id/elv_results"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_weight="1"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="0.5dp"
+                android:groupIndicator="@null"
+                android:nestedScrollingEnabled="true"
+                android:transcriptMode="alwaysScroll"
+                tools:itemCount="5"
+                tools:listitem="@layout/list_group" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_final_result"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingHorizontal="12dp"
+                android:scrollbarSize="5dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_only_bolo_read"
+                tools:itemCount="1"
+                tools:listitem="@layout/list_group" />
+
+            <View
+                android:id="@+id/v"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_1dp"
+                android:layout_marginHorizontal="@dimen/margin_large"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@color/black"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_remarks"
+                style="@style/titleViewLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/padding_large"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible"
+                tools:text="@string/well_done_lets_proceed" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mtl_btn_1"
+                android:layout_marginTop="@dimen/margin_24dp"
+                style="@style/button_long_style"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:text="@string/start_nipun_abhyas_for_next_student" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mtl_btn_next"
+                style="@style/button_long_style"
+                android:layout_width="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="@dimen/margin_8dp"
+                android:text="@string/finish_assessment" />
+
+            <ImageView
+                android:id="@+id/profile__footer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/footer_height"
+                android:src="@drawable/mpp_card_footer" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

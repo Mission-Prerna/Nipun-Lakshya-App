@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="font_size_11">11sp</dimen>
+    <dimen name="font_size_15">15sp</dimen>
+</resources>

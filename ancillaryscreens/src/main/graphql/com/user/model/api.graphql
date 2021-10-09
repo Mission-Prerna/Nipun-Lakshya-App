@@ -1,0 +1,5 @@
+mutation updateFCMToken($model: mentor_tokens_insert_input!) {
+    insert_mentor_tokens_one(object: $model, on_conflict: {constraint: mentor_tokens_mentor_id_key, update_columns: [token]}) {
+        mentor_id
+    }
+}
