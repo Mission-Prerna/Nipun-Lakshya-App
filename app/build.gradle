@@ -1,0 +1,175 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.apollographql.apollo'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+
+def getDateTime() {
+    DateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm");
+    return df.format(new Date())
+}
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+        applicationId "org.samagra.missionPrerna"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 170100
+        versionName "1.7.2"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def flavor = variant.name
+            def timestamp = getDateTime()
+            outputFileName = "nl_${versionName}_${flavor}_${timestamp}.apk"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+        incremental true
+    }
+
+    dependencies {
+        def work_version = "2.7.1"
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation project(":commons")
+        api project(":ancillaryscreens")
+        implementation project(":collect_app")
+        api project(":assets")
+        implementation project(":chatbot")
+        implementation 'androidx.multidex:multidex:2.0.1'
+
+//        implementation 'io.realm.kotlin:library-base:1.7.0'
+
+        def appcompat_version = "1.4.2"
+        implementation "androidx.appcompat:appcompat:$appcompat_version"
+        // Firebase
+        implementation 'com.google.firebase:firebase-analytics:19.0.0'
+        implementation 'com.google.firebase:firebase-crashlytics:18.3.2'
+        implementation 'com.google.firebase:firebase-common-ktx:20.0.0'
+        implementation 'com.google.firebase:firebase-database:20.0.0'
+        implementation 'com.google.firebase:firebase-messaging:22.0.0'
+        implementation 'com.google.firebase:firebase-database:20.0.0'
+        implementation "com.google.firebase:firebase-storage:20.0.0"
+        implementation 'com.google.firebase:firebase-config:21.0.0'
+        implementation "androidx.preference:preference:1.1.1"
+        androidTestImplementation 'androidx.test:rules:1.4.0-beta01'
+
+        // For forced update
+        implementation 'com.google.android.play:core:1.10.0'
+
+        // Keyboard visibility listeners
+        implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
+
+        api 'com.amitshekhar.android:rx2-android-networking:1.0.2'
+        api 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+        // Fuzzy search backend
+        implementation 'me.xdrop:fuzzywuzzy:1.2.0'
+        implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+        //Dependency Injection (Cant be shared across modules)
+        kapt "com.google.dagger:dagger-compiler:${rootProject.daggerVersion}"
+        compileOnly 'javax.annotation:jsr250-api:1.0'
+
+        // GSON
+        implementation("com.google.code.gson:gson:2.8.6") {
+            exclude group: 'org.apache.httpcomponents'
+        }
+
+        implementation 'br.com.simplepass:loading-button-android:2.2.0'
+        implementation 'com.hypertrack:hyperlog:0.0.10'
+        implementation 'androidx.browser:browser:1.3.0'
+
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test:core:1.4.0'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+        androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+        implementation 'androidx.test.espresso:espresso-idling-resource:3.3.0'
+        androidTestImplementation("androidx.test:runner:1.3.0") {
+            exclude group: 'com.android.support', module: 'support-annotations'
+            exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        }
+        implementation 'com.jakewharton:process-phoenix:2.0.1-SNAPSHOT'
+        implementation "androidx.core:core-ktx:1.5.0"
+        implementation "androidx.fragment:fragment-ktx:1.4.1"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'com.google.android.material:material:1.3.0'
+        implementation project(path: ':grove')
+        compileOnly 'org.jetbrains:annotations:16.0.1'
+        testCompileOnly 'org.jetbrains:annotations:16.0.1'
+        implementation 'javax.annotation:jsr250-api:1.0'
+        implementation 'com.github.bumptech.glide:glide:4.12.0'
+        kapt 'com.github.bumptech.glide:compiler:4.12.0'
+        implementation 'org.greenrobot:eventbus:3.3.1'
+        implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+        implementation 'com.airbnb.android:lottie:4.1.0'
+        implementation("com.apollographql.apollo:apollo-runtime:2.5.11")
+        // optional: if you want to use the normalized cache
+        implementation("com.apollographql.apollo:apollo-normalized-cache-sqlite:2.5.11")
+        // optional: for coroutines support
+        implementation("com.apollographql.apollo:apollo-coroutines-support:2.5.11")
+        // optional: for RxJava3 support
+        implementation("com.apollographql.apollo:apollo-rx3-support:2.5.11")
+        // optional: if you just want the generated models and parsers and write your own HTTP code/cache code, you can remove apollo-runtime
+        // and use apollo-api instead
+        implementation("com.apollographql.apollo:apollo-api:2.5.11")
+        implementation "androidx.work:work-runtime-ktx:$work_version"
+
+        implementation 'com.posthog.android:posthog:2.0.3'
+        implementation 'com.google.guava:guava:30.1.1-jre'
+        implementation 'com.airbnb:deeplinkdispatch:6.1.0'
+        kapt 'com.airbnb:deeplinkdispatch-processor:6.1.0'
+
+        implementation "androidx.work:work-runtime-ktx:2.7.1"
+
+        debugImplementation "com.github.chuckerteam.chucker:library:3.3.0"
+        releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.3.0"
+    }
+    namespace 'com.samagra.parent'
+}
+
+dependencies {
+    implementation project(path: ':network-module-app')
+}
+
+
+apollo {
+    service("service2") {
+        sourceFolder.set("com/hasura1/model")
+        rootPackageName.set("com.hasura1.model")
+    }
+
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}

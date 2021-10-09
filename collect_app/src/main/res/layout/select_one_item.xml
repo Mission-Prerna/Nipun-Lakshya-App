@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatRadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/margin_large"
+    android:textSize="19sp"
+    android:gravity="center_vertical"
+    android:textColor="@color/blue"
+    android:button="@drawable/inset_radio_button"
+    android:buttonTint="@color/colorPrimary"
+    tools:text="Option A">
+
+</androidx.appcompat.widget.AppCompatRadioButton>

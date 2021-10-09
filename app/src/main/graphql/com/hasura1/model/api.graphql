@@ -1,0 +1,6 @@
+query QumlResponseQuery($id: uuid) {
+    qumlResponse: quml_response(where: {id: {_eq: $id}}) {
+        id
+        body
+    }
+}

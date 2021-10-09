@@ -1,0 +1,25 @@
+package com.samagra.commons.models
+
+data class Result(
+    val id: Int,
+    val designation_id: Int,
+    val district_id: Int,
+    val district_name: String,
+    val block_id: Int = 0,
+    val block_town_name: String,
+    var officer_name: String,
+    val phone_no: String,
+    val schoolId: Int,
+    val schoolDistrict: String,
+    val schoolDistrictId: Int,
+    val schoolBlock: String,
+    val schoolBlockId: Int,
+    val schoolNyayPanchayat: String,
+    val schoolNyayPanchayatId: Int,
+    val schoolName: String,
+    val udise: Long,
+    val actorId: Int,
+    val schoolLat: Double,
+    val schoolLong: Double,
+    val schoolGeoFenceEnabled: Boolean,
+)

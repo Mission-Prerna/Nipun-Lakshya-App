@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/expandedListItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:elevation="4dp"
+            android:includeFontPadding="false"
+            android:layout_margin="4dp"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:layout_weight="7.5"
+            android:background="@drawable/round_corner_blue_bg"
+            android:paddingHorizontal="@dimen/padding_6dp"
+            android:paddingVertical="@dimen/padding_9dp"
+            android:gravity="center_vertical"
+            android:textSize="13sp"
+            android:text="text"
+            android:minLines="2"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_nipun"
+            android:layout_width="0dp"
+            app:elevation="@dimen/elevation_4dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/margin_4dp"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:background="@drawable/bg_black_outline_white_fill"
+            android:textSize="13sp"
+            android:paddingHorizontal="@dimen/margin_4dp"
+            android:paddingVertical="@dimen/margin_10dp"
+            android:minLines="2"
+            android:paddingBottom="10dp"
+            android:text="isNipun"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+</layout>

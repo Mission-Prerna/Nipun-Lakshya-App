@@ -1,0 +1,7 @@
+include ':assets'
+include ':nbi-stubs'
+include ':app', ':commons', ':grove',':ancillaryscreens', ':collect_app'
+include ':network-module-app'
+include ':chatbot'
+//include ':update_module'
+include ':gatekeeper'

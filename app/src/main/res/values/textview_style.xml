@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="label_parent" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textIsSelectable">false</item>
+
+    </style>
+
+
+    <!-- H1 : 24, Medium START-->
+    <style name="label_h1_bold" parent="label_parent">
+        <item name="android:textColor">@color/color_014D3F</item>
+        <item name="android:textSize">@dimen/font_size_24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+
+        <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    </style>
+
+    <style name="label_h1_normal" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_24</item>
+        <item name="android:textColor">@color/color_014D3F</item>
+        <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    </style>
+
+    <style name="label_h1_normal_light" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_24</item>
+        <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    </style>
+
+    <!-- H1 : 24, Medium END-->
+
+    <!-- H2 : 20, bold START-->
+    <style name="label_h2_bold" parent="label_parent">
+        <item name="android:textColor">@color/color_014D3F</item>
+        <item name="android:textSize">@dimen/font_size_20</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label_h2_normal" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_20</item>
+        <item name="android:textColor">@color/color_014D3F</item>
+    </style>
+
+    <style name="label_h2_normal_light" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_20</item>
+    </style>
+
+    <style name="label_h3_bold" parent="label_parent">
+        <item name="android:textColor">@color/color_014D3F</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="label_h3_normal" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/color_014D3F</item>
+    </style>
+
+
+    <style name="label_h3_normal_light" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_16</item>
+    </style>
+
+
+    <style name="label_h4_bold" parent="label_parent">
+        <item name="android:textColor">@color/color_014D3F</item>
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label_h4_normal" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="android:textColor">@color/color_014D3F</item>
+    </style>
+
+    <style name="label_h4_normal_light" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_14</item>
+    </style>
+
+    <style name="label_h5_bold" parent="label_parent">
+        <item name="android:textColor">@color/color_014D3F</item>
+        <item name="android:textSize">@dimen/font_size_12</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label_h5_normal" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_12</item>
+        <item name="android:textColor">@color/color_014D3F</item>
+    </style>
+
+    <style name="label_h5_normal_light" parent="label_parent">
+        <item name="android:textSize">@dimen/font_size_12</item>
+    </style>
+
+    <style name="inputbox_parent" parent="android:Widget.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="minHeight">44dp</item>d
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">left|center</item>
+    </style>
+
+    <style name="inputbox_type_one" parent="inputbox_parent">
+        <!--        <item name="android:background">@drawable/common_inputbox_bg_selector</item>-->
+        <item name="android:enabled">false</item>
+
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="android:paddingLeft">@dimen/spacing_12</item>
+    </style>
+
+    <style name="inputbox_spinner" parent="inputbox_parent">
+        <item name="android:background">@drawable/common_inputbox_bg_selector</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <!--    <style name="label_body_text_supporting_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_14</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--    </style>-->
+    <!--    &lt;!&ndash; Body Text : 14, Regular END&ndash;&gt;-->
+
+    <!--    &lt;!&ndash; Supporting Text : 12, Regular(Tooltips) START&ndash;&gt;-->
+    <!--    <style name="label_supporting_text_bold" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_12</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_supporting_text_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_12</item>-->
+    <!--        <item name="android:textColor">@color/color_71777D</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_supporting_text_supporting_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_12</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--    </style>-->
+    <!--    &lt;!&ndash; Supporting Text : 12, Regular(Tooltips) END&ndash;&gt;-->
+
+    <!--    &lt;!&ndash; Tags : 10, Regular(Tooltips) START&ndash;&gt;-->
+    <!--    <style name="label_tag_bold" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_10</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_tag_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_10</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_tag_supporting_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_10</item>-->
+    <!--        <item name="android:textColor">@color/color_71777D</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--        <item name="android:textStyle">bold</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_tag_supporting_bold" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_10</item>-->
+    <!--        <item name="android:textColor">@color/color_71777D</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    <!--    </style>-->
+    <!--    &lt;!&ndash; Tags : 10, Regular(Tooltips) END&ndash;&gt;-->
+
+    <!--    &lt;!&ndash; Supporting Text : 8, Regular START&ndash;&gt;-->
+    <!--    <style name="label_tag_supporting_text_bold" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_8</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="label_tag_supporting_text_normal" parent="label_parent">-->
+    <!--        <item name="android:textSize">@dimen/font_size_8</item>-->
+    <!--        <item name="android:textColor">@color/color_71777D</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+    <!--    </style>-->
+    <!--    &lt;!&ndash; Supporting Text : 12, Regular END&ndash;&gt;-->
+
+    <!--    <style name="btn_blue_style" parent="label_body_text_normal">-->
+    <!--        <item name="android:textColor">@drawable/small_button_text_color_selector</item>-->
+    <!--        <item name="android:tint">@drawable/small_button_text_color_selector</item>-->
+
+    <!--    </style>-->
+
+    <!--    &lt;!&ndash; &ndash;&gt;-->
+    <!--    <style name="label_plan_detail_collapsed_title" parent="@android:style/TextAppearance">-->
+    <!--        <item name="android:layout_marginLeft">@dimen/margin_4</item>-->
+    <!--        <item name="android:layout_marginRight">@dimen/margin_96</item>-->
+    <!--        <item name="android:lines">@integer/integer_1</item>-->
+    <!--        <item name="android:ellipsize">end</item>-->
+    <!--        <item name="android:textColor">@color/color_212121</item>-->
+    <!--        <item name="android:textSize">@dimen/font_size_18</item>-->
+    <!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+    <!--    </style>-->
+
+</resources>

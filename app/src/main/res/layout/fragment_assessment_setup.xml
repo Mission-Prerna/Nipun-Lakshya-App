@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="assessmentSetupVm"
+            type="com.samagra.parent.ui.assessmentsetup.AssessmentSetupVM" />
+    </data>
+
+    <ScrollView
+        style="@style/scrollbar_shape_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background"
+        android:fillViewport="true"
+        android:scrollbarSize="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_side_margin"
+            android:background="@drawable/mpp_background">
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="@string/search_by_udice_code"
+                    android:inputType="text"
+                    android:padding="9dp"
+                    android:textColorHint="@color/gray_a400"
+                    android:textSize="@dimen/text_size_14sp"
+                    tools:ignore="Autofill" />
+
+                <ImageButton
+                    android:id="@+id/ib_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignEnd="@id/et_search"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/blue_2e3192"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_or"
+                style="@style/text_heading_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="अथवा"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/ll_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rl" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_or">
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rl">
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:buttonTint="@color/blue_2e3192"
+                    android:text="@string/rural"
+                    android:textSize="@dimen/text_size_extra_small" />
+
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:buttonTint="@color/blue_2e3192"
+                    android:text="@string/urban"
+                    android:textSize="@dimen/text_size_extra_small" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_text_checkbox"
+                style="@style/text_heading_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/remove_schools_already_visited"
+                app:layout_constraintStart_toEndOf="@id/checkbox_visit"
+                app:layout_constraintTop_toBottomOf="@id/ll_view" />
+
+            <CheckBox
+                android:id="@+id/checkbox_visit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/blue_2e3192"
+                android:checked="true"
+                android:minWidth="@dimen/dp_0"
+                android:minHeight="@dimen/dp_0"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_text_checkbox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_text_checkbox" />
+
+            <View
+                android:id="@+id/v"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_1dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_text_checkbox" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_school_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:clipToPadding="false"
+                android:scrollbarSize="16dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_school_list" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

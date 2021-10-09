@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+    <style name="FormEntryActivityTheme" parent="BaseAppTheme">
+        <item name="android:textDirection" tools:targetApi="17">firstStrong</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light">
+        <!--Material theme attributes-->
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Collect.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Collect.Subtitle1</item>
+        <!--/Material theme attributes-->
+        <item name="windowNoTitle">true</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="primaryTextColor">@color/black</item>
+        <item name="secondaryTextColor">@color/black</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_dark</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/thumb</item>
+        <item name="android:scrollbarThumbVertical">@drawable/thumb</item>
+        <item name="android:scrollbarSize">1.75mm</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        +        <item name="android:windowExitTransition" tools:targetApi="lollipop">@transition/main_exit</item>
+        <item name="android:windowReenterTransition" tools:targetApi="lollipop">@transition/main_reenter</item>
+        <item name="android:windowEnterTransition" tools:targetApi="lollipop">@transition/main_enter</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@string/font_family_regular</item>
+        <item name="android:panelBackground">@android:color/white</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="iconColor">@color/white</item>
+        <item name="dividerColor">@color/divider</item>
+        <item name="android:textDirection" tools:targetApi="17">locale</item>
+        <item name="dividerCompat">@android:drawable/divider_horizontal_bright</item>
+        <item name="android:tintMode" tools:targetApi="21">src_in</item>
+    </style>
+
+    <!--To Modify the toolbar throughout the app-->
+
+
+    <style name="BaseAppTheme.SettingsTheme.Dark" parent="BaseAppTheme">
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:textDirection" tools:targetApi="17">locale</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="TextStyleAssessmentHome">
+        <item name="android:layout_width">@dimen/width_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:paddingStart">@dimen/padding_horizontal_home</item>
+        <item name="android:paddingEnd">@dimen/padding_horizontal_home</item>
+        <item name="android:paddingTop">@dimen/padding_vertical_home</item>
+        <item name="android:paddingBottom">@dimen/padding_vertical_home</item>
+    </style>
+
+
+    // workflow styles
+
+    <style name="titleView" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/color_19191B</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="titleViewLarge" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_16_gray" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+</resources>

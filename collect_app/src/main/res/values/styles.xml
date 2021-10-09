@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Collect.TextView.Empty" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+    <style name="PermissionAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Theme.MaterialComponents.Dialog.FullScreen" parent="">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.Toolbar.Navigation.Tinted</item>
+    </style>
+
+    <style name="Widget.Toolbar.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Theme.Collect.MaterialDialogSheet.Dark" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Collect.BottomSheet.Modal</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+    </style>
+
+    <style name="Theme.Collect.MaterialDialogSheet.Light" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+    </style>
+
+    <style name="Widget.Collect.BottomSheet.Modal" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="behavior_peekHeight">300dp</item>
+    </style>
+</resources>

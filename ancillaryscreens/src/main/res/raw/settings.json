@@ -1,0 +1,54 @@
+{
+  "admin" : {
+    "admin_password": false,
+    "admin_pw": "",
+    "edit_saved": true,
+    "send_finalized": true,
+    "view_sent": true,
+    "get_blank": true,
+    "delete_saved": false,
+    "save_mid": false,
+    "jump_to": true,
+    "change_language": false,
+    "access_settings": true,
+    "save_as": false,
+    "mark_as_finalized": true,
+    "change_autosend": true,
+    "change_navigation": false,
+    "change_constraint_behavior": false,
+    "change_font_size": false,
+    "change_app_language": true,
+    "instance_form_sync": true,
+    "scoped_storage_used" : true,
+    "default_to_finalized": true,
+    "delete_after_send": false,
+    "high_resolution": false,
+    "image_size": true,
+    "show_splash_screen": true,
+    "show_map_sdk": true,
+    "show_map_basemap": false,
+    "analytics" : false,
+    "change_form_metadata": true,
+    "change_server": false,
+    "import_settings": false,
+    "change_protocol_settings": false
+  },
+
+  "general" : {
+    "protocol": "odk_default",
+    "server_url": "https://www.xyz.com",
+    "navigation": "buttons",
+    "delete_send": false,
+    "autosend": "on",
+    "autosend_wifi": true,
+    "autosend_network": true,
+
+    "constraint_behavior": "on_swipe",
+    "default_to_finalized": true,
+    "high_resolution": false,
+    "image_size": "very_small",
+
+    "instance_sync": true
+  }
+
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/tv_only_bolo_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/tv_competency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:layout_weight="7"
+            android:minLines="2"
+            android:background="@drawable/bg_black_outline_white_fill"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/padding_6dp"
+            android:paddingVertical="@dimen/margin_10dp"
+            android:text="text"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_is_nipun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_black_outline_white_fill"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:minLines="2"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="isNipun"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</layout>

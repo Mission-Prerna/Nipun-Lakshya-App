@@ -1,0 +1,138 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.apollographql.apollo'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+    namespace 'com.samagra.commons'
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(":gatekeeper")
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.preference:preference:1.1.1"
+
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.appcompat:appcompat:1.3.0'
+    api "com.google.android.material:material:1.3.0"
+    implementation 'androidx.work:work-runtime:2.7.1'
+
+    //Google Services
+    api "com.google.android.gms:play-services-maps:17.0.1"
+    api "com.google.android.gms:play-services-location:18.0.0"
+
+    //RxAndroidNetworking
+    api 'com.amitshekhar.android:rx2-android-networking:1.0.2'
+    api 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+
+    // Library to monitor the network and internet state
+    api 'com.github.pwittchen:reactivenetwork-rx2:3.0.4'
+
+    // RxJava 2:
+    api "io.reactivex.rxjava2:rxandroid:2.1.1"
+    api "io.reactivex.rxjava2:rxjava:2.2.10"
+
+    // Dependency Injection
+    api "com.google.dagger:dagger:2.35.1"
+    api 'javax.inject:javax.inject:1'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    api 'com.hypertrack:hyperlog:0.0.10'
+    api "androidx.lifecycle:lifecycle-runtime:2.3.1"
+    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    api 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'androidx.browser:browser:1.3.0'
+    // Better "Subjects" for Rx:
+    implementation "com.jakewharton.rxrelay2:rxrelay:2.0.0"
+
+    implementation 'com.google.firebase:firebase-analytics:19.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:18.3.2'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation "com.google.firebase:firebase-storage:20.0.0"
+    api 'com.google.firebase:firebase-config:21.0.0'
+    androidTestImplementation 'androidx.test:core:1.4.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+    api 'androidx.test.espresso:espresso-idling-resource:3.3.0'
+    implementation project(path: ':grove')
+    implementation project(":assets")
+    implementation 'org.greenrobot:eventbus:3.3.1'
+    implementation "androidx.core:core-ktx:1.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.posthog.android:posthog:2.0.3'
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+
+    //Sms Verification
+    api "com.google.android.gms:play-services-auth:17.0.0"
+    api "com.google.android.gms:play-services-auth-api-phone:17.3.0"
+
+    api 'com.jakewharton.timber:timber:4.7.1'
+
+    //apollo graphql
+    api("com.apollographql.apollo:apollo-runtime:2.5.11")
+    // optional: if you want to use the normalized cache
+    api("com.apollographql.apollo:apollo-normalized-cache-sqlite:2.5.11")
+    // optional: for coroutines support
+    api("com.apollographql.apollo:apollo-coroutines-support:2.5.11")
+    // optional: for RxJava3 support
+    api("com.apollographql.apollo:apollo-rx3-support:2.5.11")
+    // optional: if you just want the generated models and parsers and write your own HTTP code/cache code, you can remove apollo-runtime
+    // and use apollo-api instead
+    api("com.apollographql.apollo:apollo-api:2.5.11")
+}
+
+apollo {
+    service("service1") {
+        sourceFolder.set("com/hasura/model")
+        rootPackageName.set("com.hasura.model")
+    }
+}
+
+repositories {
+    mavenCentral()
+}

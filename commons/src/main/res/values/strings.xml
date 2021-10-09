@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Commons</string>
+    <string name="storage_runtime_permission_denied_title">Storage permissions</string>
+    <string name="storage_runtime_permission_denied_desc">Without these permissions Collect can\'t access your forms or save answers. Reopen the app when you are ready to grant them.</string>
+    <string name="location_runtime_permissions_denied_title">Location permissions</string>
+    <string name="location_runtime_permissions_denied_desc">Without these permissions Collect can\'t record your location. Please try again when you are ready to grant them.</string>
+    <string name="ok">ठीक है</string>
+    <string name="okkk">ठीक है</string>
+    <string name="notification_error">Error displaying notification text</string>
+    <string name="notification_channel_name">General Notifications</string>
+    <string name="upload_results">Your form has been submitted with the following status</string>
+    <string name="please_wait">Please wait</string>
+    <string name="low_on_space_error">LowOnSpaceException</string>
+    <string name="dialog_ok">Okay</string>
+    <string name="permission_required_text">Permission required</string>
+</resources>

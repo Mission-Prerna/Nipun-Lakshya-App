@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="InputBoxAttrs">
+        <attr name="isInputBoxEnable" format="boolean" />
+        <attr name="isSingleLine" format="boolean" />
+        <attr name="isInputVerticalScrollBarEnabled" format="boolean" />
+        <attr name="inputboxTitle" format="string|reference" />
+        <attr name="inputboxHint" format="string|reference" />
+        <attr name="inputboxErrorMsg" format="string|reference" />
+        <attr name="inputboxText" format="string|reference" />
+        <attr name="inputboxDigits" format="string|reference" />
+        <attr name="inputboxLeftText" format="string|reference" />
+        <attr name="inputboxRightText" format="string|reference" />
+        <attr name="inputboxLeftImage" format="reference" />
+        <attr name="inputboxLines" format="integer" />
+        <attr name="inputboxMinLines" format="integer" />
+        <attr name="inputboxMaxLines" format="integer" />
+        <attr name="inputboxMaxLength" format="integer" />
+        <attr name="isMobileInput" format="boolean"></attr>
+        <attr name="isCursorVisible" format="boolean"></attr>
+        <attr name="isShowLoader" format="boolean"></attr>
+        <attr name="isRequestFocus" format="boolean"></attr>
+        <attr name="isPassword" format="boolean"></attr>
+        <attr name="paddingRight" format="dimension"></attr>
+        <attr name="android:inputType" />
+        <attr name="android:scrollbars" />
+        <attr name="isEditable" format="boolean" />
+        <attr name="showRightArrow" format="boolean"></attr>
+        <attr name="passwordToggleEnabled" format="boolean"/>
+        <attr name="counterEnabled" format="boolean"/>
+        <attr name="counterMaxLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TagView">
+        <attr name="lineMargin" format="dimension" />
+        <attr name="tagMargin" format="dimension" />
+        <attr name="textPaddingLeft" format="dimension" />
+        <attr name="textPaddingRight" format="dimension" />
+        <attr name="textPaddingTop" format="dimension" />
+        <attr name="textPaddingBottom" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="DateView">
+        <attr name="label" format="string|reference" />
+    </declare-styleable>
+    <declare-styleable name="OtpTextView">
+        <attr name="android:textColor" />
+        <attr name="otp" format="string" />
+        <attr name="hide_otp" format="boolean" />
+        <attr name="hide_otp_drawable" format="reference" />
+        <attr name="length" format="integer" />
+        <attr name="width" format="dimension" />
+        <attr name="height" format="dimension" />
+        <attr name="box_margin" format="dimension" />
+        <attr name="box_margin_left" format="dimension" />
+        <attr name="box_margin_right" format="dimension" />
+        <attr name="box_margin_top" format="dimension" />
+        <attr name="box_margin_bottom" format="dimension" />
+        <attr name="bar_height" format="dimension" />
+        <attr name="bar_enabled" format="boolean" />
+        <attr name="otp_box_background" format="reference" />
+        <attr name="otp_box_background_active" format="reference" />
+        <attr name="otp_box_background_inactive" format="reference" />
+        <attr name="otp_box_background_success" format="reference" />
+        <attr name="otp_box_background_error" format="reference" />
+        <attr name="bar_margin" format="dimension" />
+        <attr name="bar_margin_bottom" format="dimension" />
+        <attr name="bar_margin_right" format="dimension" />
+        <attr name="bar_margin_left" format="dimension" />
+        <attr name="bar_margin_top" format="dimension" />
+        <attr name="otp_text_size" format="dimension" />
+        <attr name="bar_active_color" format="color" />
+        <attr name="bar_inactive_color" format="color" />
+        <attr name="bar_error_color" format="color" />
+        <attr name="bar_success_color" format="color" />
+        <attr name="text_typeface" format="string" />
+        <attr name="auto_size_enabled" format="boolean" />
+    </declare-styleable>
+</resources>

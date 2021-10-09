@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.samagra.parent.ui.userselection.UserSelectionVM" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/profile_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/footer_height"
+            android:scaleType="fitXY"
+            android:src="@drawable/banner_design"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ScrollView
+            style="@style/scrollbar_shape_style"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/mpp_background"
+            android:fillViewport="true"
+            android:scrollbarSize="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_version_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_20dp"
+                    android:layout_marginVertical="13dp"
+                    android:textColor="@color/version_name_color"
+                    android:textSize="@dimen/version_name_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl"
+                    android:layout_width="0dp"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/inc_mv_info_note"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        style="@style/text_title_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="16dp"
+                        android:text="@string/please_select_your_profile"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toTopOf="@id/ll_teacher"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toRightOf="@+id/ll_mentor"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                        <com.example.assets.uielements.SamagraRoundImageView
+                            android:layout_width="@dimen/select_user_image_width"
+                            android:layout_height="@dimen/select_user_image_height"
+                            android:src="@drawable/ic_mpc_teacher" />
+
+                        <TextView
+                            style="@style/text_title_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_8dp"
+                            android:text="@string/teacher"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_mentor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ll_teacher"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+                        <com.example.assets.uielements.SamagraRoundImageView
+                            android:layout_width="@dimen/select_user_image_width"
+                            android:layout_height="@dimen/select_user_image_height"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_mentor" />
+
+                        <TextView
+                            style="@style/text_title_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_8dp"
+                            android:text="@string/mentor"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_Examimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_extra_large"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/ll_parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_mentor">
+
+                        <com.example.assets.uielements.SamagraRoundImageView
+                            android:layout_width="@dimen/select_user_image_width"
+                            android:layout_height="@dimen/select_user_image_height"
+                            android:scaleType="fitCenter"
+                            app:civ_circle_background_color="@color/white"
+                            android:src="@drawable/ic_examiner1" />
+
+                        <TextView
+                            style="@style/text_title_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_8dp"
+                            android:text="@string/examiner"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_extra_large"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toRightOf="@+id/ll_Examimer"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ll_teacher">
+
+                        <com.example.assets.uielements.SamagraRoundImageView
+                            android:layout_width="@dimen/select_user_image_width"
+                            android:layout_height="@dimen/select_user_image_height"
+                            android:src="@drawable/ic_parents" />
+
+                        <TextView
+                            style="@style/text_title_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_8dp"
+                            android:text="@string/parent"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <include
+                    android:id="@+id/inc_mv_info_note"
+                    layout="@layout/information_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/cl"
+                    android:layout_marginHorizontal="@dimen/margin_large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/profile__footer"
+                    app:layout_constraintTop_toBottomOf="@id/cl"
+                    android:layout_marginBottom="@dimen/margin_large" />
+
+                <ImageView
+                    android:id="@+id/profile__footer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/footer_height"
+                    android:src="@drawable/mpp_card_footer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_blue">#303765</color>
+    <color name="inputbox_color_error_border">#D0021B</color>
+
+    <color name="colorPrimary">#303765</color>
+
+    <color name="colorAccent">#FFC107</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_a400">#777777</color>
+    <color name="gray_ed">#ededed</color>
+    <color name="light_blue">#ddeaf6</color>
+    <color name="menu_gray">#7C7C7C</color>
+    <color name="gray_disabled_light">#80E4E4E4</color>
+    <color name="orange">#FFCE07</color>
+    <color name="box_title_color">#2e3192</color>
+    <color name="orange_ffce07">#FFCE07</color>
+    <color name="blue_2e3192">#2e3192</color>
+</resources>

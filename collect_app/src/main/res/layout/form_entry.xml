@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2009 University of Washington
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_bar_layout" />
+
+    <LinearLayout
+        android:id="@+id/questionholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navigation_view"
+        android:layout_below="@id/appBarLayout"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/shadow_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/navigation_view"
+        android:src="@drawable/shadow_up" />
+
+    <FrameLayout
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/buttonholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/trans"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/form_back_button"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/ic_back_custom"
+                android:clickable="true"
+                android:contentDescription="@string/form_backward"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/form_backward"
+                android:textAllCaps="true"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:textColor="@color/blue"
+                android:textStyle="normal"
+                android:visibility="gone" />
+
+            <!--            <View-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_weight="1" />-->
+
+            <!--            <com.google.android.material.textview.MaterialTextView-->
+            <!--                android:id="@+id/form_home_button"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:textColor="@color/primary_text_color"-->
+            <!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+            <!--                android:clickable="true"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:focusable="true"-->
+            <!--                android:contentDescription="@string/form_backward"-->
+            <!--                android:text="मुख्य स्क्रीन पर जाएँ"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
+            <!--                android:textStyle="normal"-->
+            <!--                android:padding="10dp"-->
+            <!--                android:visibility="visible"  />-->
+
+            <!--            <View-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_weight="0.5" />-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/form_forward_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="4dp"
+                android:clickable="true"
+                android:contentDescription="@string/form_forward"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/form_forward"
+                android:textAllCaps="true"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:cornerRadius="25dp" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>
