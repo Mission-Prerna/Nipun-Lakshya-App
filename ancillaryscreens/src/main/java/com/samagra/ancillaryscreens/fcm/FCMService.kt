@@ -11,14 +11,10 @@ import com.chatbot.notification.ChatbotNotificationHandler
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.google.gson.Gson
-import com.google.gson.JsonParser
 import com.samagra.ancillaryscreens.R
-import com.samagra.commons.models.Result
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
-import com.samagra.commons.constants.Constants.*
+import com.samagra.commons.constants.Constants.NL_NOTIFICATION_CHANNEL
 import com.samagra.commons.constants.DeeplinkConstants
-import com.samagra.commons.utils.RemoteConfigUtils
 import com.samagra.commons.utils.isChatBotEnabled
 import timber.log.Timber
 
@@ -31,9 +27,10 @@ class FCMService : FirebaseMessagingService() {
     private fun sendRegistrationToServer(token: String) {
         val prefs = CommonsPrefsHelperImpl(this, "prefs")
         if (prefs.isLoggedIn) {
-            val mentorDetails =
-                Gson().fromJson(prefs.mentorDetails, Result::class.java)
-            NotificationRepository().postFCMToken(token, mentorDetails.id, {}) { e: Exception? ->
+            NotificationRepository().postFCMToken(
+                token = token,
+                prefs = prefs,
+                onSuccess = {}) { e: Exception? ->
                 if (e != null) {
                     FirebaseCrashlytics.getInstance().recordException(e)
                 }

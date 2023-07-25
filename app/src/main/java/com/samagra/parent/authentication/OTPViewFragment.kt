@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.preference.PreferenceManager
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
@@ -22,6 +23,8 @@ import com.samagra.ancillaryscreens.utils.observe
 import com.samagra.commons.CommonUtilities
 import com.samagra.commons.basemvvm.BaseSmsReceiverFragment
 import com.samagra.commons.posthog.*
+import com.samagra.commons.posthog.data.Cdata
+import com.samagra.commons.posthog.data.Edata
 import com.samagra.commons.utils.RemoteConfigUtils
 import com.samagra.commons.utils.RemoteConfigUtils.getFirebaseRemoteConfigInstance
 import com.samagra.commons.utils.isValidPhoneNumber
@@ -34,10 +37,9 @@ import com.samagra.parent.databinding.FragmentOtpViewPinBinding
 import org.odk.collect.android.utilities.ToastUtils
 
 class OTPViewFragment : BaseSmsReceiverFragment<FragmentOtpViewPinBinding, OTPViewVM>(),
-    OnOtpCompletionListener, PinFragment.PinActionListener, OTPListener {
+    OnOtpCompletionListener, OTPListener {
 
     private lateinit var prefs: CommonsPrefsHelperImpl
-    private lateinit var pinSheet: PinFragment
     private lateinit var phoneNumber: String
     private lateinit var countDownTimer: CountDownTimer
     private val notificationViewModel by lazy {
@@ -81,8 +83,6 @@ class OTPViewFragment : BaseSmsReceiverFragment<FragmentOtpViewPinBinding, OTPVi
     }
 
     private fun setupUi() {
-        binding.tvShowPhoneNo.text = getText(R.string.fill_otp)
-        binding.tvVersionName.text = UtilityFunctions.getVersionName(context)
         val text = getString(R.string.resend_otp)
         binding.btnResend.text = text
         binding.btnResend.paintFlags = binding.btnResend.paintFlags or Paint.UNDERLINE_TEXT_FLAG
@@ -129,6 +129,7 @@ class OTPViewFragment : BaseSmsReceiverFragment<FragmentOtpViewPinBinding, OTPVi
                         prefs.saveAuthToken(token ?: authToken)
                         prefs.saveRefreshToken(refreshToken ?: "")
                     }
+                    prefs.saveIsUserLoggedIn(true)
                     // Give Callback to Activity
                     if (context is AuthenticationCallbacks) {
                         (context as AuthenticationCallbacks).onLoginSuccess()
@@ -248,15 +249,16 @@ class OTPViewFragment : BaseSmsReceiverFragment<FragmentOtpViewPinBinding, OTPVi
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
                 binding.countdownTimer.text =
-                    getString(R.string.seconds_remaining) + millisUntilFinished / NumberConstants.ONE_THOUSAND_LONG
+                    "(00:" + millisUntilFinished / NumberConstants.ONE_THOUSAND_LONG + ")"
             }
 
             override fun onFinish() {
                 viewModel.onFinishTimer()
+                binding.countdownTimer.text = "(0)"
                 binding.btnResend.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.white
+                        R.color.black
                     )
                 )
             }
@@ -286,29 +288,6 @@ class OTPViewFragment : BaseSmsReceiverFragment<FragmentOtpViewPinBinding, OTPVi
     override fun onDestroy() {
         countDownTimer.cancel()
         super.onDestroy()
-    }
-
-    override fun onLoginVerifyPinClicked(verificationPin: String) {
-        //do nothing here.
-    }
-
-    override fun onCloseClicked() {
-        showAlertDialog()
-    }
-
-    private fun showAlertDialog() {
-        val customDialog = CustomMessageDialog(
-            activity!!, null,
-            getString(R.string.must_create_pin),
-            null
-        )
-        customDialog.setOnFinishListener(getString(R.string.create_pin),
-            getString(R.string.create_pin_later),
-            {}
-        ) {
-            removeFragment(OTPViewFragment(), parentFragmentManager)
-        }
-        customDialog.show()
     }
 
     override fun onKeyboardDefaultButtonClick(pinText: String) {

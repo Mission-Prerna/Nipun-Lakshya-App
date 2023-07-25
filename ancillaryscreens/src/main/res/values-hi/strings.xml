@@ -65,13 +65,14 @@
     <string name="please_enter_the_otp">कृपया संबंधित मोबाइल नंबर पर भेजे गए ओ.टी.पी. दर्ज करें।</string>
     <string name="please_enter_the_otp_sent_to_the_mobile_number_of_school_incharge" tools:ignore="MissingTranslation">Please enter the OTP sent to the associated mobile number.</string>
     <string name="please_sign_in_to_continue">सक्षम समीक्षा का उपयोग करने के लिए कृपया साइन इन करें।</string>
-    <string name="resend_otp">OTP फिर से भेजें।</string>
+    <string name="resend_otp"><u> पुन: भेजें </u></string>
     <string name="resend_otp_password">ओटीपी पुनः भेजें</string>
     <string name="reset_here">यहां से पासवर्ड रीसेट करें</string>
     <string name="reset_password">पासवर्ड रीसेट करें</string>
-    <string name="seconds_remaining">सेकंड शेष: </string>
-    <string name="verification_code">OTP  दर्ज करें। </string>
-    <string name="validate">सत्यापित करें</string>
+    <string name="seconds_remaining">(00:30)</string>
+    <string name="did_not_receive_otp">OTP नहीं प्राप्त हुआ?</string>
+    <string name="verification_code">SMS से OTP भरें। </string>
+    <string name="validate">जमा करें !</string>
     <string name="send_otp">OTP भेजें।</string>
     <string name="sending_otp"> OTP भेज रहें हैं</string>
     <string name="sending_the_request">ओटीपी भेजा जा रहा है</string>

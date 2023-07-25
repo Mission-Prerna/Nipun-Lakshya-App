@@ -1,0 +1,78 @@
+name: Build Debug
+on:
+  pull_request:
+    branches:
+      - master
+      - development
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Access secrets
+        env:
+          STAGING_HASURA_URL: ${{secrets.STAGING_HASURA_URL}}
+          STAGING_HASURA_SERVER_AUTH_TOKEN: ${{secrets.STAGING_HASURA_SERVER_AUTH_TOKEN}}
+          STAGING_ODK_SERVER_URL: ${{secrets.STAGING_ODK_SERVER_URL}}
+          STAGING_FORM_ZIP_HASH: ${{secrets.STAGING_FORM_ZIP_HASH}}
+          STAGING_FORM_ZIP_URL: ${{secrets.STAGING_FORM_ZIP_URL}}
+          STAGING_LOGINSERVICE_URL: ${{secrets.STAGING_LOGINSERVICE_URL}}
+          DEFAULT_FUSION_AUTH_API_KEY: ${{secrets.DEFAULT_FUSION_AUTH_API_KEY}}
+          DEFAULT_FUSION_AUTH_PASSWORD: ${{secrets.DEFAULT_FUSION_AUTH_PASSWORD}}
+          DEFAULT_FUSION_AUTH_APPLICATION_ID: ${{secrets.DEFAULT_FUSION_AUTH_APPLICATION_ID}}
+          DEFAULT_API_BASE_URL: ${{secrets.DEFAULT_API_BASE_URL}}
+          AUTH_API_BASE_URL: ${{secrets.AUTH_API_BASE_URL}}
+          REFRESH_JWT_BASE: ${{secrets.REFRESH_JWT_BASE}}
+          WEB_CLIENT_BASE_URL: ${{secrets.WEB_CLIENT_BASE_URL}}
+          WEBVIEW_OPEN_URL: ${{secrets.WEBVIEW_OPEN_URL}}
+          STAGING_GATEKEEPER_URL: ${{secrets.STAGING_GATEKEEPER_URL}}
+          STAGING_GATEKEEPER_API_KEY: ${{secrets.STAGING_GATEKEEPER_API_KEY}}
+          DEFAULT_CHATBOT_URLS: ${{secrets.DEFAULT_CHATBOT_URLS}}
+          SLACK_BEARER: ${{secrets.SLACK_BEARER}}
+          SLACK_CHANNEL: ${{secrets.SLACK_CHANNEL}}
+          DEFAULT_POSTHOG_SERVER_URL: ${{secrets.DEFAULT_POSTHOG_SERVER_URL}}
+          DEFAULT_POSTHOG_SERVER_API_KEY: ${{secrets.DEFAULT_POSTHOG_SERVER_API_KEY}}
+        shell: bash
+        run: |
+          echo STAGING_HASURA_URL="$STAGING_HASURA_URL" >> ./local.properties
+          echo STAGING_HASURA_SERVER_AUTH_TOKEN="$STAGING_HASURA_SERVER_AUTH_TOKEN" >> ./local.properties
+          echo STAGING_ODK_SERVER_URL="$STAGING_ODK_SERVER_URL" >> ./local.properties
+          echo STAGING_FORM_ZIP_HASH="$STAGING_FORM_ZIP_HASH" >> ./local.properties
+          echo STAGING_FORM_ZIP_URL="$STAGING_FORM_ZIP_URL" >> ./local.properties
+          echo STAGING_LOGINSERVICE_URL="$STAGING_LOGINSERVICE_URL" >> ./local.properties
+          echo DEFAULT_FUSION_AUTH_API_KEY="$DEFAULT_FUSION_AUTH_API_KEY" >> ./local.properties
+          echo DEFAULT_FUSION_AUTH_PASSWORD="$DEFAULT_FUSION_AUTH_PASSWORD" >> ./local.properties
+          echo DEFAULT_FUSION_AUTH_APPLICATION_ID="$DEFAULT_FUSION_AUTH_APPLICATION_ID" >> ./local.properties
+          echo DEFAULT_API_BASE_URL="$DEFAULT_API_BASE_URL" >> ./local.properties
+          echo AUTH_API_BASE_URL="$AUTH_API_BASE_URL" >> ./local.properties
+          echo REFRESH_JWT_BASE="$REFRESH_JWT_BASE" >> ./local.properties
+          echo STAGING_GATEKEEPER_URL="$STAGING_GATEKEEPER_URL" >> ./local.properties
+          echo STAGING_GATEKEEPER_API_KEY="$STAGING_GATEKEEPER_API_KEY" >> ./local.properties
+          echo DEFAULT_CHATBOT_URLS="$DEFAULT_CHATBOT_URLS" >> ./local.properties
+          echo SLACK_BEARER="$SLACK_BEARER" >> ./local.properties
+          echo SLACK_CHANNEL="$SLACK_CHANNEL" >> ./local.properties
+          echo DEFAULT_POSTHOG_SERVER_URL="$DEFAULT_POSTHOG_SERVER_URL" >> ./local.properties
+          echo DEFAULT_POSTHOG_SERVER_API_KEY="$DEFAULT_POSTHOG_SERVER_API_KEY" >> ./local.properties
+          cat local.properties
+      - name: assembleDebug with Gradle
+        run: ./gradlew assembleDebug
+      - name: Upload Debug Apk
+        uses: actions/upload-artifact@v3
+        with:
+          name: nl-debug.apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 5
+      - run: echo "Build status report=${{ job.status }}."

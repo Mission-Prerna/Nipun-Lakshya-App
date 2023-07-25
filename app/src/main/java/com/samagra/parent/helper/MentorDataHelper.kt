@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit
 
 object MentorDataHelper {
 
-    private val apiService by lazy { generateApiService() }
+    val apiService by lazy { generateApiService() }
 
     private val gson by lazy { Gson() }
 
@@ -218,7 +218,7 @@ object MentorDataHelper {
         Timber.d("parseSchoolsData: end")
     }
 
-    private fun parseMentorData(info: MentorRemoteResponse?, prefs: CommonsPrefsHelperImpl) {
+    fun parseMentorData(info: MentorRemoteResponse?, prefs: CommonsPrefsHelperImpl) {
         Timber.d("parseMentorData: $info")
         info?.let {
             val mentorDetailsToSave = Result(

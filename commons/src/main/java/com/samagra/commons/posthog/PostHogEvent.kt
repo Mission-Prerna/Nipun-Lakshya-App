@@ -3,6 +3,7 @@ package com.samagra.commons.posthog
 /***EVENTS***/
 //app name-purpose (screen name (if view)+ action (if action then mention button) + click or view or summary)
 const val EVENT_CREATE_PIN = "nl-loginscreen-createpin-click"
+const val EVENT_LOGIN_SUCCESS = "nl-loginscreen-login-success"
 const val EVENT_ODK_FORM_DOWNLOAD_LOCAL_STORAGE_FAILURE =
     "nl-user-selection-screen-download-local-storage-failure"
 const val EVENT_SYNC_SERVER = "nl-dashboardscreen-syncserver-click"

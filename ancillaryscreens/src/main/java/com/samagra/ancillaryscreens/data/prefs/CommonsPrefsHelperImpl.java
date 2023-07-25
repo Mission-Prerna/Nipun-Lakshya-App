@@ -225,9 +225,26 @@ public class CommonsPrefsHelperImpl implements CommonsPreferenceHelper {
 
     @Override
     public boolean isLoggedIn() {
-        String loginPin = getLoginPin();
         String selectedUser = getSelectedUser();
-        return !loginPin.equals("") && !selectedUser.equals(Constants.USER_PARENT);
+        if (doesPinSharedPrefExist()) {
+            String loginPin = getLoginPin();
+            clearLoginPinPref();
+            boolean isLoginOldVersion = !loginPin.equals("") && !selectedUser.equals(Constants.USER_PARENT);
+            if (isLoginOldVersion)
+                saveIsUserLoggedIn(true);
+            return isLoginOldVersion;
+        } else {
+            return getIsUserLoggedIn() && !selectedUser.equals(Constants.USER_PARENT);
+        }
+    }
+
+    public boolean doesPinSharedPrefExist() {
+        return defaultPreferences.contains(UserConstants.LOGIN_PIN);
+    }
+    public void clearLoginPinPref() {
+        SharedPreferences.Editor edit = defaultPreferences.edit();
+        edit.remove(UserConstants.LOGIN_PIN);
+        edit.apply();
     }
 
     @Override
@@ -255,12 +272,6 @@ public class CommonsPrefsHelperImpl implements CommonsPreferenceHelper {
         editor.apply();
     }
 
-    public void saveCreatedPin(String createdPin) {
-        SharedPreferences.Editor editor = defaultPreferences.edit();
-        editor.putString(UserConstants.LOGIN_PIN, createdPin);
-        editor.apply();
-    }
-
     public String getLoginPin() {
         return defaultPreferences.getString(UserConstants.LOGIN_PIN, "");
     }
@@ -276,6 +287,7 @@ public class CommonsPrefsHelperImpl implements CommonsPreferenceHelper {
         edit.remove(Constant.PHONE_NO);
         //-------------------------------------
         edit.remove(UserConstants.LOGIN_PIN);
+        edit.remove(UserConstants.LOGIN);
         edit.remove(UserConstants.MENTOR_DETAIL);
         edit.remove(UserConstants.MENTOR_OVERVIEW_DETAIL);
         edit.remove(UserConstants.ASSESSMENT_START_TIME);
@@ -386,6 +398,14 @@ public class CommonsPrefsHelperImpl implements CommonsPreferenceHelper {
 
     public String getAuthToken() {
         return defaultPreferences.getString(Constant.AUTH_TOKEN_JWT, "");
+    }
+
+    public void saveIsUserLoggedIn(Boolean isUserLoggedIn) {
+        defaultPreferences.edit().putBoolean(UserConstants.LOGIN, isUserLoggedIn).apply();
+    }
+
+    public Boolean getIsUserLoggedIn() {
+        return defaultPreferences.getBoolean(UserConstants.LOGIN, false);
     }
 
     /*

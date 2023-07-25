@@ -4,22 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import com.example.assets.uielements.CustomMessageDialog
 import com.samagra.ancillaryscreens.AncillaryScreensDriver
-import com.samagra.ancillaryscreens.data.pinverification.PinModel
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.ancillaryscreens.fcm.NotificationViewModel
 import com.samagra.ancillaryscreens.utils.KeyConstants
@@ -33,7 +25,9 @@ import com.samagra.commons.Modules
 import com.samagra.commons.basemvvm.BaseActivity
 import com.samagra.commons.constants.Constants
 import com.samagra.commons.helper.GatekeeperHelper
+import com.samagra.commons.models.mentordetails.MentorDetailsRemoteResponse
 import com.samagra.commons.posthog.*
+import com.samagra.commons.posthog.data.Cdata
 import com.samagra.commons.posthog.data.Edata
 import com.samagra.commons.posthog.data.Object
 import com.samagra.commons.utils.*
@@ -136,12 +130,13 @@ class AuthenticationActivity :
 
     private fun sendTelemetry(event: String, button: String) {
         val defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val selectedUser = prefs.selectedUser
         PostHogManager.createBaseMap(
             PRODUCT,
-            prefs.selectedUser,
-            prefs.selectedUser,
-            prefs.selectedUser,
-            prefs.selectedUser,
+            selectedUser,
+            selectedUser,
+            selectedUser,
+            selectedUser,
             defaultSharedPreferences
         )
         val properties = PostHogManager.createProperties(
@@ -156,46 +151,24 @@ class AuthenticationActivity :
     }
 
     private fun setupUi() {
-        setSpannableInfo()
         binding.tvVersionName.text = UtilityFunctions.getVersionName(this)
+        binding.llCallHelpline.setOnClickListener { callHelpline() }
     }
 
-    private fun setSpannableInfo() {
-        val text = getText(R.string.trouble_in_login)
-        val ss = SpannableString(text)
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(widget: View) {
-                val intent = Intent(Intent.ACTION_DIAL)
-                val phoneNumber = text.substring(text.lastIndexOf(" ") + 1, text.length)
-                intent.data = Uri.parse("tel:$phoneNumber")
-                startActivity(intent)
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.isUnderlineText = true
-            }
-        }
-        ss.setSpan(
-            clickableSpan,
-            text.lastIndexOf(" ") + 1,
-            text.length,
-            Spanned.SPAN_EXCLUSIVE_INCLUSIVE
-        )
-        binding.tvTroubleShoot.text = ss
-        binding.tvTroubleShoot.movementMethod = LinkMovementMethod.getInstance()
-        binding.tvTroubleShoot.highlightColor = ContextCompat.getColor(this, R.color.blue_2e3192)
+    private fun callHelpline() {
+        val intent = Intent(Intent.ACTION_DIAL)
+        val phoneNumber = getString(R.string.helpline_number)
+        intent.data = Uri.parse("tel:$phoneNumber")
+        startActivity(intent)
     }
 
     private fun setObserver() {
         with(viewModel) {
-            getInfoNoteFromRemoteConfig(RemoteConfigUtils.INFO_NOTES_LOGIN)
-            observe(remoteConfigString, ::handleInfoNoteText)
             observe(backButtonClicked, ::handleBackButton)
             observe(sendOtpBtnClickedClicked, ::handleSendOtpButton)
             observe(otpSentSuccess, ::handleOtpSentSuccess)
             observe(otpSentFailure, ::handleOtpSentFailure)
-            observe(pinUpdateState, ::handlePinUpdateState)
+            observe(mentorDataSavedState, ::handleMentorDataSavedState)
         }
     }
 
@@ -250,12 +223,6 @@ class AuthenticationActivity :
         }
     }
 
-    private fun handleInfoNoteText(infoNote: String?) {
-        infoNote?.let {
-            binding.llInfo.tvInfoNote.text = it
-        }
-    }
-
     private fun handleSendOtpButton(mobileNo: String?) {
         mobileNo?.let {
             if (checkIfMetaDataPresent()) {
@@ -294,6 +261,7 @@ class AuthenticationActivity :
                     //handle finish
                 }
                 customDialog.show()
+                binding.etResult.text.clear()
             }
         } else {
             ToastUtils.showShortToast(getString(R.string.internet_not_connected_error_login))
@@ -332,53 +300,18 @@ class AuthenticationActivity :
         )
     }
 
-    private fun redirectToPinCreation() {
-        val pinModel = PinModel(
-            resourceImageValue = R.drawable.ic_create_pin,
-            textTitle = getString(R.string.enter_new_pin),
-            textButton = getString(R.string.create_pin),
-            createPin = true
-        )
-        val pinFrag = PinFragment.newInstance(pinModel)
-        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        replaceFragment(
-            binding.mobileFragmentContainer.id,
-            supportFragmentManager,
-            pinFrag,
-            TagConstants.PIN_FRAGMENT,
-            false
-        )
-        pinFrag.setListener(object : PinFragment.PinActionListener {
-            override fun onCloseClicked() {
-                onBackPressed()
-            }
-
-            override fun onCreateNewPinClicked(pin: String) {
-                if (isNetworkAvailable(this@AuthenticationActivity)) {
-                    showProgressBar()
-                    viewModel.updateLoginPinMutation(pin, prefs)
-                } else {
-                    ToastUtils.showShortToast(getString(R.string.not_connected_to_internet))
-                }
-            }
-        })
-    }
-
-
     private fun initPreferences() = CommonsPrefsHelperImpl(this, "prefs")
-    override fun onLoginSuccess() {
-        redirectToPinCreation()
-    }
+    override fun onLoginSuccess() = viewModel.getMentorData(prefs)
 
-    private fun handlePinUpdateState(pinUpdateResult: AuthenticationRepository.PinUpdateResult?) {
-        when (pinUpdateResult) {
-            is AuthenticationRepository.PinUpdateResult.PinUpdateFailed -> {
-                hideProgressBar()
-                ToastUtils.showShortToast(getString(R.string.pin_update_error))
+    private fun handleMentorDataSavedState(mentorDataSaved: AuthenticationRepository.MentorDataSaved?) {
+        when (mentorDataSaved) {
+            is AuthenticationRepository.MentorDataSaved.MentorDataSaveFailed -> {
+                ToastUtils.showShortToast(getString(R.string.not_nipun))
             }
-            AuthenticationRepository.PinUpdateResult.PinUpdateSuccessful -> {
-                hideProgressBar()
+
+            is AuthenticationRepository.MentorDataSaved.MentorDataSaveSuccessful -> {
                 setupHomeRedirection()
+                logLoginSuccessEvent(mentorDataSaved.mentorData)
             }
             else -> {
                 //DO NOTHING
@@ -388,13 +321,8 @@ class AuthenticationActivity :
 
     private fun setupHomeRedirection() {
         hideProgressBar()
-        notificationViewModel.registerFCMToken(prefs.mentorDetailsData.id)
-        LogEventsHelper.setPinCreationEvent(
-            context = this,
-            loginPin = prefs.loginPin,
-            screen = PIN_CREATION_DIALOG,
-            pId = NL_APP_PIN_CREATION,
-            ePageId = NL_PIN_CREATION
+        notificationViewModel.registerFCMToken(
+            prefs = prefs
         )
         redirectToAssessmentHome()
     }
@@ -420,6 +348,37 @@ class AuthenticationActivity :
             )
         AncillaryScreensDriver.mainApplication.eventBus.send(signalExchangeObject)
         finish()
+    }
+
+    private fun logLoginSuccessEvent(mentorData: MentorDetailsRemoteResponse?) {
+        val cDataArrayList = arrayListOf(
+            Cdata(
+                type = "actor",
+                id = mentorData?.mentor?.actorId.toString()
+            ),
+            Cdata(
+                type = "id",
+                id = mentorData?.mentor?.id.toString()
+            )
+        )
+        val properties = PostHogManager.createProperties(
+            page = CHATBOT_SCREEN,
+            eventType = EVENT_TYPE_USER_ACTION,
+            eid = EID_INTERACT,
+            context = PostHogManager.createContext(
+                id = APP_ID,
+                pid = NL_APP_CHATBOT,
+                dataList = cDataArrayList
+            ),
+            eData = Edata(NL_LOGIN, TYPE_CLICK),
+            objectData = null,
+            android.preference.PreferenceManager.getDefaultSharedPreferences(this)
+        )
+        PostHogManager.capture(
+            context = this,
+            eventName = EVENT_LOGIN_SUCCESS,
+            properties = properties
+        )
     }
 
 }

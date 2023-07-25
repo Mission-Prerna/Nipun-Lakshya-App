@@ -114,31 +114,6 @@ object LogEventsHelper {
         PostHogManager.capture(context, EVENT_COMPETENCY_SELECTION, properties)
     }
 
-    fun setPinCreationEvent(
-        context: Context,
-        loginPin: String,
-        screen: String,
-        pId: String,
-        ePageId: String
-    ) {
-        val cDataList = ArrayList<Cdata>()
-        cDataList.add(Cdata("login_pin", loginPin))
-        val properties = PostHogManager.createProperties(
-            screen,
-            EVENT_TYPE_USER_ACTION,
-            EID_INTERACT,
-            PostHogManager.createContext(
-                APP_ID,
-                pId, cDataList
-            ),
-            Edata(ePageId, TYPE_CLICK),
-            Object.Builder().id(CREATE_PIN_NEXT_BUTTON).type(OBJ_TYPE_UI_ELEMENT).build(),
-            PreferenceManager.getDefaultSharedPreferences(context)
-        )
-        PostHogManager.capture(context, EVENT_PIN_CREATION, properties)
-    }
-
-
     fun setSubmitResultEvent(
         context: Context,
         nipunStatus: String? = null,

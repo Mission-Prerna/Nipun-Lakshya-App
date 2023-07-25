@@ -1,17 +1,23 @@
 package com.samagra.parent.helper;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
+import com.androidnetworking.AndroidNetworking;
+import com.chuckerteam.chucker.api.ChuckerInterceptor;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.samagra.ancillaryscreens.AncillaryScreensDriver;
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl;
 import com.samagra.commons.constants.Constants;
 import com.samagra.grove.logging.Grove;
 import com.samagra.parent.BuildConfig;
+import com.samagra.parent.MyApplication;
 
 import org.json.JSONObject;
 
 import io.reactivex.Single;
+import okhttp3.OkHttpClient;
 
 public class BackendNwHelperImpl implements BackendNwHelper {
 
@@ -19,6 +25,11 @@ public class BackendNwHelperImpl implements BackendNwHelper {
 
     private BackendNwHelperImpl() {
         // This class Cannot be initialized directly
+        Context context = MyApplication.getInstance();
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .addNetworkInterceptor(new ChuckerInterceptor(context))
+                .build();
+        AndroidNetworking.initialize(context, okHttpClient);
     }
 
     /**
@@ -36,7 +47,7 @@ public class BackendNwHelperImpl implements BackendNwHelper {
     static final String VALIDATE_ENDPOINT = AncillaryScreensDriver.BASE_API_URL + "/api/jwt/validate";
 
     @Override
-    public Single<JSONObject> refreshToken(String apiKey, CommonsPrefsHelperImpl prefs){
+    public Single<JSONObject> refreshToken(String apiKey, CommonsPrefsHelperImpl prefs) {
         JSONObject body = new JSONObject();
         try {
             body.put("token", prefs.getAuthToken());
@@ -55,7 +66,7 @@ public class BackendNwHelperImpl implements BackendNwHelper {
     }
 
     @Override
-    public Single<JSONObject> validateToken(String jwt){
+    public Single<JSONObject> validateToken(String jwt) {
         return Rx2AndroidNetworking.get(VALIDATE_ENDPOINT)
                 .addHeaders("Authorization", "JWT " + jwt)
                 .addHeaders("Content-Type", "application/json")

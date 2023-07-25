@@ -100,6 +100,9 @@
     <string name="session_not_completed">Not completed</string>
     <string name="bolo_instructions"><![CDATA[<b>मेंटर के लिए अनुदेश:</b>\n \nयह आंकलन \'Read Along\' ऐप के द्वारा होगा। आगे बढ़ने पर कुछ शब्द या कहानियां दिखाई जाएंगी, कृपया विद्यार्थी को उन्हें पढ़ने को कहें।]]></string>
     <string name="teacher">शिक्षक</string>
+    <string name="person_auth_screen"><u> मेंटर, शिक्षक, परीक्षक</u></string>
+    <string name="fill_mobile_number">पंजीकृत मोबाइल नंबर भरें</string>
+    <string name="number_not_registered">नंबर पंजीकृत नहीं है? </string>
     <string name="parent">अभिभावक</string>
     <string name="mentor">मेंटर</string>
     <string name="individual_student_result_fail">अभी इस विद्यार्थी को और मेहनत व निरंतर अभ्यास करने की ज़रुरत है</string>
@@ -235,4 +238,5 @@
     <string name="enable_location_from_device_settings">लोकेशन चालू करें !</string>
     <string name="allow_permission_title">लोकेशन की अनुमति दें !</string>
     <string name="allow_permission_discription"><![CDATA[मूल्यांकन करने के लिए कृपया लोकेशन की अनुमति दें ! settings >> permission >> location >> allow]]></string>
+    <string name="helpline_number">0522–3538777</string>
 </resources>

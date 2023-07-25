@@ -31,6 +31,7 @@
     <color name="whiteTextColor">#fff</color>
     <color name="loginBkColor">#f0f0f0</color>
     <color name="black">#000000</color>
+    <color name="black_545454">#545454</color>
     <!--colors for card-->
     <color name="button_colors">#303765</color>
     <color name="whiteCardColor">#fff</color>

@@ -1,57 +1,42 @@
 package com.samagra.ancillaryscreens.fcm
 
-import com.apollographql.apollo.ApolloCall
-import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.api.Response
-import com.apollographql.apollo.exception.ApolloException
 import com.morziz.network.config.ClientType
 import com.morziz.network.network.Network
+import com.samagra.ancillaryscreens.data.model.RetrofitService
+import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
+import com.samagra.ancillaryscreens.fcm.model.UpsertTokenRequest
+import com.samagra.commons.constants.Constants
 import com.samagra.commons.utils.CommonConstants
-import com.samagra.commons.utils.RemoteConfigUtils
-import com.samagra.commons.utils.RemoteConfigUtils.getFirebaseRemoteConfigInstance
-import com.user.model.UpdateFCMTokenMutation
-import com.user.model.type.Mentor_tokens_insert_input
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class NotificationRepository {
 
     fun postFCMToken(
         token: String,
-        mentorId: Int,
+        prefs: CommonsPrefsHelperImpl,
         onSuccess: () -> Unit,
-        onFailure: (Exception) -> Unit
+        onFailure: (Exception) -> Unit,
     ) {
+        Timber.d("postFCMToken: $token")
         CoroutineScope(Dispatchers.IO).launch {
-            val client = Network.Companion.getClient(
-                clientType = ClientType.GRAPHQL,
-                clazz = ApolloClient::class.java,
-                identity = CommonConstants.IDENTITY_HASURA
-            )
-            val model =
-                Mentor_tokens_insert_input.builder().token(token).mentor_id(mentorId).build()
-            val mutation = UpdateFCMTokenMutation.builder().model(model).build()
-            client?.mutate(mutation)
-                ?.enqueue(object : ApolloCall.Callback<UpdateFCMTokenMutation.Data>() {
-                    override fun onResponse(response: Response<UpdateFCMTokenMutation.Data>) {
-                        response.data?.let {
-                            onSuccess()
-                        } ?: run {
-                            val error = StringBuilder("Server insertion failed : ")
-                            response.errors?.let {
-                                if (it.isNotEmpty()) {
-                                    error.append(it[0].message)
-                                }
-                            }
-                            onFailure(RuntimeException(RuntimeException(error.toString())))
-                        }
-                    }
+            val client = Network.getClient(
+                ClientType.RETROFIT,
+                RetrofitService::class.java,
+                CommonConstants.IDENTITY_APP_SERVICE
+            ) ?: return@launch
 
-                    override fun onFailure(e: ApolloException) {
-                        onFailure(e)
-                    }
-                })
+            val bearerToken = Constants.BEARER_ + prefs.authToken
+            try {
+                val response = client.upsertMentorToken(bearerToken, UpsertTokenRequest(token))
+                Timber.d("postFCMToken: Successfully posted: %s", response.id)
+                onSuccess.invoke()
+            } catch (e: Exception) {
+                Timber.e(e, "postFCMToken: Failed: ${e.message}")
+                onFailure.invoke(e)
+            }
         }
     }
 

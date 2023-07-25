@@ -475,7 +475,7 @@ public class MyApplication extends Application implements MainApplication, Lifec
         ChuckerInterceptor chuckerInterceptor = new ChuckerInterceptor(this);
 
         List<Interceptor> hasuraInterceptors = new ArrayList<>();
-        hasuraInterceptors.add(new HasuraAuthorizationInterceptor(authToken));
+        hasuraInterceptors.add(new HasuraAuthorizationInterceptor());
         hasuraInterceptors.add(chuckerInterceptor);
         NetworkConfig graphqlProdConfig = new NetworkConfig.Builder()
                 .baseUrl(hasuraUrl)

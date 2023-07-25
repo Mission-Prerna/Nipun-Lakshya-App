@@ -7,25 +7,25 @@ import com.morziz.network.network.Network.Companion.getClient
 import com.samagra.ancillaryscreens.R
 import com.samagra.ancillaryscreens.data.model.AssessmentService
 import com.samagra.ancillaryscreens.data.model.RetrofitService
-import com.samagra.ancillaryscreens.data.otp.CreatePinRequest
 import com.samagra.ancillaryscreens.data.otp.LoginRequest
 import com.samagra.ancillaryscreens.data.otp.VerifyOtpRequest
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.commons.CompositeDisposableHelper
-import com.samagra.commons.MetaDataExtensions
 import com.samagra.commons.basemvvm.BaseRepository
-import com.samagra.commons.constants.Constants
-import com.samagra.commons.constants.UserConstants
-import com.samagra.commons.models.Result
-import com.samagra.commons.models.mentordetails.MentorRemoteResponse
+import com.samagra.commons.models.mentordetails.MentorDetailsRemoteResponse
 import com.samagra.commons.posthog.PRODUCT
 import com.samagra.commons.posthog.PostHogManager
 import com.samagra.commons.utils.CommonConstants
 import com.samagra.commons.utils.RemoteConfigUtils
 import com.samagra.commons.utils.RemoteConfigUtils.LOGIN_SERVICE_BASE_URL
 import com.samagra.commons.utils.RemoteConfigUtils.getFirebaseRemoteConfigInstance
+import com.samagra.parent.helper.MentorDataHelper
+import com.samagra.parent.ui.getBearerAuthToken
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import retrofit2.HttpException
@@ -105,46 +105,26 @@ class AuthenticationRepository : BaseRepository() {
             })
     }
 
-    suspend fun updateUserPin(
-        context: Context,
-        requestBody: CreatePinRequest,
+    suspend fun fetchMentorData(
         prefs: CommonsPrefsHelperImpl
-    ): StateFlow<PinUpdateResult> {
-        val remoteResponseStatus: MutableStateFlow<PinUpdateResult> =
-            MutableStateFlow(PinUpdateResult.None)
-        Timber.d("updateUserPin: ")
+    ): StateFlow<MentorDataSaved> {
+        val responseStatus: MutableStateFlow<MentorDataSaved> =
+            MutableStateFlow(MentorDataSaved.None)
         try {
-            val response = generateAppService()?.updateUserPin(
-                apiKey = Constants.BEARER_ + prefs.authToken,
-                body = requestBody
-            )
-            response?.let {
-                Timber.d("updateUserPin: response got $it")
-                handleUpdatedUser(
-                    mentor = it,
-                    prefs = prefs,
-                    pin = requestBody.pin,
-                    remoteResponseStatus = remoteResponseStatus,
-                    context
-                )
+            val responseMentor = CoroutineScope(Dispatchers.IO).async {
+                MentorDataHelper.apiService?.fetchMentorData(apiKey = prefs.getBearerAuthToken())
             }
+            val mentorData: MentorDetailsRemoteResponse? = responseMentor.await()
+            mentorData?.let {
+                Timber.d("fetchMentorData: response got")
+                MentorDataHelper.parseMentorData(it.mentor, prefs)
+            }
+            responseStatus.emit(MentorDataSaved.MentorDataSaveSuccessful(mentorData))
         } catch (t: Exception) {
-            Timber.e(t, "updateUserPin error: %s", t.message)
-            remoteResponseStatus.emit(PinUpdateResult.PinUpdateFailed(t))
+            Timber.e(t, "fetchMentorData error: %s", t.message)
+            responseStatus.emit(MentorDataSaved.MentorDataSaveFailed(t))
         }
-        return remoteResponseStatus
-    }
-
-    private suspend fun handleUpdatedUser(
-        mentor: MentorRemoteResponse,
-        prefs: CommonsPrefsHelperImpl,
-        pin: String,
-        remoteResponseStatus: MutableStateFlow<PinUpdateResult>,
-        context: Context
-    ) {
-        Timber.d("handleUpdatedUser: ")
-        saveUserDetails(mentor, prefs, pin)
-        handleRedirections(mentor, prefs, remoteResponseStatus, context)
+        return responseStatus
     }
 
     private fun setBaseMap(prefs: CommonsPrefsHelperImpl, context: Context) {
@@ -158,72 +138,6 @@ class AuthenticationRepository : BaseRepository() {
                 androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
             )
         }
-    }
-
-    private fun saveUserDetails(
-        mentor: MentorRemoteResponse,
-        prefs: CommonsPrefsHelperImpl,
-        pin: String
-    ) {
-        Timber.d("saveUserDetails: $pin")
-        val mentorDetailsToSave = Result(
-            id = mentor.id ?: 0,
-            designation_id = mentor.designationId ?: 0,
-            district_id = mentor.districtId ?: 0,
-            district_name = mentor.districtName ?: "",
-            block_id = mentor.blockId ?: 0,
-            block_town_name = mentor.blockTownName ?: "",
-            officer_name = mentor.officerName ?: "",
-            phone_no = mentor.phoneNo ?: "",
-            schoolId = mentor.teacherSchoolListMapping?.schoolList?.schoolId ?: 0,
-            schoolDistrict = mentor.teacherSchoolListMapping?.schoolList?.district ?: "",
-            schoolDistrictId = mentor.teacherSchoolListMapping?.schoolList?.districtId ?: 0,
-            schoolBlock = mentor.teacherSchoolListMapping?.schoolList?.block ?: "",
-            schoolBlockId = mentor.teacherSchoolListMapping?.schoolList?.blockId ?: 0,
-            schoolNyayPanchayat = mentor.teacherSchoolListMapping?.schoolList?.nyayPanchayat ?: "",
-            schoolNyayPanchayatId = mentor.teacherSchoolListMapping?.schoolList?.nyayPanchayatId
-                ?: 0,
-            schoolName = mentor.teacherSchoolListMapping?.schoolList?.schoolName ?: "",
-            udise = mentor.teacherSchoolListMapping?.schoolList?.udise ?: 0L,
-            actorId = if (mentor.actorId == UserConstants.DIET_MENTOR_INT) {
-                1
-            } else {
-                mentor.actorId ?: 0
-            },
-            schoolLat = mentor.teacherSchoolListMapping?.schoolList?.schoolLat ?: 0.0,
-            schoolLong = mentor.teacherSchoolListMapping?.schoolList?.schoolLong ?: 0.0,
-            schoolGeoFenceEnabled = mentor.teacherSchoolListMapping?.schoolList?.geofencingEnabled
-                ?: true
-        )
-        Timber.d("saveUserDetails: $mentorDetailsToSave")
-        prefs.saveMentorDetails(gson.toJson(mentorDetailsToSave))
-        prefs.saveCreatedPin(pin)
-    }
-
-    private suspend fun handleRedirections(
-        mentor: MentorRemoteResponse,
-        prefs: CommonsPrefsHelperImpl,
-        remoteResponseStatus: MutableStateFlow<PinUpdateResult>,
-        context: Context
-    ) {
-        Timber.d("handleRedirections: ")
-        val actor = MetaDataExtensions.getActorFromActorId(
-            actorId = if (mentor.actorId == UserConstants.DIET_MENTOR_INT) {
-                1
-            } else {
-                mentor.actorId ?: 0
-            },
-            actorListJson = prefs.actorsListJson
-        )
-        Timber.d("handleRedirections: actor: $actor")
-        if (actor.equals(Constants.USER_EXAMINER, true)) {
-            Timber.d("handleRedirections: user examiner")
-            prefs.saveAssessmentType(Constants.STATE_LED_ASSESSMENT)
-        }
-        Timber.d("handleRedirections: success")
-        prefs.saveSelectedUser(actor)
-        setBaseMap(prefs, context)
-        remoteResponseStatus.emit(PinUpdateResult.PinUpdateSuccessful)
     }
 
     private fun generateUserService(): AssessmentService? {
@@ -242,9 +156,9 @@ class AuthenticationRepository : BaseRepository() {
         )
     }
 
-    sealed class PinUpdateResult {
-        object None : PinUpdateResult()
-        class PinUpdateFailed(val t: Throwable) : PinUpdateResult()
-        object PinUpdateSuccessful : PinUpdateResult()
+    sealed class MentorDataSaved {
+        object None : MentorDataSaved()
+        class MentorDataSaveFailed(val t: Throwable) : MentorDataSaved()
+        class MentorDataSaveSuccessful(val mentorData: MentorDetailsRemoteResponse?) : MentorDataSaved()
     }
 }

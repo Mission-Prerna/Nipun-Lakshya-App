@@ -5,7 +5,6 @@ import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.hasura1.model.QumlResponseQuery;
-import com.samagra.commons.BuildConfig;
 import com.samagra.network.HasuraAuthorizationInterceptor;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +23,12 @@ public class WebRepository {
     private WebRepository() {
         token = "";
         apolloClient = ApolloClient.builder()
-                .serverUrl("" +
-                        "")
-                .okHttpClient(new OkHttpClient.Builder()
-                        .addInterceptor(new HasuraAuthorizationInterceptor(token))
-                        .build()).build();
+                .serverUrl("" + "")
+                .okHttpClient(
+                        new OkHttpClient.Builder()
+                                .addInterceptor(new HasuraAuthorizationInterceptor())
+                                .build()
+                ).build();
     }
 
     public static WebRepository getInstance() {

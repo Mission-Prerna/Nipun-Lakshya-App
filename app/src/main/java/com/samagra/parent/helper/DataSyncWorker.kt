@@ -35,6 +35,8 @@ class DataSyncWorker(
     override fun doWork(): Result {
         Timber.d("doWork: ")
         val prefs = CommonsPrefsHelperImpl(context, "prefs")
+        if (prefs.isLoggedIn.not())
+            return Result.success()
         val surveys = RealmStoreHelper.getSurveys()
         val helper = SyncingHelper()
         val assessments = helper.getAssessmentSubmissions(prefs)
@@ -74,7 +76,7 @@ class DataSyncWorker(
         )
         Timber.d("doWork: Assessment Success: $isSuccessAssessments & Survey success: $isSurveySuccess")
         prefs.markDataSynced()
-        return if (isSuccess) Result.success() else Result.retry()
+        return Result.success()
     }
 
     private fun showStatusNotification(isCompleted: Boolean, message: String?, isSuccess: Boolean) {

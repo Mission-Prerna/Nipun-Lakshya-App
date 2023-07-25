@@ -23,8 +23,8 @@ android {
         applicationId "org.samagra.missionPrerna"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 170100
-        versionName "1.7.2"
+        versionCode 170300
+        versionName "1.7.3"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -150,8 +150,8 @@ android {
 
         implementation "androidx.work:work-runtime-ktx:2.7.1"
 
-        debugImplementation "com.github.chuckerteam.chucker:library:3.3.0"
-        releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.3.0"
+        debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+        releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
     }
     namespace 'com.samagra.parent'
 }

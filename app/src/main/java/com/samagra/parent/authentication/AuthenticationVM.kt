@@ -26,7 +26,7 @@ class AuthenticationVM(
     val otpSentFailure = SingleLiveEvent<String>()
     val sendOtpBtnClickedClicked = SingleLiveEvent<String>()
     val otpSentSuccess = SingleLiveEvent<String>()
-    val pinUpdateState = SingleLiveEvent<AuthenticationRepository.PinUpdateResult>()
+    val mentorDataSavedState = SingleLiveEvent<AuthenticationRepository.MentorDataSaved>()
 
     fun onSendOtpBtnClicked(mobileNo: String) {
         sendOtpBtnClickedClicked.value = mobileNo
@@ -84,16 +84,11 @@ class AuthenticationVM(
         return prefs.selectedUser
     }
 
-    fun updateLoginPinMutation(
-        pin: String,
-        prefs: CommonsPrefsHelperImpl
-    ) {
-        Timber.d("updateLoginPinMutation: ")
-        val createPinRequest = CreatePinRequest(pin)
+    fun getMentorData(prefs: CommonsPrefsHelperImpl){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateUserPin(getApplication(), createPinRequest, prefs).collect {
-                if (it != AuthenticationRepository.PinUpdateResult.None) {
-                    pinUpdateState.postValue(it)
+            repository.fetchMentorData(prefs).collect{
+                if (it != AuthenticationRepository.MentorDataSaved.None) {
+                    mentorDataSavedState.postValue(it)
                 }
             }
         }

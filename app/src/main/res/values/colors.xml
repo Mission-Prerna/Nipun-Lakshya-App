@@ -6,6 +6,7 @@
     <color name="colorAccent">#FFC107</color>
     <color name="divider">#BDBDBD</color>
     <color name="white">#FFFFFF</color>
+    <color name="color_f6f6f6">#F6F6F6</color>
     <color name="gray_a400">#777777</color>
     <color name="gray_background">#f9f9f9</color>
     <color name="gray_ed">#ededed</color>

@@ -53,50 +53,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="top">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_roles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/horizontal_side_margin"
-                    android:layout_marginVertical="@dimen/margin_extra_large"
-                    android:backgroundTint="@color/color_yellow"
-                    app:cardCornerRadius="@dimen/radius_4dp"
-                    app:cardElevation="@dimen/cardview_default_elevation">
-
                     <LinearLayout
+                        android:id="@+id/llPerson"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:baselineAligned="false"
                         android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_20dp"
                         android:paddingTop="@dimen/padding_8"
-                        android:paddingBottom="@dimen/padding_4"
-                        android:weightSum="3">
-
-                        <LinearLayout
-                            android:id="@+id/ll_mentor"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            tools:ignore="UseCompoundDrawables">
-
-                            <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_mentor"
-                                tools:ignore="ContentDescription" />
-
-                            <TextView
-                                style="@style/text_title_style"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="@dimen/margin_8dp"
-                                android:text="@string/mentor"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
+                        android:paddingBottom="@dimen/padding_4">
 
                         <LinearLayout
                             android:id="@+id/ll_teacher"
@@ -108,9 +73,9 @@
                             tools:ignore="UseCompoundDrawables">
 
                             <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/ic_teacher"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/person_image"
                                 tools:ignore="ContentDescription" />
 
                             <TextView
@@ -119,26 +84,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="@dimen/margin_8dp"
-                                android:text="@string/teacher"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/ll_examimer"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/ic_examiner"
-                                app:civ_circle_background_color="@color/white"
-                                tools:ignore="ContentDescription" />
+                                android:textStyle="bold"
+                                android:text="@string/person_auth_screen"
+                                android:textSize="@dimen/text_size_36sp" />
 
                             <TextView
                                 style="@style/text_title_style"
@@ -146,74 +94,119 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="@dimen/margin_8dp"
-                                android:text="@string/examiner"
+                                android:textStyle="bold"
+                                android:textColor="@color/black_545454"
+                                android:text="@string/fill_mobile_number"
                                 android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
 
+                        </LinearLayout>
 
                     </LinearLayout>
-
-
-                </androidx.cardview.widget.CardView>
 
                 <EditText
                     android:id="@+id/etResult"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cv_roles"
+                    android:layout_below="@id/llPerson"
                     android:layout_marginHorizontal="@dimen/horizontal_side_margin"
                     android:background="@drawable/edit_text_border"
-                    android:gravity="start"
+                    android:gravity="center"
                     android:hint="@string/hint_mobile_no"
                     android:imeOptions="actionDone"
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="10"
                     android:maxLines="1"
-                    android:paddingVertical="@dimen/padding_medium"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:paddingVertical="@dimen/padding_14dp"
                     android:paddingStart="@dimen/padding_14dp"
                     android:paddingEnd="@dimen/padding_14dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray_a400"
-                    android:textSize="@dimen/edit_text_size"
+                    android:textSize="@dimen/text_size_small"
                     android:visibility="visible"
                     tools:ignore="LabelFor" />
-
-                <include layout="@layout/layout_info_normal"
-                    android:id="@+id/ll_info"
-                    android:layout_marginHorizontal="@dimen/horizontal_side_margin"
-                    android:layout_marginTop="@dimen/margin_40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/etResult">
-                </include>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCollect"
                     style="@style/button_long_style"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/dp_30"
-                    android:layout_below="@id/ll_info"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:layout_below="@id/etResult"
                     android:onClick="@{()-> loginVm.onSendOtpBtnClicked(etResult.getText().toString())}"
                     android:text="@string/send_otp"
+                    android:textStyle="bold"
                     android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_side_margin"
+                    android:layout_marginTop="@dimen/margin_26_dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_below="@id/btnCollect">
+
+                    <ImageView
+                        tools:ignore="ContentDescription"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_info" />
+
+                    <TextView
+                        android:id="@+id/tv_info_note"
+                        style="@style/text_title_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/number_not_registered"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="@dimen/spacing_12"
+                        android:layout_height="0dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/llCallHelpline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/call_image" />
+
+                        <TextView
+                            style="@style/text_title_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/helpline_number"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginTop="@dimen/margin_large"
                     android:id="@+id/ll_parent_view"
                     android:layout_below="@id/btnCollect"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/blue_2e3192"
-                        android:backgroundTint="@color/blue_2e3192" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_parent"
@@ -258,16 +251,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/tv_trouble_shoot"
-                        style="@style/text_title_style"
-                        android:layout_gravity="center"
-                        android:textColorLink="@color/blue_2e3192"
-                        android:layout_marginBottom="@dimen/margin_20dp"
-                        android:text="@string/trouble_in_login"
-                        android:textSize="@dimen/text_size_14sp" />
-
-
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>
@@ -277,5 +260,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 </layout>

@@ -66,6 +66,7 @@ object AppPreferences {
         prefs.edit().apply {
             remove(UserConstants.PHONE_NO)
             remove(UserConstants.LOGIN_PIN)
+            remove(UserConstants.LOGIN)
             remove(UserConstants.MENTOR_DETAIL)
             remove(UserConstants.MENTOR_OVERVIEW_DETAIL)
             remove(UserConstants.ASSESSMENT_START_TIME)

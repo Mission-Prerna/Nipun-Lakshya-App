@@ -15,11 +15,11 @@ object GatekeeperHelper {
     ) {
         val firebaseRemoteConfig = RemoteConfigUtils.getFirebaseRemoteConfigInstance()
         val baseUrl = if (BuildConfig.DEBUG)
-            BuildConfig.STAGING_GATEKEEPER_URL
+            "http://128.199.28.17:8065/"
         else
             firebaseRemoteConfig.getString(RemoteConfigUtils.GATEKEEPER_BASE_URL)
         val apiKey = if (BuildConfig.DEBUG)
-            BuildConfig.STAGING_GATEKEEPER_API_KEY
+            "Asdf@1234"
         else
             firebaseRemoteConfig.getString(RemoteConfigUtils.GATEKEEPER_API_KEY)
         Gatekeeper.assess(

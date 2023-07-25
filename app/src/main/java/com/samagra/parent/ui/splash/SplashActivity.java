@@ -53,7 +53,6 @@ import com.samagra.parent.BuildConfig;
 import com.samagra.parent.R;
 import com.samagra.parent.UtilityFunctions;
 import com.samagra.parent.authentication.AuthenticationActivity;
-import com.samagra.parent.authentication.PinFragment;
 import com.samagra.parent.base.BaseActivity;
 import com.samagra.parent.ui.assessmenthome.AssessmentHomeActivity;
 import com.samagra.parent.ui.dietmentorassessmenttype.DIETAssessmentTypeActivity;
@@ -77,7 +76,7 @@ import timber.log.Timber;
  * @author Pranav Sharma
  */
 @DeepLink(DeeplinkConstants.HOME)
-public class SplashActivity extends BaseActivity implements SplashContract.View, PinFragment.PinActionListener {
+public class SplashActivity extends BaseActivity implements SplashContract.View {
 
     @Inject
     SplashPresenter<SplashContract.View, SplashContract.Interactor> splashPresenter;
@@ -121,7 +120,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View,
             long lastAppForceLogoutVersion = SystemPreferences.INSTANCE.getForceLogoutVersion();
             // Force Logout
             if (!CommonUtilities.isFirstInstall(this)
-                    && forceLogoutVersion <= BuildConfig.VERSION_CODE
+                    && forceLogoutVersion > BuildConfig.VERSION_CODE
                     && lastAppForceLogoutVersion != forceLogoutVersion
             ) {
                 sendLogoutTelemetry(lastAppForceLogoutVersion, forceLogoutVersion);
@@ -179,7 +178,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View,
     }
 
     private void setLoginFlow() {
-        if (!prefs.getLoginPin().equals("") && (prefs.getSelectedUser().equalsIgnoreCase(AppConstants.USER_MENTOR)
+        if (prefs.getIsUserLoggedIn() && (prefs.getSelectedUser().equalsIgnoreCase(AppConstants.USER_MENTOR)
                 || prefs.getSelectedUser().equalsIgnoreCase(AppConstants.USER_EXAMINER)
                 || prefs.getSelectedUser().equalsIgnoreCase(Constants.USER_DIET_MENTOR)
                 || prefs.getSelectedUser().equalsIgnoreCase(AppConstants.USER_TEACHER))) {
@@ -187,35 +186,10 @@ public class SplashActivity extends BaseActivity implements SplashContract.View,
             splashPresenter.getIFormManagementContract().resetPreviousODKForms(this, failedResetActions -> {
             });
             splashPresenter.getIFormManagementContract().enableUsingScopedStorage();
-            openPinDialogFragment();
+            redirectToAssessmentHome();
         } else {
             new Handler(Looper.getMainLooper()).postDelayed(this::redirectToHomeScreen, 500);
         }
-    }
-
-    private void openPinDialogFragment() {
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            try {
-                progressBar.setVisibility(View.GONE);
-                PinModel pinModel = new PinModel(
-                        R.drawable.ic_create_pin,
-                        getString(R.string.enter_your_pin),
-                        getString(R.string.verify_pin),
-                        false
-                );
-                PinFragment pinFragment = PinFragment.newInstance(pinModel);
-                pinFragment.setListener(this);
-                addFragment(
-                        R.id.container,
-                        getSupportFragmentManager(),
-                        pinFragment,
-                        TagConstants.PIN_FRAGMENT,
-                        false
-                );
-            } catch (Exception e) {
-                finish();
-            }
-        }, 500);
     }
 
     private void setEnableScopedStorage() {
@@ -314,31 +288,13 @@ public class SplashActivity extends BaseActivity implements SplashContract.View,
     public void setupToolbar() {
     }
 
-    @Override
-    public void onLoginVerifyPinClicked(@NonNull String verificationPin) {
-        hideKeyboard(this);
-        redirectToAssessmentHome(verificationPin);
-    }
-
-    @Override
-    public void onCloseClicked() {
-        finishAffinity();
-    }
-
-    @Override
-    public void onCreateNewPinClicked(@NonNull String pin) {
-        hideKeyboard(this);
-        // do nothing here
-    }
-
     /*@Override
     public void onBottomSheetSlideDown() {
         finish();
     }*/
 
-    private void redirectToAssessmentHome(String verificationPin) {
+    private void redirectToAssessmentHome() {
         Intent intent;
-        if (prefs.getLoginPin().equals(verificationPin)) {
             if (prefs.getSelectedUser().equalsIgnoreCase(Constants.USER_DIET_MENTOR)) {
                 intent = new Intent(this, DIETAssessmentTypeActivity.class);
             } else if (prefs.getSelectedUser().equalsIgnoreCase(AppConstants.USER_TEACHER)) {
@@ -359,17 +315,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.View,
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        } else {
-            CustomMessageDialog customDialog = new CustomMessageDialog(
-                    this, ContextCompat.getDrawable(this, android.R.drawable.ic_dialog_info),
-                    getString(R.string.entered_incorrect_pin),
-                    null
-            );
-            customDialog.setOnFinishListener(() -> {
-                //handle finish
-            });
-            customDialog.show();
-        }
     }
 
     public void showForceUpdateDialog() {
