@@ -1,5 +1,7 @@
 # Nipun Lakshya Android application
 
+#### [Hindi | हिंदी ](README-HI.md)
+
 ![Nipun Lakshya Core Flows](./images/core_flows.png "Nipun Lakshya Core Flows")
 
 The Nipun Lakshya Android Application is used by parents, teachers, examiners and mentors. With the
