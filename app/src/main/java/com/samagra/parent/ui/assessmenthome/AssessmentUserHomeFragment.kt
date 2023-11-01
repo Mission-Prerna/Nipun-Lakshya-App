@@ -2,14 +2,15 @@ package com.samagra.parent.ui.assessmenthome
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
+import com.chatbot.BotIconState
 import com.chatbot.ChatBotActivity
-import com.google.gson.JsonParser
+import com.chatbot.ChatBotVM
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.ancillaryscreens.utils.observe
 import com.samagra.commons.CommonUtilities
@@ -22,7 +23,6 @@ import com.samagra.commons.posthog.*
 import com.samagra.commons.posthog.data.Edata
 import com.samagra.commons.posthog.data.Object
 import com.samagra.commons.utils.RemoteConfigUtils
-import com.samagra.commons.utils.isChatBotEnabled
 import com.samagra.parent.*
 import com.samagra.parent.authentication.AuthenticationActivity
 import com.samagra.parent.databinding.FragmentAssessmentUserHomeBinding
@@ -41,6 +41,8 @@ class AssessmentUserHomeFragment :
     private var dialogShowing: Boolean = false
     private var dialogBuilder: AlertDialog? = null
     private val prefs: CommonsPrefsHelperImpl by lazy { initPreferences() }
+
+    private val chatVM by viewModels<ChatBotVM>()
 
     override fun getBaseViewModel(): AssessmentHomeVM {
         val syncRepository = DataSyncRepository()
@@ -65,19 +67,7 @@ class AssessmentUserHomeFragment :
 
 
     private fun setupChatBotFlow() {
-        val isChatBotEnabled = isChatBotEnabled(prefs.mentorDetailsData.actorId)
-
-        if (isChatBotEnabled != null) {
-            if (isChatBotEnabled==false) {
-                binding.botFab.visibility = View.GONE
-                return
-            }
-        }
-        binding.botFab.visibility = View.VISIBLE
-        binding.botFab.setOnClickListener {
-            openBot()
-            logChatBotInitiate()
-        }
+        chatVM.identifyChatIconState()
     }
 
 
@@ -114,7 +104,7 @@ class AssessmentUserHomeFragment :
     }
 
     private fun setBlockVisibility(visibility: Int) {
-        binding.groupBlock.visibility = visibility
+        binding.profileDetailsView.setBlockVisibility(visibility)
     }
 
     private fun callApis(enforce: Boolean) {
@@ -171,6 +161,7 @@ class AssessmentUserHomeFragment :
             observe(gotoLogin, ::handleLogoutRedirection)
             observe(progressBarVisibility, ::handleProgressBarVisibility)
         }
+        chatVM.iconVisibilityLiveData.observe(this, ::handeIconVisibilityState)
     }
 
     private fun handleLogoutRedirection(@Suppress("UNUSED_PARAMETER") unit: Unit?) {
@@ -320,13 +311,13 @@ class AssessmentUserHomeFragment :
     }
 
     private fun handleMentorDetails(result: Result?) {
+        binding.profileDetailsView.setViewModel(viewModel, true)
         val designation =
             MetaDataExtensions.getDesignationFromId(
                 result?.designation_id ?: 0,
                 prefs.designationsListJson
             )
         result?.let {
-            Log.e("-->>", "user id mentors ${it.id}")
             if (designation.equals(Constants.USER_DESIGNATION_SRG, true)) {
                 setBlockVisibility(View.GONE)
             } else {
@@ -338,6 +329,7 @@ class AssessmentUserHomeFragment :
     override fun onDestroy() {
         super.onDestroy()
         CompositeDisposableHelper.destroyCompositeDisposable()
+        binding.profileDetailsView.setBindingToNull()
     }
 
     private fun setRedirectionsOnIntent() {
@@ -362,9 +354,24 @@ class AssessmentUserHomeFragment :
         }
     }
 
-    fun chatBoatVisibilty(actorId: Int) {
-        if (actorId == prefs.mentorDetailsData.actorId) {
-
+    private fun handeIconVisibilityState(state: BotIconState?) {
+        when (state) {
+            BotIconState.Hide -> {
+                binding.botFab.visibility = View.GONE
+            }
+            is BotIconState.Show -> {
+                showChatbot(
+                    animate = state.animate,
+                    botView = binding.botFab,
+                    botIconView = binding.botIcon,
+                    imageIconRes = R.drawable.bot,
+                    animationGifRes = R.drawable.animate_bot,
+                    intentOnClick = Intent(context, ChatBotActivity::class.java)
+                )
+            }
+            null -> {
+                //IGNORE
+            }
         }
     }
 

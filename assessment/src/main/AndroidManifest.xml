@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application>
+        <activity
+            android:name="com.assessment.studentselection.StudentSelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name="com.assessment.flow.assessment.AssessmentFlowActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.assessment.flow.workflowengine.bolo.ScoreActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name="com.assessment.flow.workflowengine.bolo.readalong.ReadAlongDisclaimerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name="com.assessment.flow.workflowengine.bolo.instruction.ReadAlongInstructionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name="com.assessment.flow.workflowengine.odk.OdkInstructionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name="com.assessment.flow.scoreboard.StudentScoreboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.assessment.schoolhistory.SchoolHistoryActivity" />
+        <activity
+            android:name="com.assessment.schoollist.SchoolSelectionActivity"
+            android:theme="@style/LoginTheme" />
+        <activity android:name="com.assessment.studentselection.ExaminerStudentSelectionActivity" />
+        <activity android:name="com.assessment.schoolreport.SchoolReportActivity" />
+    </application>
+</manifest>

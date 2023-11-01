@@ -15,4 +15,5 @@
     <string name="downloading_doc">Downloading Document</string>
     <string name="downloading">Downloading</string>
     <string name="failed_load_bot">Could not load bots. Please try again later</string>
+    <string name="no_app_found">No application found to open this file.</string>
 </resources>

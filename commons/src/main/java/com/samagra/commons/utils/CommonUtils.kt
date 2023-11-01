@@ -1,11 +1,10 @@
 package com.samagra.commons.utils
 
+import android.content.pm.PackageManager
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
-import com.google.gson.JsonParser
 import com.samagra.commons.models.ActorVisibility
 import com.samagra.grove.logging.Grove
 import java.util.regex.Pattern
@@ -103,11 +102,20 @@ fun String.getHiddenMobileNumber(): String {
     return "+91-${this.substring(0, 3)}xxxx${this.substring(7)}"
 }
 
- fun isChatBotEnabled(actorId :Int): Boolean? {
-    var configJson= RemoteConfigUtils.getFirebaseRemoteConfigInstance().getString(RemoteConfigUtils.CHATBOT_ICON_VISIBILITY_TO_ACTOR)
-     val gson = Gson()
-     val myData = gson.fromJson(configJson, ActorVisibility::class.java)
-     // Check if the value 1 exists in the enabled_actors list
-     val isChatBotEnabled = myData.enabled_actors.contains(actorId)
-    return  isChatBotEnabled;
+fun isChatBotEnabled(actorId: Int): Boolean {
+    val configJson = RemoteConfigUtils.getFirebaseRemoteConfigInstance()
+        .getString(RemoteConfigUtils.CHATBOT_ICON_VISIBILITY_TO_ACTOR)
+    val gson = Gson()
+    val myData = gson.fromJson(configJson, ActorVisibility::class.java)
+    // Check if the value 1 exists in the enabled_actors list
+    return myData.enabled_actors.contains(actorId);
+}
+
+fun isAppInstalled(pm: PackageManager, uri: String): Boolean {
+    return try {
+        pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
+        true
+    } catch (e: PackageManager.NameNotFoundException) {
+        false
+    }
 }

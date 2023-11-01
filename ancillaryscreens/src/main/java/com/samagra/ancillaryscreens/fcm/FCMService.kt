@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.preference.PreferenceManager
 import androidx.core.app.NotificationCompat
 import com.chatbot.notification.ChatbotNotificationHandler
 import com.google.firebase.crashlytics.FirebaseCrashlytics
@@ -15,6 +16,16 @@ import com.samagra.ancillaryscreens.R
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.commons.constants.Constants.NL_NOTIFICATION_CHANNEL
 import com.samagra.commons.constants.DeeplinkConstants
+import com.samagra.commons.posthog.APP_ID
+import com.samagra.commons.posthog.EID_IMPRESSION
+import com.samagra.commons.posthog.EVENT_NOTIFICATION_RECEIVED
+import com.samagra.commons.posthog.EVENT_TYPE_SYSTEM
+import com.samagra.commons.posthog.NL_APP_CHATBOT
+import com.samagra.commons.posthog.NL_SPLASH_SCREEN
+import com.samagra.commons.posthog.PostHogManager
+import com.samagra.commons.posthog.SPLASH_SCREEN
+import com.samagra.commons.posthog.TYPE_VIEW
+import com.samagra.commons.posthog.data.Edata
 import com.samagra.commons.utils.isChatBotEnabled
 import timber.log.Timber
 
@@ -39,24 +50,53 @@ class FCMService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        logNotificationReceived()
         val prefs = CommonsPrefsHelperImpl(this, "prefs")
         Timber.d("onMessageReceived: %s", remoteMessage.data)
-        val isChatBotVisibilityEnabled =
-            isChatBotEnabled(prefs.mentorDetailsData.actorId)
-
-        if (isChatBotVisibilityEnabled != null) {
-            if (isChatBotVisibilityEnabled && ChatbotNotificationHandler.canHandleRemoteMessage(
-                    remoteMessage
-                )
-            ) {
-                ChatbotNotificationHandler.handleRemoteMessage(this, remoteMessage)
+        val savedMentor = prefs.mentorDetailsData
+        val isChatBotVisibilityEnabled = try {
+            if (savedMentor != null) {
+                isChatBotEnabled(savedMentor.actorId)
             } else {
-                remoteMessage.notification?.let {
-                    handleFCMNotification(it)
-                }
+                false
+            }
+        } catch (t: Throwable) {
+            Timber.e(t, "onMessageReceived: ")
+            false
+        }
+
+        if (isChatBotVisibilityEnabled &&
+            ChatbotNotificationHandler.canHandleRemoteMessage(remoteMessage)
+        ) {
+            ChatbotNotificationHandler.handleRemoteMessage(this, remoteMessage)
+        } else {
+            remoteMessage.notification?.let {
+                handleFCMNotification(it)
             }
         }
 
+    }
+
+    private fun logNotificationReceived() {
+        //Also trigger to posthog
+        val properties = PostHogManager.createProperties(
+            page = SPLASH_SCREEN,
+            eventType = EVENT_TYPE_SYSTEM,
+            eid = EID_IMPRESSION,
+            context = PostHogManager.createContext(
+                id = APP_ID,
+                pid = NL_APP_CHATBOT,
+                dataList = arrayListOf()
+            ),
+            eData = Edata(NL_SPLASH_SCREEN, TYPE_VIEW),
+            objectData = null,
+            prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        )
+        PostHogManager.capture(
+            context = this,
+            eventName = EVENT_NOTIFICATION_RECEIVED,
+            properties = properties
+        )
     }
 
     private fun handleFCMNotification(notification: RemoteMessage.Notification) {

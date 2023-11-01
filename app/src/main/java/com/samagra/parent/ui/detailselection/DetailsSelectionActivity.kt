@@ -91,12 +91,14 @@ open class DetailsSelectionActivity : BaseActivity<ActivitySelectionBinding, Det
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         when {
-            permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+            permissions.getOrElse(Manifest.permission.ACCESS_FINE_LOCATION) { false } -> {
                 changeLocationSetting()
             }
-            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+
+            permissions.getOrElse(Manifest.permission.ACCESS_COARSE_LOCATION) { false } -> {
                 changeLocationSetting()
             }
+
             else -> {
                 //handle denied permissions
                 finish()
@@ -154,12 +156,19 @@ open class DetailsSelectionActivity : BaseActivity<ActivitySelectionBinding, Det
         )
     }
 
+    //FIX for https://console.firebase.google.com/project/mission-prerna/crashlytics/app/android:org.samagra.missionPrerna/issues/8bb6124f12df07fc858fc7a21884471b
+    override fun onStop() {
+        super.onStop()
+        stopLocationUpdates()
+    }
+
     private fun setSpinner() {
         arrayList = ArrayList()
         hashMap = HashMap()
         val arrayListForClassModel: ArrayList<ClassModel> =
             UtilityFunctions.getClassData(mConfigMapper) as ArrayList<ClassModel>
         arrayList.add(CommonConstants.SELECT)
+        arrayListForClassModel.sortBy { it.value }
         if (arrayListForClassModel?.size > 0) {
             for (classmodel: ClassModel in arrayListForClassModel) {
                 arrayList.add(
@@ -516,7 +525,7 @@ open class DetailsSelectionActivity : BaseActivity<ActivitySelectionBinding, Det
 
         binding.spBalvatika4to8.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>, view: View, position: Int, id: Long
+                parent: AdapterView<*>, view: View?, position: Int, id: Long
             ) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 if (!selectedItem.equals(
@@ -905,13 +914,13 @@ open class DetailsSelectionActivity : BaseActivity<ActivitySelectionBinding, Det
                 schoolData = schoolsData!!,
                 geofencingRadius = geofencingRadius,
                 listener = object : GeofencingHelper.SetMatchLocationListener {
-                    override fun onLocationRangeMatched() {
+                    override fun onLocationRangeMatched(distance: Float) {
                         stopLocationUpdates()
                         hideLocationDialog()
                         performAction()
                     }
 
-                    override fun onLocationOutOfRange() {
+                    override fun onLocationOutOfRange(distance: Float) {
                         stopLocationUpdates()
                         hideLocationDialog()
                         showOutOfRangePrompt()

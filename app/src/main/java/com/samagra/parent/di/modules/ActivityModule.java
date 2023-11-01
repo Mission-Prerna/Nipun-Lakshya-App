@@ -12,6 +12,7 @@ import org.odk.collect.android.contracts.IFormManagementContract;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.migration.DisableInstallInCheck;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -20,6 +21,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * available for DI.
  */
 @Module
+@DisableInstallInCheck
 public class ActivityModule {
 
     private Activity activity;

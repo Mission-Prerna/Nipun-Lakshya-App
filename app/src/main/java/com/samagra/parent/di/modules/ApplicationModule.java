@@ -13,8 +13,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.migration.DisableInstallInCheck;
 
 @Module
+@DisableInstallInCheck
 public class ApplicationModule {
 
     private final MainApplication mainApplication;

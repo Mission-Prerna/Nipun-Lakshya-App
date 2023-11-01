@@ -3,12 +3,18 @@ package com.samagra.commons
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.google.gson.Gson
+import com.samagra.commons.constants.Constants
 import com.samagra.commons.constants.UserConstants
-import org.json.JSONObject
+import com.samagra.commons.models.Result
 
 object AppPreferences {
 
     private lateinit var prefs: SharedPreferences
+
+    private val gson by lazy { Gson() }
+
+    private var savedMentor: Result? = null
 
     fun init(ctx: Context) {
         prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
@@ -51,13 +57,21 @@ object AppPreferences {
         return prefs.getString(PreferenceKeys.CHAT_BOT_DETAILS, "[]") ?: "[]"
     }
 
-    fun getUserAuth() = prefs.getString("auth_token_jwt", "") ?: ""
-    fun getUserMobile() = prefs.getString("mentorDetail", "{}")?.let { JSONObject(it) }
-        ?.getString("phone_no") ?: ""
+    fun getUser(): Result? {
+        val savedMentorString = prefs.getString("mentorDetail", "")
+        return try {
+            savedMentor = gson.fromJson(savedMentorString, Result::class.java)
+            savedMentor
+        } catch (t: Throwable) {
+            null
+        }
+    }
 
-    fun getUserId() =  try {
-        prefs.getString("mentorDetail", "{}")?.let { JSONObject(it) }
-            ?.getString("id") ?: ""
+    fun getUserAuth() = prefs.getString("auth_token_jwt", "") ?: ""
+    fun getUserMobile() = getUser()?.phone_no ?: ""
+
+    fun getUserId() = try {
+        getUser()?.id ?: ""
     } catch (e: Exception) {
         ""
     }
@@ -79,5 +93,9 @@ object AppPreferences {
         }
     }
 
-    fun getSelectedUserType() = prefs.getString(UserConstants.SELECTED_USER, "");
+    fun getSelectedUserType() = prefs.getString(UserConstants.SELECTED_USER, "")
+
+    fun getUserBearer() = prefs.getString("auth_token_jwt", "")?.let {
+        Constants.BEARER_ + it
+    } ?: ""
 }

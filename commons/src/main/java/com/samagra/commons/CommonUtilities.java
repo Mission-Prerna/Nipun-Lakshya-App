@@ -14,6 +14,7 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -24,6 +25,9 @@ import com.google.firebase.crashlytics.CustomKeysAndValues;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.samagra.commons.utils.NetworkStateManager;
 import com.samagra.grove.logging.Grove;
+
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -108,6 +112,11 @@ public class CommonUtilities {
         }
     }
 
+    public static int getScreenWidth(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (int)(displayMetrics.widthPixels / displayMetrics.density);
+    }
+
     public static String createUUID() {
         return uuid4().toString();
     }
@@ -122,5 +131,12 @@ public class CommonUtilities {
         inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
     }
 
+    public static long getTimeDifferenceMilis(long startTime, long endTime) {
+        return endTime - startTime;
+    }
 
+    public static String selectRandomId(List<String> list) {
+        Random random = new Random();
+        return list.get(random.nextInt(list.size()));
+    }
 }

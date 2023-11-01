@@ -7,12 +7,14 @@ import com.samagra.parent.ui.splash.SplashPresenter;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.hilt.migration.DisableInstallInCheck;
 
 /**
  * This module is similar to previous ones, it just uses Binds instead of Provides for better performance
  * Using Binds generates a lesser number of files during build times.
  */
 @Module
+@DisableInstallInCheck
 public abstract class ActivityAbstractProviders {
 
     @Binds

@@ -19,17 +19,16 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface AssessmentService {
     @GET("sendOTP")
-    @Retry(retryPolicy = RetryPolicyType.linear, retryCount = 3)
     Observable<ApiResponseModel<Status>> sendOtp(@Query("phone") String phoneNo,
                                                  @Query("errorMessage") String errorMessage,
                                                  @Header("x-application-id") String applicationId);
 
     @GET("verifyOTP")
-    @Retry(retryPolicy = RetryPolicyType.linear, retryCount = 3)
     Observable<ApiResponseModel<Status>> verifyOtp(
             @Query("phone") String phoneNo,
             @Query("otp") String otp
@@ -45,8 +44,14 @@ public interface AssessmentService {
     Call<Response<JsonElement>> insertVisitsResultsSync(@Header("authorization") String apiKey,
                                                         @Body List<SubmitResultsModel> finalResult);
 
+    @POST("assessment-visit-results")
+    Call<Void> postSubmissions(@Header("authorization") String apiKey,
+                               @Body List<com.data.models.submissions.SubmitResultsModel> finalResult);
+
     @POST("assessment-survey-results")
-    @Retry(retryPolicy = RetryPolicyType.linear, retryCount = 3)
     Call<Response<JsonElement>> insertSurvey(@Header("authorization") String apiKey,
-                                        @Body List<SurveyModel> survey);
+                                             @Body List<SurveyModel> survey);
+
+    @POST("/api/school/{udise}/result/calculate")
+    Call<Void> postSchoolSubmission(@Header("authorization") String apiKey, @Path("udise") Long udise, @Query("cycle_id") int cycleId);
 }

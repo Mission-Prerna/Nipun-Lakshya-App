@@ -747,4 +747,5 @@
     <string name="send_sms_titile">Send SMS</string>
     <string name="confirm">बाहर ले जाएँ</string>
     <string name="quit_dialog_label">क्या आप आकलन समाप्त करना चाहते हैं?</string>
+    <string name="data_save_failed">Data Save Failed</string>
 </resources>

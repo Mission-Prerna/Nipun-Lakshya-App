@@ -1,27 +1,26 @@
 package com.samagra.parent.ui.faq
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.samagra.ancillaryscreens.utils.observe
-import com.samagra.commons.constants.Constants
 import com.samagra.commons.basemvvm.BaseActivity
+import com.samagra.commons.constants.Constants
 import com.samagra.commons.utils.CommonWebViewActivity
 import com.samagra.parent.BR
 import com.samagra.parent.R
-import com.samagra.parent.ViewModelProviderFactory
 import com.samagra.parent.data.KnowledgeResourceData
 import com.samagra.parent.databinding.ActivityHelpFaqBinding
-import com.samagra.parent.ui.DataSyncRepository
 import com.samagra.parent.ui.assessmenthome.AssessmentHomeVM
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class HelpFaqActivity : BaseActivity<ActivityHelpFaqBinding, AssessmentHomeVM>(),
     RecyclerResourcesItemListener {
     private lateinit var helpFaqJson: String
@@ -33,13 +32,8 @@ class HelpFaqActivity : BaseActivity<ActivityHelpFaqBinding, AssessmentHomeVM>()
     override fun layoutRes() = R.layout.activity_help_faq
 
     override fun getBaseViewModel(): AssessmentHomeVM {
-        val setupRepository = DataSyncRepository()
-        val viewModelProviderFactory =
-            ViewModelProviderFactory(this.application, setupRepository)
-        return ViewModelProvider(
-            this,
-            viewModelProviderFactory
-        )[AssessmentHomeVM::class.java]
+        val viewModel: AssessmentHomeVM by viewModels()
+        return viewModel
     }
 
     override fun getBindingVariable() = BR.assessmentHomeVm

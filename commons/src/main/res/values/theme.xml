@@ -3,4 +3,11 @@
     <style name="PermissionAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <style name="ProgressDialogStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
 </resources>

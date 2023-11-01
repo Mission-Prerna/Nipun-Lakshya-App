@@ -1,13 +1,10 @@
 package com.chatbot
 
-import android.annotation.SuppressLint
-import android.app.DownloadManager
 import android.content.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
@@ -18,14 +15,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.deeplinkdispatch.DeepLink
 import com.chatbot.databinding.ActivityChatbotBinding
-import com.google.android.material.snackbar.Snackbar
 import com.samagra.commons.constants.DeeplinkConstants
 import com.samagra.commons.constants.DeeplinkConstants.Queries.BOT_ID
 import com.samagra.commons.posthog.*
 import com.samagra.commons.posthog.data.Cdata
 import com.samagra.commons.posthog.data.Edata
 import timber.log.Timber
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -44,35 +39,32 @@ class ChatBotActivity : AppCompatActivity() {
 
     private var backClickedByUserOnce = false
 
-    private val downloadManager by lazy { getSystemService(DOWNLOAD_SERVICE) as DownloadManager }
-
-    private var downloadTriggeredFor = DownloadableType.NONE
-
-    private val onCompleteBroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(ctxt: Context?, intent: Intent?) {
-            Timber.d("onReceive: onComplete")
-            handleDownloadComplete()
-        }
-    }
+    //Downloads
+    private val downloadedFiles by lazy { mutableMapOf<String, Uri>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatbotBinding.inflate(layoutInflater)
         setContentView(binding.root)
-      //  preventNonTeacherAccess()
         startLoading()
         logViewEvent()
-
-        registerReceiver(
-            onCompleteBroadcastReceiver,
-            IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-        )
     }
 
-    private fun preventNonTeacherAccess() {
-        if (chatVM.isAccessAllowedToUser().not()) {
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return false
+    }
+
+    override fun onBackPressed() {
+        backClickedByUserOnce = true
+        if (botListInFocus) {
             finish()
+            return
+        } else if (binding.webView.canGoBack()) {
+            binding.webView.goBack()
+            return
         }
+        super.onBackPressed()
     }
 
     @JavascriptInterface
@@ -136,32 +128,69 @@ class ChatBotActivity : AppCompatActivity() {
     }
 
     @JavascriptInterface
-    fun onImageDownload(botId: String, imageUrl: String) {
-        Timber.d("onImageDownload: bot: $botId, url: $imageUrl")
-        triggerDownload(
-            botId = botId,
-            downloadableType = DownloadableType.IMAGE,
-            url = imageUrl
-        )
+    fun onConvStarted(botId: String, timeinstance: String) {
+        Timber.d("onConvStarted: $botId, $timeinstance")
+        chatVM.onConversationStarted(botId)
     }
 
     @JavascriptInterface
-    fun onVideoDownload(botId: String, videoUrl: String) {
-        Timber.d("onVideoDownload: bot: $botId, url: $videoUrl")
-        triggerDownload(
-            botId = botId,
-            downloadableType = DownloadableType.VIDEO,
-            url = videoUrl
+    fun isAssetDownloaded(
+        messageId: String,
+        assetId: String,
+        url: String,
+        type: String
+    ): Boolean {
+        Timber.d("isAssetDownloaded: messageID: $messageId, assetId: $assetId, url: $url, type: $type")
+        val downloadedUri = chatVM.getAssetUri(
+            context = this,
+            url = url,
+            type = DownloadableType.from(type)
         )
+        return if (downloadedUri != null) {
+            downloadedFiles[assetId] = downloadedUri
+            true
+        } else {
+            false
+        }
     }
 
     @JavascriptInterface
-    fun onPdfDownload(botId: String, pdfUrl: String) {
-        Timber.d("onPdfDownload: bot: $botId, url: $pdfUrl")
-        triggerDownload(
-            botId = botId,
-            downloadableType = DownloadableType.DOC,
-            url = pdfUrl
+    fun onAssetClicked(
+        messageId: String,
+        assetId: String,
+        url: String,
+        type: String
+    ) {
+        Timber.d("onAssetClicked: messageID: $messageId, assetId: $assetId, url: $url, type: $type")
+        val downloadType = DownloadableType.from(type)
+        val downloadedFileName = downloadedFiles[assetId]
+        val eventName: String
+        if (downloadedFileName != null) {
+            openAsset(
+                asset = downloadedFileName,
+                type = downloadType
+            )
+            eventName = EVENT_CHATBOT_MEDIA_VIEWED
+        } else {
+            onMainThread {
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            chatVM.downloadAsset(
+                context = this,
+                assetId = assetId,
+                url = url,
+                type = downloadType
+            )
+            eventName = EVENT_CHATBOT_MEDIA_DOWNLOADED
+        }
+        logPostHogEvent(
+            eventName = eventName,
+            eventType = EVENT_TYPE_USER_ACTION,
+            eventPropertiesMap = mapOf(
+                "assetId" to assetId,
+                "messageId" to messageId
+            ),
+            edataType = TYPE_CLICK
         )
     }
 
@@ -185,41 +214,50 @@ class ChatBotActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return false
-    }
-
-    override fun onBackPressed() {
-        backClickedByUserOnce = true
-        if (botListInFocus) {
-            finish()
-            return
-        } else if (binding.webView.canGoBack()) {
-            binding.webView.goBack()
-            return
-        }
-        super.onBackPressed()
-    }
-
     private fun startLoading() {
         updateWebviewSettings()
         attachClientToWebview()
+        val userConfiguredBots = chatVM.userConfiguredBots()
+        val userStartedBots = chatVM.userStartedBots()
         addListeners()
-        chatVM.fetchBots(this)
+        if (userConfiguredBots.isEmpty() || userStartedBots.isEmpty()) {
+            chatVM.fetchConfiguredBots()
+        } else {
+            loadChatbotInWebview(
+                userConfiguredBots = userConfiguredBots,
+                userStartedBots = userStartedBots
+            )
+        }
     }
 
     private fun addListeners() {
-        chatVM.botsLiveData.observe(this) {
-            if (it.isNullOrEmpty()) {
-                Toast.makeText(
-                    this,
-                    getString(R.string.failed_load_bot),
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
-            } else {
-                loadChatbotInWebview(it)
+        Timber.d("addListeners: parent")
+        chatVM.botsLiveData.observe(this) { state ->
+            Timber.d("addListeners: $state")
+            when (state) {
+                is ChatbotListingState.Failure -> {
+                    Timber.d("addListeners: failure: $state")
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(
+                        this,
+                        getString(state.reason),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (state.destructive) finish()
+                }
+
+                is ChatbotListingState.Success -> loadChatbotInWebview(
+                    userConfiguredBots = state.userConfiguredBots,
+                    userStartedBots = state.userStartedBots
+                )
+
+                is ChatbotListingState.OpenAsset -> {
+                    downloadedFiles[state.assetId] = state.fileToOpen
+                    openAsset(
+                        asset = state.fileToOpen,
+                        type = state.type
+                    )
+                }
             }
         }
     }
@@ -278,7 +316,12 @@ class ChatBotActivity : AppCompatActivity() {
 
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 Timber.d("shouldOverrideUrlLoading: $url")
-                binding.webView.loadUrl(url)
+                val isWebLink = chatVM.isWebLink(url)
+                if (isWebLink.first && isWebLink.second.isNullOrEmpty().not()) {
+                    openLinkInBrowser(isWebLink.second!!)
+                } else {
+                    binding.webView.loadUrl(url)
+                }
                 return true
             }
 
@@ -296,100 +339,42 @@ class ChatBotActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadChatbotInWebview(botIds: String) {
+    private fun loadChatbotInWebview(
+        userConfiguredBots: List<String>,
+        userStartedBots: List<String>
+    ) {
         val mimeType = "text/html"
         val encoding = "utf-8"
-        val injection = chatVM.getInjection(botToFocus, botIds)
+        val injection = chatVM.getInjection(
+            botToFocus = botToFocus,
+            userConfiguredBots = userConfiguredBots,
+            userStartedBots = userStartedBots
+        )
         Timber.d("loadChatbotInWebview: inject: $injection")
         binding.webView.loadDataWithBaseURL(
-            chatVM.chatbotBaseUrl, injection, mimeType, encoding, null
+            chatVM.chatbotIndexUrl, injection, mimeType, encoding, null
         )
     }
 
-    private fun triggerDownload(botId: String, downloadableType: DownloadableType, url: String) {
+    //Assets
+    private fun openAsset(asset: Uri, type: DownloadableType) {
         onMainThread {
-            Timber.d("triggerDownload: $url")
-            try {
-                val toastTitle = when (downloadableType) {
-                    DownloadableType.NONE -> R.string.downloading
-                    DownloadableType.DOC -> R.string.downloading_doc
-                    DownloadableType.VIDEO -> R.string.downloading_video
-                    DownloadableType.IMAGE -> R.string.downloading_image
-                }
-                Toast.makeText(this, getString(toastTitle), Toast.LENGTH_SHORT).show()
-                binding.progressBar.visibility = View.VISIBLE
-                downloadTriggeredFor = downloadableType
-                val fileExtension = url
-                    .substringBefore(delimiter = "?")
-                    .substringAfterLast(delimiter = '.')
-                Timber.d("triggerDownload: extension: $fileExtension")
-                val fileNamePrefix = when (downloadableType) {
-                    DownloadableType.NONE -> "nl_download"
-                    DownloadableType.DOC -> "nl_doc_download"
-                    DownloadableType.VIDEO -> "nl_video_download"
-                    DownloadableType.IMAGE -> "nl_image_download"
-                }
-                val fileName = "${fileNamePrefix}_${dateString()}.$fileExtension"
-                Timber.d("triggerDownload filename: $fileName")
-                val request = DownloadManager.Request(Uri.parse(url))
-                    .setTitle(fileName)
-                    .setDescription("Downloading")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
-                    .setAllowedOverMetered(true)
-                downloadManager.enqueue(request)
-                logPostHogEvent(
-                    eventName = EVENT_CHATBOT_MEDIA_DOWNLOADED,
-                    eventType = EVENT_TYPE_USER_ACTION,
-                    eventPropertiesMap = mapOf(
-                        BOT_ID to botId,
-                        "type" to downloadableType.name
-                    ),
-                    edataType = TYPE_CLICK
-                )
-            } catch (t: Throwable) {
-                binding.progressBar.visibility = View.GONE
-                Toast.makeText(this, getString(R.string.failed_download), Toast.LENGTH_SHORT)
-                    .show()
-                Timber.e(t, "triggerDownload: ")
-            }
+            binding.progressBar.visibility = View.GONE
+            triggerOpen(asset, type.mimeType)
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun dateString() = SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(Date())
-
-    private fun handleDownloadComplete() {
-        binding.progressBar.visibility = View.GONE
-        val msg = when (downloadTriggeredFor) {
-            DownloadableType.NONE -> R.string.saved_to_downloads
-            DownloadableType.DOC -> R.string.document_saved
-            DownloadableType.VIDEO -> R.string.video_saved
-            DownloadableType.IMAGE -> R.string.image_saved
+    private fun triggerOpen(asset: Uri, type: String) {
+        Timber.d("openDoc: opendoc $asset $type")
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(asset, type)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        try {
+            startActivity(intent)
+        } catch (t: Throwable) {
+            Toast.makeText(this, getString(R.string.no_app_found), Toast.LENGTH_SHORT).show()
         }
-        showSnack(
-            message = getString(msg),
-            action = getString(R.string.view),
-            callback = ::showUserDownloads
-        )
-    }
-
-    private fun showUserDownloads() {
-        startActivity(Intent(DownloadManager.ACTION_VIEW_DOWNLOADS))
-    }
-
-    private fun showSnack(message: String, action: String, callback: () -> Unit) {
-        Snackbar
-            .make(
-                binding.root,
-                message,
-                Snackbar.LENGTH_LONG
-            )
-            .setAction(
-                action
-            ) {
-                callback.invoke()
-            }.show()
     }
 
     private fun onMainThread(function: () -> Unit) {
@@ -440,10 +425,28 @@ class ChatBotActivity : AppCompatActivity() {
             properties = properties
         )
     }
+
+    private fun openLinkInBrowser(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
 }
 
-enum class DownloadableType {
-    NONE, IMAGE, DOC, VIDEO
+enum class DownloadableType(val mimeType: String) {
+    NONE("plain/text"),
+    IMAGE("image/*"),
+    DOC("application/pdf"),
+    VIDEO("video/*");
+
+    companion object {
+        fun from(type: String): DownloadableType {
+            return when (type.uppercase()) {
+                IMAGE.name -> IMAGE
+                VIDEO.name -> VIDEO
+                DOC.name -> DOC
+                else -> NONE
+            }
+        }
+    }
 }
 
 private fun Bundle?.toStringMapSet(): Map<String, String> {

@@ -19,8 +19,11 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.assessment.flow.workflowengine.odk.AssessmentsFormCommunicator;
 import com.chatbot.model.ChatbotUrlResponseObject;
 import com.chuckerteam.chucker.api.ChuckerInterceptor;
+import com.data.db.DbHelper;
+import com.data.db.NLDatabase;
 import com.example.assets.uielements.CustomMessageDialog;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
@@ -34,6 +37,7 @@ import com.samagra.ancillaryscreens.AncillaryScreensDriver;
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl;
 import com.samagra.ancillaryscreens.di.FormManagementCommunicator;
 import com.samagra.commons.AppPreferences;
+import com.samagra.commons.AppProperties;
 import com.samagra.commons.CommonUtilities;
 import com.samagra.commons.EventBus;
 import com.samagra.commons.ExchangeObject;
@@ -77,6 +81,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.HiltAndroidApp;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -95,6 +102,7 @@ import timber.log.Timber;
  * @author Pranav Sharma
  * @see MainApplication
  */
+@HiltAndroidApp
 public class MyApplication extends Application implements MainApplication, LifecycleObserver, LoggableApplication {
 
     private static MyApplication app;
@@ -105,6 +113,9 @@ public class MyApplication extends Application implements MainApplication, Lifec
     private EventBus rxEventBus = null;
     private static CompositeDisposable compositeDisposable = new CompositeDisposable();
     public static boolean isOnline = true;
+
+    @Inject
+    NLDatabase nlDatabase;
 
     /**
      * All the external modules must be initialised here. This includes any modules that have an init
@@ -138,6 +149,7 @@ public class MyApplication extends Application implements MainApplication, Lifec
                     }
                 }, this, R.drawable.ic_splash, R.style.LoginTheme,
                 R.style.FormEntryActivityTheme, R.style.BaseAppTheme_SettingsTheme_Dark, Long.MAX_VALUE);
+        DbHelper.INSTANCE.setDb(nlDatabase);
         setupRemoteConfig();
         setupActivityLifecycleListeners();
         InternetMonitor.init(this);
@@ -152,6 +164,7 @@ public class MyApplication extends Application implements MainApplication, Lifec
 //        UpdateDriver.init(this);
         rxEventBus = new EventBus();
         registerEventsTOGetNetworkStates();
+        AppProperties.INSTANCE.setVersions(BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME);
         Network.Companion.init(new ModuleDependency() {
             @NotNull
             @Override
@@ -220,6 +233,7 @@ public class MyApplication extends Application implements MainApplication, Lifec
         Grove.d("Initialising Form Management Module >>>>");
         ComponentManager.registerFormManagementPackage(new FormManagementSectionInteractor());
         FormManagementCommunicator.setContract(ComponentManager.iFormManagementContract);
+        AssessmentsFormCommunicator.setContract(ComponentManager.iFormManagementContract);
         Grove.d("Form Management Module initialised >>>>");
     }
 
@@ -465,12 +479,18 @@ public class MyApplication extends Application implements MainApplication, Lifec
                 : firebaseRemoteConfig.getString(RemoteConfigUtils.API_BASE_URL);
         String hasuraUrl = BuildConfig.DEBUG ? BuildConfig.STAGING_HASURA_URL
                 : firebaseRemoteConfig.getString(RemoteConfigUtils.HASURA_SERVER_BASE_URL);
-        /*String loginServiceUrl = firebaseRemoteConfig.getString(USER_SERVICE_BASE_URL);
+        String chatbotUrlString = BuildConfig.DEBUG ? BuildConfig.DEFAULT_CHATBOT_URLS
+                : firebaseRemoteConfig.getString(RemoteConfigUtils.CHATBOT_URLS);
+
+        /*String loginServiceUrl = firebaseRemoteConfig.getString(LOGIN_SERVICE_BASE_URL);
         String appServiceUrl = firebaseRemoteConfig.getString(RemoteConfigUtils.API_BASE_URL);
-        String hasuraUrl = firebaseRemoteConfig.getString(Constants.HASURA_SERVER_BASE_URL);*/
+        String hasuraUrl = firebaseRemoteConfig.getString(RemoteConfigUtils.HASURA_SERVER_BASE_URL);
+        String chatbotUrlString = firebaseRemoteConfig.getString(RemoteConfigUtils.CHATBOT_URLS);*/
+
         Timber.d("setupNetworkConfig: loginServiceUrl: %s", loginServiceUrl);
         Timber.d("setupNetworkConfig: appServiceUrl: %s", appServiceUrl);
         Timber.d("setupNetworkConfig: hasuraUrl: %s", hasuraUrl);
+        Timber.d("setupNetworkConfig: chatbotUrls: %s", chatbotUrlString);
 
         ChuckerInterceptor chuckerInterceptor = new ChuckerInterceptor(this);
 
@@ -485,7 +505,7 @@ public class MyApplication extends Application implements MainApplication, Lifec
         Network.Companion.addNetworkConfig(graphqlProdConfig);
 
         ChatbotUrlResponseObject chatbotUrlResponseObject = ChatbotUrlResponseObject.fromJson(
-                firebaseRemoteConfig.getString(RemoteConfigUtils.CHATBOT_URLS),
+                chatbotUrlString,
                 new Gson()
         );
         NetworkConfig uciTelemetryConfig = new NetworkConfig.Builder()
@@ -511,6 +531,8 @@ public class MyApplication extends Application implements MainApplication, Lifec
         ArrayList<Interceptor> appServiceInterceptors = new ArrayList<>();
         appServiceInterceptors.add(appHeadersInterceptor);
         appServiceInterceptors.add(chuckerInterceptor);
+        // TODO :: Inject authorization via header and remove from api method calls
+//        appServiceInterceptors.add(new HasuraAuthorizationInterceptor());
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BASIC);

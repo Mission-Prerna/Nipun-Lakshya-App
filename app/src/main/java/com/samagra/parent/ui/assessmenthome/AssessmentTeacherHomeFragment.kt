@@ -5,9 +5,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.assessment.schoolhistory.SchoolHistoryActivity
+import com.assessment.studentselection.StudentSelectionActivity
+import com.chatbot.BotIconState
 import com.chatbot.ChatBotActivity
+import com.chatbot.ChatBotVM
+import com.data.helper.ObjectConvertor.toSchool
 import com.google.android.gms.location.*
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.ancillaryscreens.utils.observe
@@ -18,22 +27,23 @@ import com.samagra.commons.constants.Constants
 import com.samagra.commons.models.Result
 import com.samagra.commons.models.schoolsresponsedata.SchoolsData
 import com.samagra.commons.posthog.*
+import com.samagra.commons.posthog.data.Cdata
 import com.samagra.commons.posthog.data.Edata
 import com.samagra.commons.posthog.data.Object
-import com.samagra.commons.utils.RemoteConfigUtils
-import com.samagra.commons.utils.isChatBotEnabled
 import com.samagra.grove.logging.Grove
 import com.samagra.parent.*
 import com.samagra.parent.R
 import com.samagra.parent.authentication.AuthenticationActivity
 import com.samagra.parent.databinding.FragmentAssessmentTeacherHomeBinding
 import com.samagra.parent.ui.*
-import com.samagra.parent.ui.detailselection.DetailsSelectionActivity
+import com.samagra.parent.ui.assessmenthome.states.TeacherInsightsStates
 import com.samagra.parent.ui.logout.LogoutUI
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_assessment_teacher_home.*
 import org.odk.collect.android.utilities.ToastUtils
-import timber.log.Timber
 import java.util.*
 
+@AndroidEntryPoint
 class AssessmentTeacherHomeFragment :
     BaseFragment<FragmentAssessmentTeacherHomeBinding, AssessmentHomeVM>() {
 
@@ -44,15 +54,14 @@ class AssessmentTeacherHomeFragment :
     private var dialogShowing: Boolean = false
     private var dialogBuilder: AlertDialog? = null
     private val prefs: CommonsPrefsHelperImpl by lazy { initPreferences() }
+    private lateinit var insightsRecyclerView: RecyclerView
+    private lateinit var insightsAdapter: TeacherInsightsAdapter
+
+    private val chatVM by viewModels<ChatBotVM>()
 
     override fun getBaseViewModel(): AssessmentHomeVM {
-        val syncRepository = DataSyncRepository()
-        val viewModelProviderFactory =
-            ViewModelProviderFactory(activity!!.application, syncRepository)
-        return ViewModelProvider(
-            activity!!,
-            viewModelProviderFactory
-        )[AssessmentHomeVM::class.java]
+        val hiltViewModel: AssessmentHomeVM by activityViewModels()
+        return hiltViewModel
     }
 
     override fun getBindingVariable() = BR.assessmentHomeVm
@@ -61,32 +70,36 @@ class AssessmentTeacherHomeFragment :
         super.onViewCreated(view, savedInstanceState)
         getDataFromArgument()
         setObservers()
-        callApis(true)
         setupChatBotFlow()
         setupOverViewUI()
         setListeners()
+        initRecyclerView()
+        viewModel.updateOfflineData(schoolsData?.udise)
+    }
+
+    private fun initRecyclerView(){
+        insightsRecyclerView = binding.recyclerView
+        insightsAdapter = TeacherInsightsAdapter()
+        insightsRecyclerView.adapter = insightsAdapter
+        insightsRecyclerView.layoutManager = LinearLayoutManager(context)
     }
 
     private fun setupChatBotFlow() {
-        binding.botFab.visibility = View.GONE
-        var isChatBotVisibilityEnabled =
-            isChatBotEnabled(prefs.mentorDetailsData.actorId)
-        Timber.d("setupUI isChatbotEnabled: ${isChatBotVisibilityEnabled}")
-        if (isChatBotVisibilityEnabled == true) {
-            binding.botFab.visibility = View.VISIBLE
-        }
-        binding.botFab.setOnClickListener {
-            openBot()
-            logChatbotInitiate()
-        }
+        chatVM.identifyChatIconState()
     }
 
     private fun getDataFromArgument() {
         schoolsData = arguments?.getSerializable(AppConstants.INTENT_SCHOOL_DATA) as SchoolsData
+        if (UtilityFunctions.isNetworkConnected(context)) {
+            viewModel.getTeacherPerformanceInsights()
+            viewModel.fetchTeacherPerformanceInsights(schoolsData?.udise.toString())
+        } else {
+            viewModel.getTeacherPerformanceInsights()
+        }
     }
 
     private fun setBlockVisibility(visibility: Int) {
-        binding.groupBlock.visibility = visibility
+        binding.profileDetailsView.setBlockVisibility(visibility)
     }
 
     private fun callApis(enforce: Boolean) {
@@ -128,20 +141,76 @@ class AssessmentTeacherHomeFragment :
     private fun setSyncButtonUI() {
         binding.mtlBtnSetupAssessment.visibility = View.VISIBLE
         binding.mtlBtnSetupAssessment.minLines = 2
+        binding.mtlBtnSetupAssessment.setOnClickListener {
+            sendStartAssessmentEvent()
+            redirectToStudentSelectionScreen()
+        }
+        binding.mtlBtnSchoolAssessmentSummary.setOnClickListener {
+            sendSchoolHistoryEvent()
+            redirectToSchoolHistoryScreen()
+        }
     }
 
     private fun setObservers() {
         with(viewModel) {
-            observe(setupNewAssessmentClicked, ::handleSetupNewAssessment)
             observe(mentorDetailsSuccess, ::handleMentorDetails)
             observe(updateSync, ::handleSyncFlow)
-            observe(mentorOverViewData, ::handleOverviewData)
             observe(failure, ::handleFailure)
             observe(showToastResWithId, ::handleMessage)
             observe(showSyncBeforeLogout, ::handleSyncBeforeLogout)
             observe(logoutUserLiveData, ::handleLogoutUser)
             observe(gotoLogin, ::handleLogoutRedirection)
             observe(progressBarVisibility, ::handleProgressBarVisibility)
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.teacherInsightsState.collect {
+                when (it) {
+                    is TeacherInsightsStates.Loading -> {
+                        showProgressBar()
+                    }
+
+                    is TeacherInsightsStates.Error -> {
+                        hideProgressBar()
+                        handleFailure(it.t.message)
+                    }
+
+                    is TeacherInsightsStates.Success -> {
+                        hideProgressBar()
+                        insightsAdapter.updateItems(it.teacherInsightsStatesInfo)
+                    }
+                }
+            }
+        }
+        chatVM.iconVisibilityLiveData.observe(this, ::handeIconVisibilityState)
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.syncRequiredLiveData.observe(this@AssessmentTeacherHomeFragment) {
+                callApis(enforce = it)
+            }
+        }
+    }
+
+    private fun handeIconVisibilityState(state: BotIconState?) {
+        when (state) {
+            BotIconState.Hide -> {
+                binding.botFab.visibility = View.GONE
+            }
+
+            is BotIconState.Show -> {
+                showChatbot(
+                    animate = state.animate,
+                    botView = binding.botFab,
+                    botIconView = binding.botIcon,
+                    imageIconRes = R.drawable.bot,
+                    animationGifRes = R.drawable.animate_bot,
+                    intentOnClick = Intent(context, ChatBotActivity::class.java)
+                )
+            }
+
+            null -> {
+                //IGNORE
+            }
         }
     }
 
@@ -185,11 +254,6 @@ class AssessmentTeacherHomeFragment :
             }
         }
     }
-
-    private fun handleOverviewData(overview: HomeOverviewData?) {
-        setupOverViewUIWithData(overview)
-    }
-
     private fun handleMessage(textResId: Int?) {
         textResId?.let {
             ToastUtils.showShortToast(it)
@@ -198,87 +262,71 @@ class AssessmentTeacherHomeFragment :
 
     private fun initPreferences() = CommonsPrefsHelperImpl(context, "prefs")
 
-    private fun openBot() {
-        context!!.startActivity(Intent(context, ChatBotActivity::class.java))
-    }
-
-    private fun logChatbotInitiate() {
-        val properties = PostHogManager.createProperties(
-            page = DASHBOARD_SCREEN,
-            eventType = EVENT_TYPE_USER_ACTION,
-            eid = EID_INTERACT,
-            context = PostHogManager.createContext(
-                id = APP_ID,
-                pid = NL_APP_DASHBOARD,
-                dataList = ArrayList()
-            ),
-            eData = Edata(NL_DASHBOARD, TYPE_CLICK),
-            objectData = Object.Builder().id(BOT_INITIATION_BUTTON).type(OBJ_TYPE_UI_ELEMENT)
-                .build(),
-            PreferenceManager.getDefaultSharedPreferences(context)
-        )
-        PostHogManager.capture(
-            context = context!!,
-            eventName = EVENT_CHATBOT_INITIATE,
-            properties = properties
-        )
-    }
-
     private fun setupOverViewUI() {
-        binding.tvMonth.visibility = View.GONE
         binding.clProfileOverview.visibility = View.VISIBLE
         binding.clOverview.visibility = View.VISIBLE
         binding.titleMentorDetails.text = getString(R.string.teacher_profile)
-        with(binding.includeAssessmentOverview) {
-            cvBox3.visibility = View.GONE
-            tvCount1.text = Constants.ZERO
-            tvCount2.text = Constants.ZERO
-            tvNameBox1.text = getString(R.string.abhyas_today)
-            tvNameBox2.text = getString(R.string.abhyas_weekly)
-            tvTitleNormal.visibility = View.VISIBLE
-            tvTitleNormal.text = getString(R.string.no_of_abhyas_sessions)
-            titleAssessmentsField.text = getString(R.string.teacher_overview_title)
-        }
-        with(binding.includeGradeWiseOverview) {
-            cvBox3.visibility = View.GONE
-            tvCount1.text = Constants.ZERO
-            tvCount2.text = Constants.ZERO
-            tvNameBox1.text = getString(R.string.abhyas_today)
-            tvNameBox2.text = getString(R.string.abhyas_weekly)
-            titleAssessmentsField.visibility = View.GONE
-            tvTitleNormal.visibility = View.VISIBLE
-            tvTitleNormal.text = getString(R.string.no_of_nipun_students)
-        }
     }
 
-    private fun setupOverViewUIWithData(overview: HomeOverviewData?) {
-        with(binding.includeAssessmentOverview) {
-            tvCount1.text = overview?.teacherOverviewData?.assessmentsToday.toString()
-            tvCount2.text = overview?.teacherOverviewData?.assessmentTotal.toString()
+    private fun redirectToStudentSelectionScreen(){
+        val intent = Intent(context, StudentSelectionActivity::class.java)
+        if (schoolsData != null) {
+            intent.putExtra(AppConstants.INTENT_SCHOOL_DATA, schoolsData!!.toSchool())
+        } else {
+            Grove.e("Schools data is null and selected user is: ${prefs.selectedUser}")
         }
-        with(binding.includeGradeWiseOverview) {
-            tvCount1.text = overview?.teacherOverviewData?.nipunToday.toString()
-            tvCount2.text = overview?.teacherOverviewData?.nipunTotal.toString()
-        }
+        startActivity(intent)
     }
 
-    private fun handleSetupNewAssessment(@Suppress("UNUSED_PARAMETER") unit: Unit?) {
-        setPostHogEventSetupAssessment()
-        redirectToGradeSelectionScreen()
+    private fun redirectToSchoolHistoryScreen(){
+        val intent = Intent(context, SchoolHistoryActivity::class.java)
+        if (schoolsData != null) {
+            intent.putExtra(AppConstants.INTENT_SCHOOL_DATA, schoolsData)
+        } else {
+            Grove.e("Schools data is null and selected user is: ${prefs.selectedUser}")
+        }
+        startActivity(intent)
     }
 
-    private fun setPostHogEventSetupAssessment() {
+    private fun sendStartAssessmentEvent() {
+        val list = ArrayList<Cdata>()
+        val mentorDetailsFromPrefs = prefs.mentorDetailsData
+        mentorDetailsFromPrefs?.let {
+            list.add(Cdata("userId", "" + it.id))
+            list.add(Cdata("userType", "" + it.actorId))
+            list.add(Cdata("schoolId", "" + it.schoolId))
+            list.add(Cdata("districtName", "" + it.district_name))
+            list.add(Cdata("blockName", "" + it.block_town_name))
+        }
         val properties = PostHogManager.createProperties(
             page = DASHBOARD_SCREEN,
             eventType = EVENT_TYPE_USER_ACTION,
             eid = EID_INTERACT,
-            context = PostHogManager.createContext(APP_ID, NL_APP_DASHBOARD, ArrayList()),
+            context = PostHogManager.createContext(APP_ID, NL_APP_DASHBOARD, list),
             eData = Edata(NL_DASHBOARD, TYPE_CLICK),
             objectData = Object.Builder().id(SETUP_ASSESSMENT_BUTTON).type(OBJ_TYPE_UI_ELEMENT)
                 .build(),
             prefs = PreferenceManager.getDefaultSharedPreferences(context)
         )
-        PostHogManager.capture(activity!!, EVENT_SETUP_ASSESSMENT, properties)
+        PostHogManager.capture(activity!!, EVENT_HOME_SCREEN_START_ASSESSMENT, properties)
+    }
+    private fun sendSchoolHistoryEvent() {
+        val list = ArrayList<Cdata>()
+        val mentorDetailsFromPrefs = prefs.mentorDetailsData
+        mentorDetailsFromPrefs?.let {
+            list.add(Cdata("userId", "" + it.id))
+        }
+        val properties = PostHogManager.createProperties(
+            page = DASHBOARD_SCREEN,
+            eventType = EVENT_TYPE_USER_ACTION,
+            eid = EID_INTERACT,
+            context = PostHogManager.createContext(APP_ID, NL_APP_DASHBOARD, list),
+            eData = Edata(NL_DASHBOARD, TYPE_CLICK),
+            objectData = Object.Builder().id(SETUP_ASSESSMENT_BUTTON).type(OBJ_TYPE_UI_ELEMENT)
+                .build(),
+            prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        )
+        PostHogManager.capture(activity!!, EVENT_HOME_SCREEN_SCHOOL_HISTORY, properties)
     }
 
     private fun handleFailure(errorMessage: String?) {
@@ -286,6 +334,7 @@ class AssessmentTeacherHomeFragment :
     }
 
     private fun handleMentorDetails(result: Result?) {
+        binding.profileDetailsView.setViewModel(viewModel, false)
         val designation =
             MetaDataExtensions.getDesignationFromId(
                 result?.designation_id ?: 0,
@@ -304,6 +353,7 @@ class AssessmentTeacherHomeFragment :
     override fun onDestroy() {
         super.onDestroy()
         CompositeDisposableHelper.destroyCompositeDisposable()
+        binding.profileDetailsView.setBindingToNull()
     }
 
     private fun setRedirectionsOnIntent() {
@@ -326,16 +376,6 @@ class AssessmentTeacherHomeFragment :
             binding.swipeRefresh.isRefreshing = false
             hideProgressBar()
         }
-    }
-
-    private fun redirectToGradeSelectionScreen() {
-        val intent = Intent(activity!!, DetailsSelectionActivity::class.java)
-        if (schoolsData != null) {
-            intent.putExtra(AppConstants.INTENT_SCHOOL_DATA, schoolsData)
-        } else {
-            Grove.e("Schools data is null and selected user is: ${prefs.selectedUser}")
-        }
-        startActivity(intent)
     }
 
     companion object {

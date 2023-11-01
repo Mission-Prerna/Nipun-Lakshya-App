@@ -17,6 +17,7 @@ import org.odk.collect.android.contracts.IFormManagementContract;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.migration.DisableInstallInCheck;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -27,6 +28,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author Pranav Sharma
  */
 @Module
+@DisableInstallInCheck
 public class CommonsActivityModule {
 
     private Activity activity;

@@ -128,7 +128,7 @@
     <string name="pin_created_successfully">Pin created successfully!</string>
     <string name="must_create_pin">You must create pin to take assessments</string>
     <string name="create_pin_later">Create pin later</string>
-    <string name="trying_early">Already requested OTP! please retry in sometime!</string>
+    <string name="trying_early">कुछ समय बाद दोबारा प्रयास करें |</string>
     <string name="pin_update_error">Pin updation failure, Please try again!</string>
     <string name="error_message_send_otp">This mobile number is not registered.\nTo register on Prerna portal, please call the DC Training/Quality in BSA office or call helpline number.</string>
     <string name="otp_not_exist">Entered OTP does not exist!</string>

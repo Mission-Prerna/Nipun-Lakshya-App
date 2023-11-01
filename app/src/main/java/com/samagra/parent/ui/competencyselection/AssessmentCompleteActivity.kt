@@ -109,13 +109,7 @@ class AssessmentCompleteActivity : AppCompatActivity() {
             gotoFinalResult()
         }
         binding.includeToolbar.toolbar.setNavigationOnClickListener {
-            if (prefs.selectedUser.equals(AppConstants.USER_EXAMINER, true)
-                || prefs.saveSelectStateLedAssessment == AppConstants.DIET_MENTOR_STATE_LED_ASSESSMENT
-            ) {
-                redirectToFinalResultScreen(true)
-            } else {
-                gotoFinalResult()
-            }
+            onBackPressed()
         }
         binding.mtlBtn1.setOnClickListener {
             LogEventsHelper.addEventOnNextStudentSelection(
@@ -288,12 +282,12 @@ class AssessmentCompleteActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (prefs.selectedUser.equals(AppConstants.USER_EXAMINER,true)
             || prefs.saveSelectStateLedAssessment == AppConstants.DIET_MENTOR_STATE_LED_ASSESSMENT
         ) {
             redirectToFinalResultScreen(true)
         } else {
+            super.onBackPressed()
             gotoFinalResult()
         }
     }

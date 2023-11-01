@@ -15,4 +15,20 @@
     <string name="okay">ठीक है</string>
     <string name="unable_to_open_app_form_module_init_failure">Could not start app as Form Module couldn\'t be initialised properly.</string>
     <string name="please_enter_pin">Please Enter Pin</string>
+    <string name="choose_a_class"><u>कृपया एक कक्षा चुनें</u></string>
+    <string name="class_1">कक्षा 1</string>
+    <string name="class_2">कक्षा 2</string>
+    <string name="class_3">कक्षा 3</string>
+    <string name="month_january">जनवरी</string>
+    <string name="month_february">फरवरी</string>
+    <string name="month_march">मार्च</string>
+    <string name="month_april">अप्रैल</string>
+    <string name="month_may">मई</string>
+    <string name="month_june">जून</string>
+    <string name="month_july">जुलाई</string>
+    <string name="month_august">अगस्त</string>
+    <string name="month_september">सितम्बर</string>
+    <string name="month_october">अक्टूबर</string>
+    <string name="month_november">नवम्बर</string>
+    <string name="month_december">दिसम्बर</string>
 </resources>

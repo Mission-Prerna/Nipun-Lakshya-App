@@ -70,7 +70,7 @@
                                 android:paddingTop="6dp"
                                 android:paddingBottom="2dp"
                                 android:text="@string/mentor_profile"
-                                app:layout_constraintBottom_toTopOf="@id/tv_name"
+                                app:layout_constraintBottom_toTopOf="@id/profileDetailsView"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,84 +81,34 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginHorizontal="@dimen/margin_20dp"
-                                android:layout_marginTop="@dimen/margin_20dp"
                                 android:backgroundTint="@color/color_yellow"
+                                android:visibility="gone"
                                 app:cardCornerRadius="@dimen/radius_4dp"
-                                app:cardElevation="@dimen/cardview_default_elevation"
+                                app:cardElevation="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/title_mentor_details"
-                                tools:visibility="gone">
+                                tools:visibility="visible">
 
-                                <LinearLayout
-                                    android:id="@+id/ll_parent"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/bot_icon"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_marginTop="4dp"
+                                    android:paddingBottom="8dp"
+                                    android:scaleType="fitCenter"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/bot" />
 
-                                    <ImageView
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/bot"
-                                        app:civ_circle_background_color="@color/white"
-                                        tools:ignore="ContentDescription" />
-
-                                    <TextView
-                                        style="@style/text_title_style"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:layout_marginHorizontal="8dp"
-                                        android:gravity="center"
-                                        android:text="@string/chat_bot_text"
-                                        android:textSize="10sp" />
-                                </LinearLayout>
                             </androidx.cardview.widget.CardView>
 
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tv_name"
-                                style="@style/TextStyleAssessmentHome"
-                                android:layout_marginTop="10dp"
-                                android:text="@{@string/name(assessmentHomeVm.mentorDetailsSuccess.officer_name?? ``)}"
+                            <com.samagra.parent.ui.CommonHomeProfileDetailsView
+                                android:id="@+id/profileDetailsView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toStartOf="@id/bot_fab"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/title_mentor_details" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tv_designation"
-                                style="@style/TextStyleAssessmentHome"
-                                android:text="@{@string/designation(assessmentHomeVm.designation?? ``)}"
-                                app:layout_constraintEnd_toStartOf="@id/bot_fab"
-
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_name" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tv_district"
-                                style="@style/TextStyleAssessmentHome"
-                                android:text="@{@string/district(assessmentHomeVm.mentorDetailsSuccess.district_name?? ``)}"
-                                app:layout_constraintEnd_toStartOf="@id/bot_fab"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_designation" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tv_block"
-                                style="@style/TextStyleAssessmentHome"
-                                android:text="@{@string/block(assessmentHomeVm.mentorDetailsSuccess.block_town_name?? ``)}"
-                                app:layout_constraintEnd_toStartOf="@id/bot_fab"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_district" />
-
-
-                            <androidx.constraintlayout.widget.Group
-                                android:id="@+id/group_block"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                app:constraint_referenced_ids="tv_block" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 

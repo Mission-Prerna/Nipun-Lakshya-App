@@ -89,6 +89,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.migration.DisableInstallInCheck;
 import okhttp3.OkHttpClient;
 
 import static androidx.core.content.FileProvider.getUriForFile;
@@ -100,6 +101,7 @@ import static org.odk.collect.android.preferences.MetaKeys.KEY_INSTALL_ID;
  */
 @Module
 @SuppressWarnings("PMD.CouplingBetweenObjects")
+@DisableInstallInCheck
 public class AppDependencyModule {
 
     @Provides

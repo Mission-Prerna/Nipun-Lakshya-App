@@ -10,6 +10,9 @@
 package com.samagra.parent.helper
 
 import androidx.preference.PreferenceManager
+import com.data.models.mentordetails.HomeOverviewRemoteResponse
+import com.data.models.mentordetails.MentorDetailsRemoteResponse
+import com.data.models.mentordetails.MentorRemoteResponse
 import com.google.gson.Gson
 import com.morziz.network.config.ClientType
 import com.morziz.network.network.Network
@@ -20,9 +23,6 @@ import com.samagra.commons.MetaDataExtensions
 import com.samagra.commons.constants.Constants
 import com.samagra.commons.constants.UserConstants
 import com.samagra.commons.models.Result
-import com.samagra.commons.models.mentordetails.HomeOverviewRemoteResponse
-import com.samagra.commons.models.mentordetails.MentorDetailsRemoteResponse
-import com.samagra.commons.models.mentordetails.MentorRemoteResponse
 import com.samagra.commons.models.metadata.MetaDataRemoteResponse
 import com.samagra.commons.models.schoolsresponsedata.SchoolsData
 import com.samagra.commons.models.submitresultsdata.ResultsVisitData
@@ -36,11 +36,14 @@ import com.samagra.parent.MyApplication
 import com.samagra.parent.UtilityFunctions
 import com.samagra.parent.ui.assessmenthome.HomeOverviewData
 import com.samagra.parent.ui.getBearerAuthToken
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
 object MentorDataHelper {
@@ -49,15 +52,20 @@ object MentorDataHelper {
 
     private val gson by lazy { Gson() }
 
+    sealed class MetaDataState {
+        object OnFailure : MetaDataState()
+        class OnDataReceived(val response : MentorDetailsRemoteResponse) : MetaDataState()
+    }
+
     suspend fun fetchMentorData(
         enforce: Boolean = false,
         prefs: CommonsPrefsHelperImpl
-    ): StateFlow<Boolean?> {
-        val remoteResponseStatus: MutableStateFlow<Boolean?> = MutableStateFlow(null)
+    ): StateFlow<MetaDataState?> {
+        val remoteResponseStatus: MutableStateFlow<MetaDataState?> = MutableStateFlow(null)
         Timber.d("fetchMentorData: ")
         if (NetworkStateManager.instance?.networkConnectivityStatus != true) {
             Timber.d("fetchMentorData: no network")
-            remoteResponseStatus.emit(false)
+            remoteResponseStatus.emit(MetaDataState.OnFailure)
         }
         try {
             val responseMentor = CoroutineScope(Dispatchers.IO).async {
@@ -77,11 +85,11 @@ object MentorDataHelper {
                 parseMentorData(it.mentor, prefs)
                 parseSchoolsData(it.schoolList)
                 parseHomeOverviewData(it.homeOverview, prefs)
-                remoteResponseStatus.emit(true)
+                remoteResponseStatus.emit(MetaDataState.OnDataReceived(mentorData))
             }
         } catch (t: Exception) {
             Timber.e(t, "fetchMentorData error: %s", t.message)
-            remoteResponseStatus.emit(false)
+            remoteResponseStatus.emit(MetaDataState.OnFailure)
         }
         return remoteResponseStatus
     }
@@ -214,6 +222,7 @@ object MentorDataHelper {
         schoolList?.let {
             RealmStoreHelper.deleteSchools()
             RealmStoreHelper.insertSchools(it)
+
         }
         Timber.d("parseSchoolsData: end")
     }

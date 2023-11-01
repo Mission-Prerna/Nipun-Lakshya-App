@@ -38,8 +38,8 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorSecondary">@color/blue_2e3192</item>
         <item name="android:textColorPrimary">@color/blue_2e3192</item>
-<!--        <item name="android:textColorSecondary">@color/secondary_text_color</item>-->
-<!--        <item name="radioButtonStyle">@style/Widget.AppCompat.CompoundButton.RadioButton</item>-->
+        <!--        <item name="android:textColorSecondary">@color/secondary_text_color</item>-->
+        <!--        <item name="radioButtonStyle">@style/Widget.AppCompat.CompoundButton.RadioButton</item>-->
         <item name="colorPrimaryDark">@color/blue_2e3192</item>
         <item name="colorSecondaryVariant">@color/blue_2e3192</item>
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>
@@ -78,7 +78,7 @@
         <item name="android:textSize">@dimen/font_size_medium</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">viewStart</item>
-<!--        <item name="android:textAppearance">@style/</item>-->
+        <!--        <item name="android:textAppearance">@style/</item>-->
         <item name="boxStrokeColor">@color/color_primary</item>
         <item name="strokeWidth">2dp</item>
         <item name="errorTextColor">@color/color2</item>
@@ -109,7 +109,6 @@
     <dimen name="line_height_medium">17sp</dimen>
     <dimen name="line_height_large">22sp</dimen>
     <dimen name="line_height_extra_large">25sp</dimen>
-    <dimen name="height_button">50dp</dimen>
 
 
     <!--ALL BUTTON STYLES-->
@@ -134,14 +133,15 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
     <style name="ButtonStyleGrey" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:textColor">@color/buttonstyle1_text_color_selector</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
-<!--        <item name="backgroundTint">@color/light_grey</item>-->
+        <!--        <item name="backgroundTint">@color/light_grey</item>-->
         <item name="android:background">@drawable/your_disabled_drawable
         </item> <!--Made compatible with Android 4.4-->
         <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
@@ -156,7 +156,7 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:textColor">@color/buttonstyle2_text_color_selector</item>
         <item name="android:textSize">@dimen/font_size_small</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textAlignment">center</item>
         <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
         <item name="android:textStyle">bold</item>
@@ -174,7 +174,7 @@
         <item name="android:textSize">@dimen/font_size_extra_small</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
             @fraction/letter_spacing_medium
@@ -188,7 +188,7 @@
         <item name="android:textColor">@color/buttonstyle4_text_color</item>
         <item name="android:textSize">@dimen/font_size_small</item>
         <item name="android:textStyle">bold</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:background">@drawable/buttonstyle4_background_selector</item>
         <item name="android:focusable">true</item>
         <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
@@ -204,7 +204,7 @@
         <item name="android:textColor">@color/color_primary</item>
         <item name="android:textSize">@dimen/font_size_small</item>
         <item name="android:textStyle">bold</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:background">@drawable/buttonstyle4_background</item>
         <item name="android:focusable">true</item>
         <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
@@ -220,7 +220,7 @@
     <!--Use in Screen Titles-->
     <style name="LabelStyle1" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_medium</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -236,7 +236,7 @@
     <!--Use in TTB - message and Brand Name-->
     <style name="LabelStyle2" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -252,17 +252,19 @@
 
     <style name="LabelStyle3" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/font_size_medium</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">@fraction/letter_spacing_small</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_small
+        </item>
         <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_large</item>
         <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
     </style>
 
     <style name="LabelStyle4" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color_primary</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -279,7 +281,7 @@
     <!--TTB Confirmation : Grey Text-->
     <style name="LabelStyle5" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -292,10 +294,11 @@
     <!--Use in Alert Messages. Use in RN BCM alert Messages, Collection Not Found Messages-->
     <style name="LabelStyle6" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15.5sp</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">@fraction/letter_spacing_normal
+        <item name="android:letterSpacing" tools:targetApi="lollipop">
+            @fraction/letter_spacing_normal
         </item>
         <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_extra_large</item>
         <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
@@ -303,7 +306,7 @@
 
     <style name="LabelStyle16" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/font_size_medium</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -316,7 +319,7 @@
     <!--Collection Filter : Side Selector -->
     <style name="LabelStyle7" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color2</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15.5sp</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -328,7 +331,7 @@
 
     <style name="LabelStyle8" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color1</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_small</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -341,7 +344,7 @@
     <!--For error text in email and Password login-->
     <style name="LabelStyle9" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/color2</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_medium</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
@@ -354,7 +357,7 @@
     <!--Bottom Menu Item Text Style-->
     <style name="LabelStyle10" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/primary_text_color</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">
             @fraction/letter_spacing_medium
@@ -374,7 +377,7 @@
         <item name="android:textSize">@dimen/font_size_medium</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">viewStart</item>
-<!--        <item name="android:textAppearance">@style/Font1</item>-->
+        <!--        <item name="android:textAppearance">@style/Font1</item>-->
         <item name="android:paddingStart">4dp</item>
         <item name="android:paddingEnd">4dp</item>
         <item name="boxStrokeColor">@color/color_primary</item>
@@ -385,17 +388,17 @@
         <item name="android:paddingBottom">4dp</item>
     </style>
 
-        <!--ALL SPINNER STYLES-->
-        <style name="DropdownStyle1" parent="@style/Widget.AppCompat.Spinner">
-            <item name="android:textAlignment">textStart</item>
-<!--            <item name="android:textAppearance">@style/Font1</item>-->
-            <item name="android:paddingStart">16.5dp</item>
-            <item name="android:textColor">@color/color1</item>
-            <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
-            <item name="android:textSize">@dimen/font_size_medium</item>
-            <item name="android:background">@drawable/spinner_background</item>
-            <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
-        </style>
+    <!--ALL SPINNER STYLES-->
+    <style name="DropdownStyle1" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:textAlignment">textStart</item>
+        <!--            <item name="android:textAppearance">@style/Font1</item>-->
+        <item name="android:paddingStart">16.5dp</item>
+        <item name="android:textColor">@color/color1</item>
+        <item name="android:lineSpacingMultiplier">@fraction/line_spacing_medium</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
 
 
     <style name="PriorityBadgeRectangularTextViewStyle" parent="@style/Widget.MaterialComponents.TextView">
@@ -479,6 +482,10 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="text_report_heading_style" parent="@style/text_result_heading_style">
+        <item name="android:textSize">28sp</item>
+    </style>
+
     <style name="text_result_heading_extra_bold_style" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/orange_ed7d31</item>
         <item name="android:layout_width">wrap_content</item>
@@ -502,6 +509,23 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_student_name_report" parent="@style/text_count_style">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_student_subtext_report" parent="@style/text_count_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="text_header_style" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
@@ -569,6 +593,24 @@
 
     </style>
 
+
+    <style name="button_long_style_2" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:shadowColor">#8baaff</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_side_margin</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/blue_2e3192</item>
+
+    </style>
+
     <style name="style_selected_competency" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_width">0dp</item>
@@ -617,9 +659,5 @@
     <dimen name="text_size_home_count">30sp</dimen>
     <dimen name="back_btn_width">140dp</dimen>
     <dimen name="back_btn_height">50dp</dimen>
-    <dimen name="text_size_small">16sp</dimen>
-    <dimen name="text_size_extra_small">14sp</dimen>
-    <dimen name="margin_long_button">40dp</dimen>
-    <dimen name="margin_medium">8dp</dimen>
     <dimen name="height_button_thick">80dp</dimen>
 </resources>

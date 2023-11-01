@@ -1,6 +1,6 @@
 package com.samagra.parent.ui.assessmenthome
 
-import com.samagra.commons.models.mentordetails.TeacherOverviewData
+import com.data.models.mentordetails.TeacherOverviewData
 
 data class HomeOverviewData(
     var schoolsVisited: Int = 0,

@@ -40,15 +40,15 @@ object GeofencingHelper {
                 targetLongitude ?: 0.0
             )
         if (distance <= givenRange) {
-            listener.onLocationRangeMatched()
+            listener.onLocationRangeMatched(distance)
         } else {
-            listener.onLocationOutOfRange()
+            listener.onLocationOutOfRange(distance)
         }
     }
 
     interface SetMatchLocationListener {
-        fun onLocationRangeMatched()
-        fun onLocationOutOfRange()
+        fun onLocationRangeMatched(distance: Float)
+        fun onLocationOutOfRange(distance: Float)
 
         //Allow assessment if values are null
         fun onLocationLatLongNull()

@@ -38,7 +38,9 @@ class SyncRepository {
                 Timber.i("In Progress @ " + Date())
                 val helper = SyncingHelper()
                 var isSuccess = helper.syncAssessments(prefs)
+                isSuccess = helper.syncSubmissions(prefs) && isSuccess
                 isSuccess = helper.syncSurveys(prefs) && isSuccess
+                isSuccess = helper.syncSchoolSubmission(prefs) && isSuccess
                 Timber.i("IsSuccess : $isSuccess")
                 prefs.markDataSynced()
                 withContext(Dispatchers.Main) {

@@ -1,8 +1,8 @@
 package com.samagra.ancillaryscreens.data.model
 
 import com.samagra.ancillaryscreens.fcm.model.UpsertTokenRequest
-import com.samagra.commons.models.mentordetails.MentorDetailsRemoteResponse
-import com.samagra.commons.models.mentordetails.MentorRemoteResponse
+import com.data.models.mentordetails.MentorDetailsRemoteResponse
+import com.data.models.mentordetails.MentorRemoteResponse
 import com.samagra.commons.models.metadata.MetaDataRemoteResponse
 import retrofit2.http.*
 

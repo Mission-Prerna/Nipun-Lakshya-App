@@ -8,6 +8,12 @@
 
 package com.samagra.parent.helper
 
+import com.data.db.DbHelper
+import com.data.db.models.entity.Actor
+import com.data.db.models.entity.AssessmentType
+import com.data.db.models.entity.Competency
+import com.data.db.models.entity.Designation
+import com.data.db.models.entity.ReferenceIds
 import com.google.gson.Gson
 import com.morziz.network.config.ClientType
 import com.morziz.network.network.Network
@@ -15,6 +21,7 @@ import com.samagra.ancillaryscreens.data.model.RetrofitService
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
 import com.samagra.commons.MetaDataExtensions
 import com.samagra.commons.models.FormStructure
+import com.samagra.commons.models.chaptersdata.ChapterMapping
 import com.samagra.commons.models.metadata.CompetencyModel
 import com.samagra.commons.models.metadata.MetaDataRemoteResponse
 import com.samagra.commons.models.metadata.Subjects
@@ -24,12 +31,15 @@ import com.samagra.commons.utils.NetworkStateManager
 import com.samagra.commons.utils.RemoteConfigUtils
 import com.samagra.parent.ui.DataSyncRepository
 import com.samagra.parent.ui.getBearerAuthToken
-import com.samagra.commons.models.chaptersdata.ChapterMapping
 import io.realm.RealmList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
 object MetaDataHelper {
@@ -37,6 +47,8 @@ object MetaDataHelper {
     private val apiService by lazy { generateApiService() }
 
     private val gson by lazy { Gson() }
+
+    private val metadataDao by lazy { DbHelper.db.getMetadataDao() }
 
     suspend fun fetchMetaData(
         prefs: CommonsPrefsHelperImpl,
@@ -74,71 +86,166 @@ object MetaDataHelper {
         return remoteResponseStatus
     }
 
-    private fun parseAndStoreWorkflowReferenceIdData(
+    private suspend fun parseAndStoreWorkflowReferenceIdData(
         workflowRefIdListRemote: ArrayList<WorkflowRefIds>?,
         subjects: ArrayList<Subjects>?,
         prefs: CommonsPrefsHelperImpl
     ) {
+        workflowRefIdListRemote?.let { list ->
+            val workflowRefIdsList: MutableList<ReferenceIds> = mutableListOf()
+
+            withContext(Dispatchers.Default){
+                list.forEach { item ->
+                    workflowRefIdsList.add(
+                        ReferenceIds(
+                            competencyId = item.competencyId!!,
+                            grade = item.grade!!,
+                            isActive = item.isActive,
+                            refIds = item.refIds?.toMutableList() ?: mutableListOf(),
+                            subjectId = item.subjectId!!,
+                            type = item.type!!,
+                            assessmentTypeId = item.assessmentTypeId
+                        )
+                    )
+                }
+            }
+
+            withContext(Dispatchers.IO){
+                metadataDao.insertReferenceIds(workflowRefIdsList)
+            }
+        }
+
         val odkFormsSet = mutableSetOf<FormStructure>()
         val chapterMappingListRealm = ArrayList<ChapterMapping>()
-        workflowRefIdListRemote?.forEach { workFlowRefId ->
-            val chapterMappingData = ChapterMapping()
-            chapterMappingData.grade = workFlowRefId.grade ?: 0
-            chapterMappingData.subjectId = workFlowRefId.subjectId ?: 0
-            chapterMappingData.competencyId = workFlowRefId.competencyId.toString()
-            chapterMappingData.type = workFlowRefId.type
-            val realmList = RealmList<String>()
-            val refIdsList = workFlowRefId.refIds
-            refIdsList?.forEach { refId ->
-                realmList.add(refId)
-            }
-            chapterMappingData.refIds = realmList
-            chapterMappingData.assessmentTypeId = workFlowRefId.assessmentTypeId ?: 0
-            chapterMappingData.isActive = workFlowRefId.isActive ?: true
-            chapterMappingListRealm.add(chapterMappingData)
-            if (chapterMappingData.type.equals(CommonConstants.ODK)) {
-                val subject = subjects?.firstOrNull { subject ->
-                    subject.id == workFlowRefId.subjectId
-                }?.name ?: ""
-                val formName = "Grade " + workFlowRefId.grade + " - " + subject
-                workFlowRefId.refIds?.forEach { refId ->
-                    odkFormsSet.add(FormStructure(refId, formName, subject))
+
+        withContext(Dispatchers.Default){
+            workflowRefIdListRemote?.forEach { workFlowRefId ->
+                val chapterMappingData = ChapterMapping()
+                chapterMappingData.grade = workFlowRefId.grade ?: 0
+                chapterMappingData.subjectId = workFlowRefId.subjectId ?: 0
+                chapterMappingData.competencyId = workFlowRefId.competencyId.toString()
+                chapterMappingData.type = workFlowRefId.type
+                val realmList = RealmList<String>()
+                val refIdsList = workFlowRefId.refIds
+                refIdsList?.forEach { refId ->
+                    realmList.add(refId)
+                }
+                chapterMappingData.refIds = realmList
+                chapterMappingData.assessmentTypeId = workFlowRefId.assessmentTypeId ?: 0
+                chapterMappingData.isActive = workFlowRefId.isActive ?: true
+                chapterMappingListRealm.add(chapterMappingData)
+                if (chapterMappingData.type.equals(CommonConstants.ODK)) {
+                    val subject = subjects?.firstOrNull { subject ->
+                        subject.id == workFlowRefId.subjectId
+                    }?.name ?: ""
+                    val formName = "Grade " + workFlowRefId.grade + " - " + subject
+                    workFlowRefId.refIds?.forEach { refId ->
+                        odkFormsSet.add(FormStructure(refId, formName, subject))
+                    }
                 }
             }
         }
-        RealmStoreHelper.deleteChapterMapping()
-        RealmStoreHelper.insertChapterMapping(chapterMappingListRealm)
-        prefs.updateFormConfiguredListText(gson.toJson(odkFormsSet))
-        DataSyncRepository().checkODKFormsUpdates(
-            subject = "-",
-            networkConnected = true,
-            prefs = prefs
-        )
+
+        withContext(Dispatchers.IO){
+            RealmStoreHelper.deleteChapterMapping()
+            RealmStoreHelper.insertChapterMapping(chapterMappingListRealm)
+            prefs.updateFormConfiguredListText(gson.toJson(odkFormsSet))
+            DataSyncRepository().checkODKFormsUpdates(
+                subject = "-",
+                networkConnected = true,
+                prefs = prefs
+            )
+        }
     }
 
-    fun parseAndStoreCompetencyData(
+    suspend fun parseAndStoreCompetencyData(
         competencyList: ArrayList<CompetencyModel>?,
         prefs: CommonsPrefsHelperImpl
     ) {
-        prefs.saveCompetencyData(gson.toJson(competencyList))
+        withContext(Dispatchers.IO) {
+            prefs.saveCompetencyData(gson.toJson(competencyList))
+        }
+
+        competencyList?.let { competencyModelList ->
+            // Convert CompetencyModel objects to Competency objects using map and forEach
+            val competenciesList = withContext(Dispatchers.Default) {
+                competencyModelList.map { competencyModel ->
+                    Competency(
+                        id = competencyModel.cId ?: 0,
+                        subjectId = competencyModel.subjectId ?: 0,
+                        grade = competencyModel.grade ?: 0,
+                        learningOutcome = competencyModel.learningOutcome ?: "",
+                        flowState = competencyModel.flowState ?: 0,
+                        month = competencyModel.month ?: ""
+                    )
+                }
+            }
+            withContext(Dispatchers.IO) {
+                metadataDao.insertCompetency(competenciesList)
+            }
+        }
     }
 
-
-    fun parseAndStoreMetaData(
+    suspend fun parseAndStoreMetaData(
         response: MetaDataRemoteResponse,
         prefs: CommonsPrefsHelperImpl
     ) {
-        response.actors?.let {
-            prefs.saveActorsList(MetaDataExtensions.convertActorsToJson(it))
-        }
-        response.assessmentTypes?.let {
-            prefs.saveAssessmentTypesList(MetaDataExtensions.convertAssessmentTypesToJson(it))
-        }
-        response.subjects?.let {
-            prefs.saveSubjectsList(MetaDataExtensions.convertSubjectsToJson(it))
-        }
-        response.designations?.let {
-            prefs.saveDesignationsList(MetaDataExtensions.convertDesignationsToJson(it))
+        withContext(Dispatchers.Default) {
+            response.actors?.let { actors ->
+                withContext(Dispatchers.IO) {
+                    prefs.saveActorsList(MetaDataExtensions.convertActorsToJson(actors))
+                }
+
+                val actorsList = actors.map { actor ->
+                    Actor(id = actor.id, name = actor.name)
+                }
+
+                withContext(Dispatchers.IO) {
+                    metadataDao.insertActors(actorsList)
+                }
+            }
+
+            response.assessmentTypes?.let { assessmentTypes ->
+                withContext(Dispatchers.IO) {
+                    prefs.saveAssessmentTypesList(MetaDataExtensions.convertAssessmentTypesToJson(assessmentTypes))
+                }
+
+                val assessmentsList = assessmentTypes.map { assessmentType ->
+                    AssessmentType(id = assessmentType.id, name = assessmentType.name)
+                }
+
+                withContext(Dispatchers.IO) {
+                    metadataDao.insertAssessmentTypes(assessmentsList)
+                }
+            }
+
+            response.subjects?.let { subjects ->
+                withContext(Dispatchers.IO) {
+                    prefs.saveSubjectsList(MetaDataExtensions.convertSubjectsToJson(subjects))
+                }
+
+                val subjectsList = subjects.map { subject ->
+                    com.data.db.models.entity.Subjects(id = subject.id, name = subject.name)
+                }
+
+                withContext(Dispatchers.IO) {
+                    metadataDao.insertSubjects(subjectsList)
+                }
+            }
+
+            response.designations?.let { designations ->
+                withContext(Dispatchers.IO) {
+                    prefs.saveDesignationsList(MetaDataExtensions.convertDesignationsToJson(designations))
+                }
+
+                val designationsList = designations.map { designation ->
+                    Designation(id = designation.id, name = designation.name)
+                }
+
+                withContext(Dispatchers.IO) {
+                    metadataDao.insertDesignations(designationsList)
+                }
+            }
         }
     }
 
@@ -150,7 +257,10 @@ object MetaDataHelper {
         )
     }
 
-    fun setMetaDataResponse(response: MetaDataRemoteResponse?, prefs: CommonsPrefsHelperImpl): Boolean {
+    suspend fun setMetaDataResponse(
+        response: MetaDataRemoteResponse?,
+        prefs: CommonsPrefsHelperImpl
+    ): Boolean {
         response?.let {
             Timber.d("fetchMetaData: response got")
             parseAndStoreMetaData(

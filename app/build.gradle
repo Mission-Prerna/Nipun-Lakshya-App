@@ -7,6 +7,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+apply plugin: 'com.google.dagger.hilt.android'
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -23,8 +24,8 @@ android {
         applicationId "org.samagra.missionPrerna"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 170300
-        versionName "1.7.3"
+        versionCode 201000
+        versionName "2.1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,10 +36,26 @@ android {
             outputFileName = "nl_${versionName}_${flavor}_${timestamp}.apk"
         }
     }
+
+    signingConfigs {
+        release {
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+            def store_password = properties.getProperty('STORE_PASSWORD')
+            def key_alias = properties.getProperty('KEY_ALIAS')
+            def key_password = properties.getProperty('KEY_PASSWORD')
+            storeFile(file("../release-key.jks"))
+            storePassword(store_password)
+            keyAlias(key_alias)
+            keyPassword(key_password)
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -50,6 +67,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
 
     compileOptions {
         sourceCompatibility 1.8
@@ -65,8 +83,11 @@ android {
         implementation project(":collect_app")
         api project(":assets")
         implementation project(":chatbot")
+        implementation project(":assessment")
         implementation 'androidx.multidex:multidex:2.0.1'
-
+        implementation "com.google.dagger:hilt-android:2.41"
+        kapt "com.google.dagger:hilt-compiler:2.41"
+        annotationProcessor "com.google.dagger:hilt-compiler:2.41"
 //        implementation 'io.realm.kotlin:library-base:1.7.0'
 
         def appcompat_version = "1.4.2"
@@ -95,7 +116,6 @@ android {
         implementation 'me.xdrop:fuzzywuzzy:1.2.0'
         implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
         //Dependency Injection (Cant be shared across modules)
-        kapt "com.google.dagger:dagger-compiler:${rootProject.daggerVersion}"
         compileOnly 'javax.annotation:jsr250-api:1.0'
 
         // GSON
@@ -142,7 +162,6 @@ android {
         // and use apollo-api instead
         implementation("com.apollographql.apollo:apollo-api:2.5.11")
         implementation "androidx.work:work-runtime-ktx:$work_version"
-
         implementation 'com.posthog.android:posthog:2.0.3'
         implementation 'com.google.guava:guava:30.1.1-jre'
         implementation 'com.airbnb:deeplinkdispatch:6.1.0'

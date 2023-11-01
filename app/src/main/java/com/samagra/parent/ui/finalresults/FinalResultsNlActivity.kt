@@ -2,7 +2,6 @@ package com.samagra.parent.ui.finalresults
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -181,7 +180,7 @@ class FinalResultsNlActivity : AppCompatActivity() {
     private fun setNipunText() {
         this.loadGif(
             view = binding.ivMascot,
-            drawableResource = R.drawable.ic_flying_bird,
+            gifResource = R.drawable.ic_flying_bird,
             placeHolder = R.drawable.ic_flying_bird
         )
         if (!completeNipunMap.isNullOrEmpty()) {

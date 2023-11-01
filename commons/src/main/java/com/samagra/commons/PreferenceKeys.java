@@ -129,4 +129,6 @@ public final class PreferenceKeys {
     public static final String CHAT_BOT_DETAILS = "CHAT_BOT_DETAILS";
 
     public static final String LAST_FORCE_LOGOUT_VERSION = "FORCE_LOGOUT_VERSION";
+    public static final String VERSION_CODE = "version_code";
+    public static final String VERSION_NAME = "version_name";
 }

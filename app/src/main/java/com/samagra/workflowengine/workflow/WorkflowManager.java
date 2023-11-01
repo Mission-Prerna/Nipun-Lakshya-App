@@ -4,7 +4,6 @@ import static com.samagra.commons.utils.CommonConstants.BOLO;
 import static com.samagra.commons.utils.CommonConstants.ODK;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;

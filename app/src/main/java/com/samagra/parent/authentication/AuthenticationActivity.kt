@@ -9,7 +9,10 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
+import com.assessment.schoolreport.SchoolReportActivity
+import com.data.repository.StudentsRepository
 import com.example.assets.uielements.CustomMessageDialog
 import com.samagra.ancillaryscreens.AncillaryScreensDriver
 import com.samagra.ancillaryscreens.data.prefs.CommonsPrefsHelperImpl
@@ -25,7 +28,7 @@ import com.samagra.commons.Modules
 import com.samagra.commons.basemvvm.BaseActivity
 import com.samagra.commons.constants.Constants
 import com.samagra.commons.helper.GatekeeperHelper
-import com.samagra.commons.models.mentordetails.MentorDetailsRemoteResponse
+import com.data.models.mentordetails.MentorDetailsRemoteResponse
 import com.samagra.commons.posthog.*
 import com.samagra.commons.posthog.data.Cdata
 import com.samagra.commons.posthog.data.Edata
@@ -36,13 +39,19 @@ import com.samagra.parent.databinding.ActivityAuthenticationBinding
 import com.samagra.parent.ui.detailselection.DetailsSelectionActivity
 import com.samagra.parent.ui.userselection.UserSelectionRepository
 import com.samagra.parent.ui.userselection.UserSelectionVM
+import dagger.hilt.android.AndroidEntryPoint
 import org.odk.collect.android.utilities.ToastUtils
 import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AuthenticationActivity :
     BaseActivity<ActivityAuthenticationBinding, AuthenticationVM>(), AuthenticationCallbacks {
 
     private val prefs by lazy { initPreferences() }
+
+    @Inject
+    lateinit var studentsRepository: StudentsRepository
 
     private val notificationViewModel by lazy {
         val repository = AuthenticationRepository()
@@ -64,7 +73,7 @@ class AuthenticationActivity :
     override fun getBaseViewModel(): AuthenticationVM {
         val repository = AuthenticationRepository()
         val viewModelProviderFactory =
-            ViewModelProviderFactory(this.application, repository)
+            ViewModelProviderFactory(this.application, repository, studentsRepository)
         return ViewModelProvider(
             this,
             viewModelProviderFactory
@@ -80,6 +89,7 @@ class AuthenticationActivity :
     }
 
     override fun onLoadData() {
+        showLoaderDuringStudentDataSync()
         setObserver()
         setupUi()
         setKeyboardListener()
@@ -94,11 +104,25 @@ class AuthenticationActivity :
                 RedirectionFlow.CALL_SEND_OTP -> {
                     setSendOtpFunctionality(pair.second)
                 }
+
                 RedirectionFlow.LAUNCH_PARENT_FLOW -> {
                     redirectToParentFLow()
                 }
+
                 RedirectionFlow.NOTHING -> {
                     //do nothing
+                }
+            }
+        }
+    }
+
+    private fun showLoaderDuringStudentDataSync() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.showProgressBar.collect { show ->
+                if (show) {
+                    showProgressBar()
+                } else {
+                    hideProgressBar()
                 }
             }
         }
@@ -306,13 +330,35 @@ class AuthenticationActivity :
     private fun handleMentorDataSavedState(mentorDataSaved: AuthenticationRepository.MentorDataSaved?) {
         when (mentorDataSaved) {
             is AuthenticationRepository.MentorDataSaved.MentorDataSaveFailed -> {
-                ToastUtils.showShortToast(getString(R.string.not_nipun))
+                if (mentorDataSaved.t.message == AuthenticationVM.UDISE_NULL) {
+                    val customDialog = CustomMessageDialog(
+                        this,
+                        null,
+                        getString(R.string.udise_null_text),
+                        getString(R.string.call_or_try_again_text)
+                    )
+                    customDialog.setOnFinishListener("Ok",
+                        "Call",
+                        {
+                            val fragment = OTPViewFragment()
+                            removeFragment(fragment, supportFragmentManager)
+                        }
+                    ) {
+                        callHelpline()
+                        val fragment = OTPViewFragment()
+                        removeFragment(fragment, supportFragmentManager)
+                    }
+                    customDialog.show()
+                } else {
+                    ToastUtils.showShortToast(getString(R.string.not_nipun))
+                }
             }
 
             is AuthenticationRepository.MentorDataSaved.MentorDataSaveSuccessful -> {
                 setupHomeRedirection()
                 logLoginSuccessEvent(mentorDataSaved.mentorData)
             }
+
             else -> {
                 //DO NOTHING
             }
@@ -332,9 +378,11 @@ class AuthenticationActivity :
             prefs.selectedUser.equals(Constants.USER_DIET_MENTOR, true) -> {
                 Intent(Constants.INTENT_LAUNCH_DIET_ASSESSMENT_TYPE_ACTIVITY)
             }
+
             prefs.selectedUser.equals(Constants.USER_TEACHER, true) -> {
                 Intent(Constants.INTENT_LAUNCH_ASSESSMENT_HOME_ACTIVITY)
             }
+
             else -> {
                 Intent(Constants.INTENT_LAUNCH_ASSESSMENT_HOME_ACTIVITY)
             }

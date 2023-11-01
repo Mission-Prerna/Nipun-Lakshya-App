@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <ImageView
+            android:id="@+id/ivNipunStateColor"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:background="@drawable/summary_nipun_box" />
+
+        <TextView
+            android:id="@+id/tvNipunText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_extra_small"
+            android:src="@drawable/square_green"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_small"
+            tools:text="निपुण: " />
+
+        <TextView
+            android:id="@+id/tvNipunCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_extra_small"
+            android:layout_marginStart="@dimen/margin_extra_small"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/square_green"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_small"
+            tools:text="4" />
+
+    </LinearLayout>
+</layout>

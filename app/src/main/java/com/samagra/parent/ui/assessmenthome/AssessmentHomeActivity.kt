@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
@@ -28,10 +29,12 @@ import com.samagra.parent.ui.faq.HelpFaqActivity
 import com.samagra.parent.ui.logout.LogoutUI
 import com.samagra.parent.ui.privacypolicy.PrivacyPolicyActivity
 import com.samagra.parent.ui.setBody
+import dagger.hilt.android.AndroidEntryPoint
 import org.odk.collect.android.utilities.ToastUtils
 import timber.log.Timber
 import java.util.*
 
+@AndroidEntryPoint
 class AssessmentHomeActivity : BaseActivity<ActivityAssessmentHomeBinding, AssessmentHomeVM>() {
 
     private var schoolsData: SchoolsData? = null
@@ -39,22 +42,20 @@ class AssessmentHomeActivity : BaseActivity<ActivityAssessmentHomeBinding, Asses
     private var dialogBuilder: AlertDialog? = null
     private val prefs: CommonsPrefsHelperImpl by lazy { initPreferences() }
 
+
     @LayoutRes
     override fun layoutRes() = R.layout.activity_assessment_home
 
     override fun getBaseViewModel(): AssessmentHomeVM {
-        val syncRepository = DataSyncRepository()
-        val viewModelProviderFactory =
-            ViewModelProviderFactory(this.application, syncRepository)
-        return ViewModelProvider(
-            this@AssessmentHomeActivity,
-            viewModelProviderFactory
-        )[AssessmentHomeVM::class.java]
+        val hiltViewModel: AssessmentHomeVM by viewModels()
+        return hiltViewModel
     }
 
     override fun loadFragment() {
         val fragment = if (prefs.selectedUser.equals(AppConstants.USER_TEACHER, true)) {
             AssessmentTeacherHomeFragment.newInstance(schoolsData)
+        } else if(prefs.selectedUser.equals(AppConstants.USER_EXAMINER, true)) {
+            AssessmentExaminerHomeFragment.newInstance()
         } else {
             AssessmentUserHomeFragment.newInstance()
         }

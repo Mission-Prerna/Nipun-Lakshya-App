@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_occured"
+            android:textColor="@color/red"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/include_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvChooseClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/choose_a_class"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+            android:id="@+id/tvAssessmentCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="आकलन स्थिति : 4/16"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvChooseClass" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clClassesButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_semi_med_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAssessmentCount"
+            tools:context=".MainActivity">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/margin_extra_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_extra_large"
+            android:background="@color/blue_31328f"
+            app:layout_constraintTop_toBottomOf="@id/clClassesButtons"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNipunStates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_extra_large"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:layout_marginEnd="@dimen/margin_extra_large"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/rvStudentsList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewDivider"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_nipun_states" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStudentsList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_extra_large"
+            android:layout_marginEnd="@dimen/margin_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/submit_school_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvNipunStates"
+            tools:listitem="@layout/item_student_details" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit_school_btn"
+            style="@style/button_long_style_2"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_button"
+            android:layout_width="@dimen/width_0dp"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:text="स्कूल का आकलन समाप्त करें"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_goneMarginStart="@dimen/margin_long_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

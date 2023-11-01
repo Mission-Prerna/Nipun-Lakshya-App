@@ -6,7 +6,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -54,6 +56,7 @@ abstract class BaseActivity<VB : ViewDataBinding, T : BaseViewModel> : AppCompat
 //            this.setTitle(getString(R.string.sending_the_request))
             this.setMessage(getString(R.string.please_wait))
             this.setCancelable(false)
+            this.setProgressStyle(R.style.ProgressDialogStyle)
             this.isIndeterminate = true
         }
     }
@@ -92,5 +95,13 @@ abstract class BaseActivity<VB : ViewDataBinding, T : BaseViewModel> : AppCompat
     override fun onDestroy() {
         super.onDestroy()
         CompositeDisposableHelper.destroyCompositeDisposable()
+    }
+
+    protected fun showToast(@StringRes strRes: Int) {
+        showToast(getString(strRes))
+    }
+
+    fun showToast(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
     }
 }

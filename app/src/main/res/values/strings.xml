@@ -8,7 +8,12 @@
     <string name="register_hrms_message">अपनी मानव सम्पदा ID पंजीकृत करें</string>
     <string name="assessment_home_screen">Assessment Home Screen</string>
     <string name="setup_new_assessment"> अभ्यास शुरू करें।  </string>
+    <string name="setup_new_assessment_landing_page"> विद्यार्थी आकलन </string>
+    <string name="teacher_assessment_summary_label"> शिक्षक आकलन सारांश </string>
+    <string name="examiner_assessment_summary_label"> परीक्षक आकलन सारांश </string>
+    <string name="school_assessment_summary_label">विद्यालय के सभी आकलन का सारांश</string>
     <string name="setup_new_assessment_user_home">आँकलन शुरू करें।</string>
+    <string name="setup_new_assessment_examiner_home">आकलन करें !</string>
     <string name="mentor_profile">मेंटर प्रोफ़ाइल</string>
     <string name="teacher_profile">शिक्षक प्रोफाइल</string>
     <string name="your_assessment_overview">Assessment Overview</string>
@@ -36,7 +41,7 @@
     <string name="rural">Rural</string>
     <string name="urban">Urban</string>
     <string name="select_school_to_start_visit">Select school to start visit</string>
-    <string name="remove_schools_already_visited">विसिट किये गए स्कूलों को छोड़ दें</string>
+    <string name="remove_schools_already_visited">विज़िट किये गए स्कूलों को छोड़ दें</string>
 
     //workflow strings
 
@@ -239,4 +244,23 @@
     <string name="allow_permission_title">लोकेशन की अनुमति दें !</string>
     <string name="allow_permission_discription"><![CDATA[मूल्यांकन करने के लिए कृपया लोकेशन की अनुमति दें ! settings >> permission >> location >> allow]]></string>
     <string name="helpline_number">0522–3538777</string>
+    <string name="udise_null_text">Udise is null</string>
+    <string name="call_or_try_again_text">Call or try again</string>
+    <string name="choose_a_class"><u>कृपया एक कक्षा चुनें</u></string>
+    <string name="class_1">कक्षा 1</string>
+    <string name="class_2">कक्षा 2</string>
+    <string name="class_3">कक्षा 3</string>
+    <string name="month_january">जनवरी</string>
+    <string name="month_february">फरवरी</string>
+    <string name="month_march">मार्च</string>
+    <string name="month_april">अप्रैल</string>
+    <string name="month_may">मई</string>
+    <string name="month_june">जून</string>
+    <string name="month_july">जुलाई</string>
+    <string name="month_august">अगस्त</string>
+    <string name="month_september">सितम्बर</string>
+    <string name="month_october">अक्टूबर</string>
+    <string name="month_november">नवम्बर</string>
+    <string name="month_december">दिसम्बर</string>
+
 </resources>

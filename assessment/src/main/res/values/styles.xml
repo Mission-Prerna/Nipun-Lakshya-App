@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="titleViewLarge" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_16_gray" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_2e3192</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

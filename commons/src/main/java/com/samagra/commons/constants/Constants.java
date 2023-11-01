@@ -42,10 +42,15 @@ public class Constants {
     public static final String NL_SYNCING_NOTIFICATION_CHANNEL = "nl_syncing_notification_channel";
 
     public static final String USER_PARENT = "parent";
+    public static final int ACTOR_ID_PARENT = 5;
     public static final String USER_TEACHER = "teacher";
+    public static final int ACTOR_ID_TEACHER = 3;
     public static final String USER_MENTOR = "mentor";
+    public static final int ACTOR_ID_MENTOR = 1;
     public static final String USER_DIET_MENTOR = "Diet Mentor";
+    public static final int ACTOR_ID_DIET_MENTOR = 4;
     public static final String USER_EXAMINER = "examiner";
+    public static final int ACTOR_ID_EXAMINER = 2;
     public static final String STATE_LED_ASSESSMENT = "state_led_assessment";
 
     @NotNull
@@ -55,4 +60,5 @@ public class Constants {
     public static final String FALLBACK_BASEMAP = "fallback_basemap";
 
     public static String CHATBOT_SERVICES_BASE_URL = "CHATBOT_SERVICES_BASE_URL";
+
 }

@@ -10,9 +10,12 @@ import com.samagra.parent.helper.NetworkStateManager;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.migration.DisableInstallInCheck;
+
 import javax.inject.Singleton;
 
 @Module
+@DisableInstallInCheck
 public class SystemServicesModule {
 
     private final Application application;

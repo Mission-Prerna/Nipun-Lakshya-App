@@ -68,7 +68,11 @@ class AssessmentTypeVM(application: Application, private val dataSyncRepo: DataS
                 val helper = SyncingHelper()
                 var isSuccess = helper.syncAssessments(prefs)
                 Timber.d("syncPendingData: synced assessments: $isSuccess")
-                isSuccess = helper.syncSurveys(prefs) && isSuccess
+                val submissionsSynced = helper.syncSubmissions(prefs)
+                Timber.d("syncPendingData: synced submissions: $submissionsSynced")
+                val schoolsSubmissionsSynced = helper.syncSchoolSubmission(prefs)
+                Timber.d("syncPendingData: synced school submissions: $schoolsSubmissionsSynced")
+                isSuccess = helper.syncSurveys(prefs) && isSuccess && submissionsSynced && schoolsSubmissionsSynced
                 Timber.d("syncPendingData: syncSurveys : $isSuccess")
                 withContext(Dispatchers.Main) {
                     if (isSuccess) success() else failure()

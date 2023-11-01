@@ -4,7 +4,7 @@ import com.samagra.workflowengine.workflow.model.stateresult.AssessmentStateResu
 import java.io.Serializable
 
 data class StudentsAssessmentData(
-var viewType:String,
-var studentResults:AssessmentStateResult,
-var studentResultsOdk:AssessmentStateResult? = null
-):Serializable
+    var viewType: String,
+    var studentResults: AssessmentStateResult,
+    var studentResultsOdk: AssessmentStateResult? = null
+) : Serializable

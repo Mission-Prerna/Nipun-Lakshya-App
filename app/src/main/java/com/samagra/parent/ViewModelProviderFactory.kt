@@ -3,10 +3,13 @@ package com.samagra.parent
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.data.repository.StudentsRepository
 import com.samagra.commons.basemvvm.BaseRepository
 import com.samagra.parent.authentication.AuthenticationRepository
 import com.samagra.parent.authentication.AuthenticationVM
 import com.samagra.parent.authentication.OTPViewVM
+import com.samagra.parent.repository.ExaminerPerformanceInsightsRepository
+import com.samagra.parent.repository.TeacherPerformanceInsightsRepository
 import com.samagra.parent.ui.DataSyncRepository
 import com.samagra.parent.ui.assessmenthome.AssessmentHomeVM
 import com.samagra.parent.ui.assessmentsetup.AssessmentSetupRepository
@@ -47,12 +50,6 @@ class ViewModelProviderFactory(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         when {
-            modelClass.isAssignableFrom(AssessmentHomeVM::class.java) -> {
-                return AssessmentHomeVM(
-                    application,
-                    repository as DataSyncRepository
-                ) as T
-            }
             modelClass.isAssignableFrom(AssessmentSetupVM::class.java) -> {
                 return AssessmentSetupVM(
                     application,
@@ -99,7 +96,17 @@ class ViewModelProviderFactory(
             modelClass.isAssignableFrom(AuthenticationVM::class.java) -> {
                 return AuthenticationVM(
                     application,
-                    repository as AuthenticationRepository
+                    repository as AuthenticationRepository,
+                    repository1 as StudentsRepository
+                ) as T
+            }
+            modelClass.isAssignableFrom(AssessmentHomeVM::class.java) -> {
+                return AssessmentHomeVM(
+                    application,
+                    repository as DataSyncRepository,
+                    repository1 as TeacherPerformanceInsightsRepository,
+                    repository2 as ExaminerPerformanceInsightsRepository,
+                    null
                 ) as T
             }
             else -> {
