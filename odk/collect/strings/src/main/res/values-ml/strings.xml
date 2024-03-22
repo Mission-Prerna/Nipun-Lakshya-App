@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!--Text for the topmost button on the main screen. It should be short and action-oriented.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="deleted_form">ഫോം ഡിലീറ്റ് ചെയ്യുക </string>
+  <string name="sort_the_list">പട്ടിക ക്രമീകരിക്കുക</string>
+  <string name="sort_by_name_asc">പേര്, A - Z </string>
+  <string name="sort_by_date_desc">തിയതി, പുതിയത് ആദ്യം </string>
+  <string name="sort_by_date_asc">തിയതി, പഴയത് ആദ്യം</string>
+  <!--A sort option for blank forms. When this option is selected, the form for which a filled instance was last filled will go first.-->
+  <!--Displayed in search boxes for form lists or question types that involve search-->
+  <string name="search">തിരയുക</string>
+  <string name="no_items_display">സ്‌ക്രീനിൽ കാണിക്കുവാൻ ഒന്നും ലഭ്യം അല്ല </string>
+  <string name="not_granted_permission">നിങ്ങൾ തുടങ്ങാൻ ഉദ്ദേശിക്കുന്ന പ്രവൃത്തിക്ക് ലഭിച്ചിട്ടില്ലാത്ത അനുമതികൾ വേണം </string>
+  <string name="storage_runtime_permission_denied_title">സ്റ്റോറേജ് അനുമതികൾ </string>
+  <string name="storage_runtime_permission_denied_desc">ഈ അനുമതികൾ ഇല്ലാതെ കളക്ടിന് നിങ്ങളുടെ ഫോമിലേക്ക് പ്രവേശിക്കുകയോ ഉത്തരങ്ങൾ സേവ് ചെയ്യുകയോ ചെയ്യാൻ ആകുന്നതല്ല. അനുമതി നല്കാൻ തയ്യാറാകുമ്പോൾ ആപ്പ് വീണ്ടും തുറക്കുക.</string>
+  <string name="location_runtime_permissions_denied_title">സ്ഥാന നിർണയത്തിനുള്ള അനുമതി.</string>
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <string name="camera_runtime_permission_denied_title">ക്യാമറ അനുമതി</string>
+  <string name="camera_runtime_permission_denied_desc">ഈ അനുമതി ഇല്ലാതെ കളക്ടിന് ക്യാമറ നിയന്ത്രിക്കാൻ കഴിയുകയില്ല. ദയവു ചെയ്ത് അനുമതി നല്കാൻ തയ്യാറാകുമ്പോൾ വീണ്ടും ശ്രമിക്കുക.</string>
+  <!--##############################################
+    # FILL BLANK FORM
+    ##############################################-->
+  <!--Accessibility description of the form map button (e.g. used by screen readers). This button is shown next to every form definition in Fill Blank Form. When tapped, a map of all filled forms for that form definition is shown.-->
+  <string name="finished_disk_scan">തിരച്ചിൽ അവസാനിച്ചിരിക്കുന്നു. എല്ലാ ഫോമുകളും ലോഡ് ചെയ്‌തിരിക്കുന്നു.</string>
+  <string name="loading_form">ഫോം ലോഡ് ചെയ്തുകൊണ്ടിരിക്കുന്നു</string>
+  <string name="survey_loading_reading_data_message">സർവ്വേ വിവരങ്ങൾ വായിച്ചുകൊണ്ടിരിക്കുന്നു…</string>
+  <string name="loading_form_failed">ഫോം ലോഡ് ചെയ്തുകൊണ്ടിരിക്കുമ്പോൾ ഒരു തെറ്റ് പറ്റിയിരിക്കുന്നു. ദയവു ചെയ്ത് വീണ്ടും ശ്രമിക്കുക.</string>
+  <string name="cannot_edit_completed_form">അന്തിമമായി അടയാളപ്പെടുത്തിക്കഴിഞ്ഞാൽ ഈ ഫോർമ് എഡിറ്റ് ചെയ്യാൻ കഴിയില്ല. ഇത് എൻക്രിപ്റ്റ് ചെയ്തതായിരിക്കാം.</string>
+  <!--Displayed when loading a form if that form was previously filled but closed because of a crash or system failure-->
+  <!--Displayed in the form filling menu when a form definition specifies multiple languages-->
+  <string name="change_language">ഭാഷ മാറ്റുക</string>
+  <!--Text for button displayed in the form filling menu to see the form's table of contents-->
+  <!--Text for button displayed in the form filling menu to save the form-->
+  <!--Text of button from the form's table of contents to jump to the beginning of the form-->
+  <string name="jump_to_beginning">തുടക്കത്തിലേക്ക് പോകുക </string>
+  <!--Text of button from the form's table of contents to jump to the end of the form-->
+  <string name="jump_to_end">അവസാനത്തിലേക്കു പോകുക</string>
+  <!--Text of button from the form's table of contents to navigate out of a group or a repeat-->
+  <string name="jump_to_previous">മുകളിലേക്ക് പോകുക</string>
+  <!--Displayed below group names in a form's table of contents-->
+  <!--Displayed below repeat names in a form's table of contents-->
+  <!--This sentence is used in the dialog for adding repeats and will be completed by a singular noun usually. Examples would be ‘Add “observation”?’ or ‘Add “Reading”?’. If the phrase doesn’t make sense in your language you can add a word like “new”, being careful of gender/plural.-->
+  <!--Title of overlay menu displayed when long pressing on a question in a form-->
+  <string name="clearanswer_confirm"> 1 %s  എന്നയാൾക്ക് പ്രതികരണം നീക്കംചെയ്യണോ?</string>
+  <string name="clear_answer">പ്രതികരണം നീക്കം ചെയ്യുക</string>
+  <string name="clear_answer_ask">ഈ പ്രതികരണം നീക്കംചെയ്യണോ?</string>
+  <string name="clear_answer_no">റദ്ദാക്കുക</string>
+  <string name="discard_answer">പ്രതികരണം നീക്കം ചെയ്യുക</string>
+  <string name="discard_group">ഗ്രൂപ്പ് നീക്കംചെയ്യുക</string>
+  <string name="delete_repeat">ഗ്രൂപ്പ് നീക്കംചെയ്യുക</string>
+  <string name="delete_repeat_ask">ഈ ഗ്രൂപ്പ് നീക്കംചെയ്യണോ?</string>
+  <string name="delete_repeat_confirm">ഗ്രൂപ്പ് \" %s\" ഉം അതിന്റെ എല്ലാ ഉപ-ഗ്രൂപ്പുകളും നീക്കംചെയ്യണോ?</string>
+  <string name="delete_repeat_no">റദ്ദാക്കുക</string>
+  <string name="required_answer_error">ക്ഷമിക്കണം, ഈ ഉത്തരം അത്യാവശ്യമാണ്</string>
+  <string name="data_saved_error">ക്ഷമിക്കണം, ഫോർമ് സംരക്ഷിക്കുന്നത് പരാജയപ്പെട്ടു!</string>
+  <string name="data_saved_ok">ഫോർമ് വിജയകരമായി സംരക്ഷിച്ചു!</string>
+  <string name="save_point_error">വീണ്ടെടുക്കൽ പോയിന്റ് സംരക്ഷിക്കുന്നതിൽ പിശക്/പ്രമാദം: 1 %s</string>
+  <!--Dialog title when exiting a drawing view. The name of the kind of drawing will be included-->
+  <!--Used when exiting a form filling session in which a form was not properly loaded. &lt; and &gt; surrounds the text so it will appear as <no form loaded>-->
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI is incorrect-->
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI mime type is unknown-->
+  <!--Text displayed when audio recording fails to start-->
+  <!--Text displayed when user tries to start recording while the mic is already in use-->
+  <!--Error message displayed when copying media from a temporary directory fails-->
+  <!--Text displayed in the audio bar when background audio recording is explicitly disabled from the options menu. Should be as short as possible. The inserted string is ⋮ which indicates the options menu.-->
+  <!--Error displayed when opened filled form has been deleted on disk-->
+  <!--Error displayed when something bad happens during updating widgets in a field-list group-->
+  <!--##############################################
+    # FORM FEATURES
+    ##############################################-->
+  <!--Name of button displayed when a screen contains multiple questions populated by an external app: https://docs.getodk.org/launch-apps-from-collect/#launching-external-apps-to-populate-multiple-fields-->
+  <string name="activity_not_found"> കൈകാര്യം ചെയ്യാൻ പ്രവർത്തനങ്ങളൊന്നും കണ്ടെത്തിയില്ല: %s</string>
+  <string name="launch_printer">പ്രിന്റ് ചെയ്തു തുടങ്ങുക </string>
+  <string name="open_url">Url തുറക്കുക </string>
+  <string name="capture_osm">OpenMapKit സമാരംഭിക്കുക</string>
+  <string name="recapture_osm">OSM ടാഗ്ഗിംഗ് വീണ്ടും ചെയ്യുക</string>
+  <string name="open_file">ഫയൽ തുറക്കുക</string>
+  <string name="svg_file_does_not_exist">SVG ഫയൽ നിലവിലില്ല!</string>
+  <string name="capture_image">ചിത്രം എടുക്കുക</string>
+  <string name="choose_image">ചിത്രം തിരഞ്ഞെടുക്കുക </string>
+  <string name="take_picture_instruction">ചിത്രം എടുക്കാനായി സ്‌ക്രീനിൽ തൊടുക</string>
+  <string name="error_front_camera_unavailable">ഈ ഉപകരണത്തിൽ മുന്നിലെ ക്യാമറ ലഭ്യമല്ല</string>
+  <!--Dialog heading for saving annotated image-->
+  <string name="capture_video"> വീഡിയോ റെക്കോർഡ് ചെയ്യുക</string>
+  <string name="choose_video">വീഡിയോ തിരഞ്ഞെടുക്കുക</string>
+  <string name="choose_file">ഫയൽ തിരഞ്ഞെടുക്കുക</string>
+  <!--Text for button that deletes a file that is the answer to a question-->
+  <string name="delete_answer_file">ഡിലീറ്റ് </string>
+  <!--Text for button that starts recording sound-->
+  <string name="capture_audio">ശബ്ദംറെക്കോർഡ് ചെയ്യുക</string>
+  <!--Text for button that lets the user choose a sound file on their device-->
+  <!--Description text for button that that pauses recording sound-->
+  <!--Description text for button that that resumes recording sound-->
+  <!--Text next to checkbox to allow the user to toggle audio recording on and off-->
+  <!--Text asking the user to confirm whether they want to stop recording or not (which deletes the recording file)-->
+  <!--Button text for the dialog confirming whether the user wants to disable background recording-->
+  <!--Text warning that user after they're reenabled background audio recording that it won't start again until they re-open the form-->
+  <!--Title for dialog asking the user if they want to delete a file-->
+  <string name="delete_answer_file_question">ഈ ഫയൽ ഡിലീറ്റ് ചെയ്യണമോ?</string>
+  <!--Dialog text warning the user they won't be able to recover a file once deleted-->
+  <string name="answer_file_delete_warning">ഈ ഫയൽ ഡിലീറ്റ് ചെയ്താൽ തിരിച്ചെടുക്കാവുന്നതല്ല. മുന്നോട്ടു പോകണം എന്ന് ഉറപ്പാണോ?</string>
+  <!--Text for button that stops audio recording-->
+  <string name="stop_recording">നിർത്തുക</string>
+  <!--Text to let the user know a recording is in progress-->
+  <!--Title of Android Notification Channel for audio recording notifications-->
+  <!--Text for button that plays audio clip-->
+  <!--Text to let the user know a file is being saved-->
+  <string name="saving_file">ഫയൽ സേവ് ചെയ്തുകൊണ്ടിരിക്കുന്നു</string>
+  <!--Text in dialog that instructs the user to stop recording audio before leaving the form-->
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="select_value">മൂല്യം തിരഞ്ഞെടുക്കുക</string>
+  <string name="select_answer">ഉത്തരം തിരഞ്ഞെടുക്കുക</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="edit_value">മൂല്യത്തിൽ മാറ്റം വരുത്തുക</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="no_value_selected">മൂല്യം ഒന്നും തന്നെ തിരഞ്ഞെടുത്തട്ടില്ല</string>
+  <string name="selected">തിരഞ്ഞെടുക്കപ്പെട്ടത്:</string>
+  <string name="trigger">ശരി. ദയവു ചെയ്തു തുടരുക</string>
+  <string name="ext_file_no_data_error">ഈ ഫയലിൽ വിവരങ്ങൾ ഒന്നും തന്നെയില്ല!</string>
+  <string name="select_date">തിയതി തിരഞ്ഞെടുക്കുക</string>
+  <string name="select_time">സമയം തിരഞ്ഞെടുക്കുക</string>
+  <string name="no_date_selected">തിയതി തിരഞ്ഞെടുക്കപ്പെട്ടട്ടില്ല</string>
+  <string name="no_time_selected">സമയം തിരഞ്ഞെടുക്കപെട്ടട്ടില്ല </string>
+  <!--Displays dates in specialized calendars with the Gregorian dates in parentheses. This is translated so right-to-left languages can specify the correct order-->
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is invalid-->
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is missing-->
+  <!--Heading for a dialog which prompts the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Label for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Explanation for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Action to close a full screen dialog-->
+  <string name="close">അടയ്ക്കുക</string>
+  <!--Heading for a dialog which prompts the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <string name="reason_for_changes">മാറ്റങ്ങൾക്കു കാരണം</string>
+  <!--Label for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <string name="reason">കാരണം</string>
+  <!--Explanation for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <!--Action to save the contents of a full screen dialog-->
+  <!--Button text to select a place from a list presented on a map-->
+  <!--##############################################
+    # GEO
+    ##############################################-->
+  <!--TODO(ping): Delete these openmap_* strings when we're ready to move on from OSMDroid.
+   These strings are only being used to preserve compatibility with pre-existing
+    tile caches, and are not shown in the UI.-->
+  <!--Action to go to Android settings. Displayed when location providers are disabled.-->
+  <!--Label for a menu item that can be toggled to turn background location tracking on and off during form filling-->
+  <!--Text of an option available when filling out a form. Tapping this option checks the form for constraint or required violations and navigates the user back to the first field with an error.-->
+  <!--%1$s is the time taken so far in hh:mm:ss-->
+  <!--%1$s is the accuracy required for a point to be automatically saved-->
+  <!--%1$s is the number of satellites being used to get location-->
+  <!--The accuracy of a location fix in meters-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in W 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in E 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in S 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in N 18°48'8"-->
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <!--Used to display choices for accuracy requirements in geotrace and geoshape questions-->
+  <!--Name of an action button-->
+  <!--Name for the location tracking notifications. Will be seen in Android settings.-->
+  <!--Title for notification that lets user know their location is currently being tracked-->
+  <!--Text of button user can press to get help when setting up Reference Layers-->
+  <!--Description for button that zooms to the user's current location on a map-->
+  <!--Description for button that zooms a map so that it shows all items-->
+  <!--Description for button that pauses automatic location recording-->
+  <!--Description for button that removes the last recorded point-->
+  <!--##############################################
+    # SEND FINALIZED FORM
+    ##############################################-->
+  <!--Name of option in Send Finalized Form menu to show only unsent forms (default) or show sent and unsent forms-->
+  <!--##############################################
+    # GET BLANK FORM
+    ##############################################-->
+  <!--Part of form download dialog. Clicking it displays additional information about a form that failed-->
+  <!--##############################################
+    # GET BLANK FORM - ERROR MESSAGES
+    ##############################################-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--##############################################
+    # DELETE SAVED FORM
+    ##############################################-->
+  <!--Title of a section in "Delete Saved Forms" for deleting filled/saved forms (as opposed to blank forms)-->
+  <string name="data">സംരക്ഷിച്ച ഫോർമുകൾ</string>
+  <!--Title of a section in "Delete Saved Forms" for deleting blank forms (as opposed to filled/saved forms)-->
+  <string name="delete_confirm">1 %s ഫോർമ് (കൾ) ഇല്ലാതാക്കണോ?</string>
+  <string name="delete_file">തിരഞ്ഞെടുത്തത് ഇല്ലാതാക്കുക</string>
+  <string name="delete_no">ഇല്ലാതാക്കരുത്</string>
+  <string name="delete_yes">ഫോർമുകൾ ഇല്ലാതാക്കുക</string>
+  <!--##############################################
+    # UNPROTECTED SETTINGS
+    ##############################################-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section only available in beta or development builds.-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Label for server type setting-->
+  <!--Title of dialog for configuring server URL-->
+  <string name="change_username">ODK ഉപയോക്തൃനാമം</string>
+  <string name="change_password">ODK സങ്കേതപദം</string>
+  <!--To use Google Drive, forms must set a submission URL. If they don't, this URL will be used.-->
+  <!--Description for Fallback submission URL setting-->
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <!--Heading for the settings category about updating blank forms-->
+  <!--Name of the setting that defines how blank forms are updated from the server.-->
+  <!--One of the possible settings values for "Blank form update mode". Manual update mode means forms have to be explicitly downloaded from Get Blank Forms.-->
+  <!--One of the possible settings values for "Blank form update mode". "Previously downloaded" update mode means forms that have been manually downloaded will be kept up to date.-->
+  <!--One of the possible settings values for "Blank form update mode". "Exactly match server" update mode means that new forms or form updates on the server will be downloaded and forms that the server doesn't know about will be removed.-->
+  <!--Name of the setting that defines how often blank forms are updated from the server.-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Name of setting that defines whether form updates should be automatically downloaded when in "previously downloaded forms only" download mode-->
+  <!--Name of setting for enabling guidance hints while filling forms. Guidance hints are meant for training or other specialized contexts.-->
+  <!--Guidance hints can be displayed behind an icon that must be tapped to reveal the hint.-->
+  <!--Title for setting to let the user switch between using Collect or another app (on the device) for recording audio-->
+  <!--Displayed when a device property such as the phone number is not available-->
+  <!--Label for an item displayed in the project settings menu to unlock settings-->
+  <!--Label for an item displayed in the project settings menu to indicate that settings are unlocked-->
+  <!--##############################################
+     # PROTECTED SETTINGS
+     ##############################################-->
+  <string name="show_password">പാസ്സ്‌വേർഡ് കാണിക്കുക</string>
+  <string name="delete_project">ഡിലീറ്റ് </string>
+  <!--Name of a setting that determines whether users can navigate backwards in a form-->
+  <!--Protected setting. When enabled, users are allowed to save forms while filling them. When disabled, users are only allowed to save forms when they reach their end-->
+  <!--##############################################
+     # GOOGLE DRIVE, GOOGLE SHEETS
+     ##############################################-->
+  <!--Title of the screen that lists forms in user's Google Drive-->
+  <!--Title of the screen that lists forms shared with Google Drive user-->
+  <!--Button for navigating across Google Drive folders-->
+  <!--Text shown in dialog when a Google Sheets form upload was canceled before completion-->
+  <!--##############################################
+     # ABOUT
+     ##############################################-->
+  <!--##############################################
+     # SETTINGS IMPORT
+     ##############################################-->
+  <!--##############################################
+     # MISC
+     ##############################################-->
+  <!--Used in many dialogs to dismiss the dialog without taking any action-->
+  <string name="cancel">റദ്ദാക്കുക</string>
+  <string name="cancel_loading_form">റദ്ദാക്കുക</string>
+  <string name="cancel_location">റദ്ദാക്കുക</string>
+  <string name="do_not_change">റദ്ദാക്കുക</string>
+  <string name="do_not_exit">റദ്ദാക്കുക</string>
+  <!--##############################################
+     # Projects
+     ##############################################-->
+  <!--Title of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <!--Detail text of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <!--Button text for adding a duplicate project-->
+  <!--Buton text for switching to an existing project-->
+  <!--Toast text shown when the current project is changed-->
+  <!--Description for screen readers of which project is in use. This is part of the project selection dialog-->
+  <!--Description for screen readers of the action to switch to a different existing project. This is part of the project selection dialog-->
+  <!--##############################################
+     # First launch and initial configuration
+     ##############################################-->
+  <!--Tag line displayed on the first launch screen. The text should be split into two lines with \n. Please
+    select the wording and where to put the \n for maximum impact in your language.-->
+  <!--Text for the button that allows for configuring a project by scanning a QR code. Should be short-->
+  <!--Text for the button that allows for manually entering project details. Should be short-->
+  <!--Immediately followed by "Try Collect" which is a link to create a demo project-->
+  <!--Preceded by "Don't have a project yet?" question-->
+  <!--Error shown when a user tries to open a form that's in a different project-->
+  <!--Error shown when a user tries to open a form when there are no projects-->
+  <!--##############################################
+    # Errors
+    ##############################################-->
+  <!--##############################################
+    # Permissions
+    ##############################################-->
+  <!--An entity is any person, place or thing that a form can be about. This title appears on an experimental settings screen to view entities managed in the current project.-->
+  <!--##############################################
+    # Crash handling
+    ##############################################-->
+  <!--##############################################
+    # Google Drive deprecation
+    ##############################################-->
+  <!--##############################################
+    # Developer tools
+    ##############################################-->
+  <!--Section title in settings-->
+  <!--Option provided in the Developer tools settings to force an application crash-->
+  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--##############################################
+    # Form saved Snackbar
+    ##############################################-->
+</resources>

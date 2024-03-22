@@ -1,0 +1,39 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_8"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/periodTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Period"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_extra_small"/>
+
+    <!-- Insights Layout (Horizontal LinearLayout) -->
+    <LinearLayout
+        android:id="@+id/insightsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginVertical="4dp"
+        android:gravity="center">
+    </LinearLayout>
+    
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:background="@color/blue_2f3293"/>
+    
+</LinearLayout>

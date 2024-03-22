@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">logger</string>
+    <string name="error_generic_message">Something went wrong! Please try again.</string>
+    <string name="error_network_issue">Please check your internet connection and try again.</string>
+    <string name="error_request_timed_out">The request is taking too long to process. Please try again later.</string>
+    <string name="error_message_retry">Unable to connect to server. Please try again later.</string>
+    <string name="internet_error_description">Not connected to the internet. Please enable internet connection.</string>
+    <string name="internet_error_heading">No Internet connection</string>
+</resources>

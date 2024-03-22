@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.samagra.parent.ui.competencyselection.CompetencySelectionVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/mtl_btn_start_flow">
+
+            <LinearLayout
+                android:id="@+id/ll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_large">
+
+                <include
+                    android:id="@+id/school_info"
+                    layout="@layout/student_information_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_details_info"
+                    style="@style/text_title_style"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_medium"
+                    android:text="@string/selected_grade_and_subject"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_selected_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone"
+                    android:touchscreenBlocksFocus="true"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_selection" />
+
+
+                <TextView
+                    android:id="@+id/tv_no_of_student_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_8dp"
+                    android:text="@string/select_no_of_student"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/ll_spn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/inc_titles"
+                    layout="@layout/layout_particulars"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_competency"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:nestedScrollingEnabled="false"
+                    android:scrollbarSize="16dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_competency">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mtl_btn_start_flow"
+            style="@style/button_long_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:minLines="1"
+            android:text="@string/start_"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+</layout>

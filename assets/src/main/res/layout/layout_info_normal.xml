@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top"
+    android:orientation="horizontal">
+
+    <ImageView
+        tools:ignore="ContentDescription"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_info" />
+
+    <TextView
+        android:id="@+id/tv_info_note"
+        style="@style/text_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        tools:text="1. dummy info note"
+        android:textColor="#000000"
+        android:textSize="12sp" />
+</LinearLayout>

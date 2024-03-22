@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/form_metadata_title">
+
+    <PreferenceCategory
+        android:title="@string/user_defined"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:inputType="textNoSuggestions"
+            android:key="metadata_username"
+            android:title="@string/username"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:key="metadata_phonenumber"
+            android:title="@string/phone_number"
+            android:inputType=""
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:inputType="textEmailAddress"
+            android:key="metadata_email"
+            android:maxLength="254"
+            android:title="@string/email"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/device_defined"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="deviceid"
+            android:selectable="false"
+            android:title="@string/device_id"
+            app:iconSpaceReserved="false"
+            app:persistent="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

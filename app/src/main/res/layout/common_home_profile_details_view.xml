@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="assessmentHomeVm"
+            type="com.samagra.parent.ui.assessmenthome.AssessmentHomeVM" />
+    </data>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        style="@style/TextStyleAssessmentHome"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        app:underlinedText="@{@string/teacher_name(assessmentHomeVm.mentorDetailsSuccess.officer_name?? ``)}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_designation"
+        style="@style/TextStyleAssessmentHome"
+        android:layout_width="wrap_content"
+        app:underlinedText="@{@string/udise_string(assessmentHomeVm.udise?? ``)}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_district"
+        style="@style/TextStyleAssessmentHome"
+        android:layout_width="wrap_content"
+        app:underlinedText="@{@string/district(assessmentHomeVm.mentorDetailsSuccess.district_name?? ``)}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_block"
+        style="@style/TextStyleAssessmentHome"
+        android:layout_width="wrap_content"
+        app:underlinedText="@{@string/block(assessmentHomeVm.mentorDetailsSuccess.block_town_name?? ``)}" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="tv_block" />
+
+</LinearLayout>
+</layout>

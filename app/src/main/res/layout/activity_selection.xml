@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selectionVm"
+            type="com.samagra.parent.ui.detailselection.DetailsSelectionVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/include_toolbar_assessment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_above="@id/mtl_btn_setup_assessment"
+            android:layout_below="@id/include_toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/ll_hint_classes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_4">
+
+                    <TextView
+                        android:id="@+id/hint_for_dietAndExamier"
+                        style="@style/text_title_style"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:gravity="center_horizontal"
+                        android:padding="8dp"
+                        android:text="@string/please_select_the_class"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/choose_classes"
+                        style="@style/text_title_style"
+                        android:layout_below="@+id/hint_for_dietAndExamier"
+                        android:gravity="center_horizontal"
+                        android:padding="8dp"
+                        android:text="@string/please_select_drop_down_options" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/class_hindi"
+                    android:textColor="@color/blue_2e3192"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_balvatika4to8"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="@dimen/margin_4dp"
+                    android:background="@drawable/class_selector">
+
+                    <Spinner
+                        android:id="@+id/sp_balvatika4to8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txv_title_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/abhyas"
+                    android:textColor="@color/blue_2e3192"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_assessment_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:background="@drawable/class_selector">
+
+                    <Spinner
+                        android:id="@+id/sp_assessment_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txv_title_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/subject"
+                    android:textColor="@color/blue_2e3192"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:background="@drawable/class_selector">
+
+                    <Spinner
+                        android:id="@+id/sp_subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/view_line_down_from_grade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/divider_dashlines"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/hint_for_chosen_subject"
+                    style="@style/text_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="@string/what_subject_do_you_want_to_practice"
+                    android:textStyle="normal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_subjects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <LinearLayout
+                    android:id="@+id/ll_lakshya_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/divider_dashlines" />
+
+                    <TextView
+                        style="@style/text_title_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="@string/both_competency_button_title"
+                        android:textStyle="normal" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_both"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_button"
+                        android:layout_marginHorizontal="5dp"
+                        android:background="@drawable/class_selector"
+                        android:paddingHorizontal="20dp">
+
+                        <ImageView
+                            android:id="@+id/iv_both_icon"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_centerVertical="true"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_hindi"
+                            tools:ignore="ContentDescription" />
+
+                        <ImageView
+                            android:id="@+id/iv_both_icon1"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/iv_both_icon"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_math"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/tv_both_title"
+                            style="@style/titleView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Hindi-Math"
+                            android:textColor="@color/blue_2e3192" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/no_of_student"
+                        style="@style/text_title_style"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin_semi_med_12"
+                        android:paddingTop="12dp"
+                        android:text="@string/select_no_of_student"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_spn_students"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:orientation="vertical"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/ll_info"
+                    layout="@layout/layout_info_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_side_margin"
+                    android:layout_marginTop="@dimen/margin_40dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mtl_btn_setup_assessment"
+            style="@style/button_long_style"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:minLines="2"
+            android:text="@string/go_ahead"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+</layout>

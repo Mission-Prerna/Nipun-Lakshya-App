@@ -1,0 +1,942 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "0f8c89da93534d04ec206698d809b9a9",
+    "entities": [
+      {
+        "tableName": "students",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `grade` INTEGER NOT NULL, `roll_no` INTEGER NOT NULL, `is_place_holder_student` INTEGER NOT NULL, `school_udise` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rollNo",
+            "columnName": "roll_no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isPlaceHolderStudent",
+            "columnName": "is_place_holder_student",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "schoolUdise",
+            "columnName": "school_udise",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "students_assessment_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `status` TEXT NOT NULL, `last_assessment_date` INTEGER NOT NULL, `month` INTEGER NOT NULL, `year` INTEGER NOT NULL, `cycle_id` INTEGER NOT NULL DEFAULT 0, `udise` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`id`, `month`, `year`, `cycle_id`, `udise`), FOREIGN KEY(`id`) REFERENCES `students`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastAssessmentDate",
+            "columnName": "last_assessment_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "month",
+            "columnName": "month",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cycleId",
+            "columnName": "cycle_id",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "udise",
+            "columnName": "udise",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id",
+            "month",
+            "year",
+            "cycle_id",
+            "udise"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "students",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "actors",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "assessment_types",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "competencies",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `subject_id` INTEGER NOT NULL, `grade` INTEGER NOT NULL, `learning_outcome` TEXT NOT NULL, `flow_state` INTEGER NOT NULL, `month` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`subject_id`) REFERENCES `subjects`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subjectId",
+            "columnName": "subject_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "learningOutcome",
+            "columnName": "learning_outcome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flowState",
+            "columnName": "flow_state",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "month",
+            "columnName": "month",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "subjects",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "subject_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "subjects",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "designations",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ref_ids",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`subject_id` INTEGER NOT NULL, `is_active` INTEGER, `ref_ids` TEXT NOT NULL, `competency_id` INTEGER NOT NULL, `type` TEXT NOT NULL, `assessment_type_id` INTEGER, `grade` INTEGER NOT NULL, PRIMARY KEY(`subject_id`, `competency_id`, `type`, `grade`))",
+        "fields": [
+          {
+            "fieldPath": "subjectId",
+            "columnName": "subject_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isActive",
+            "columnName": "is_active",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "refIds",
+            "columnName": "ref_ids",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "competencyId",
+            "columnName": "competency_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assessmentTypeId",
+            "columnName": "assessment_type_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "subject_id",
+            "competency_id",
+            "type",
+            "grade"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ref_ids_subject_id_competency_id_type_grade",
+            "unique": false,
+            "columnNames": [
+              "subject_id",
+              "competency_id",
+              "type",
+              "grade"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ref_ids_subject_id_competency_id_type_grade` ON `${TABLE_NAME}` (`subject_id`, `competency_id`, `type`, `grade`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "assessment_state",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `student_id` TEXT NOT NULL, `ref_ids` TEXT NOT NULL, `competency_id` INTEGER, `flow_type` TEXT NOT NULL, `result` TEXT, `state_status` TEXT NOT NULL, FOREIGN KEY(`competency_id`) REFERENCES `competencies`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`student_id`) REFERENCES `students`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "studentId",
+            "columnName": "student_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "refIds",
+            "columnName": "ref_ids",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "competencyId",
+            "columnName": "competency_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flowType",
+            "columnName": "flow_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "result",
+            "columnName": "result",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateStatus",
+            "columnName": "state_status",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "competencies",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "competency_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "students",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "student_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "assessment_submissions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `student_id` TEXT NOT NULL, `student_submissions` TEXT, FOREIGN KEY(`student_id`) REFERENCES `students`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "studentId",
+            "columnName": "student_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "studentSubmissions",
+            "columnName": "student_submissions",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_assessment_submissions_student_id",
+            "unique": false,
+            "columnNames": [
+              "student_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assessment_submissions_student_id` ON `${TABLE_NAME}` (`student_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "students",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "student_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "assessment_school_histories",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`grade` INTEGER NOT NULL, `total` INTEGER NOT NULL, `assessed` INTEGER NOT NULL, `successful` INTEGER NOT NULL, `period` TEXT NOT NULL, `year` INTEGER NOT NULL, `month` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`grade`, `month`, `year`))",
+        "fields": [
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "total",
+            "columnName": "total",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assessed",
+            "columnName": "assessed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "successful",
+            "columnName": "successful",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "period",
+            "columnName": "period",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "month",
+            "columnName": "month",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "grade",
+            "month",
+            "year"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_assessment_school_histories_grade_month_year",
+            "unique": false,
+            "columnNames": [
+              "grade",
+              "month",
+              "year"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assessment_school_histories_grade_month_year` ON `${TABLE_NAME}` (`grade`, `month`, `year`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "teacher_performance_insights_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`insights` TEXT NOT NULL, `period` TEXT NOT NULL, `type` TEXT NOT NULL, `month` INTEGER NOT NULL, `year` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`month`, `year`, `type`))",
+        "fields": [
+          {
+            "fieldPath": "insights",
+            "columnName": "insights",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "period",
+            "columnName": "period",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "month",
+            "columnName": "month",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updated_at",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "month",
+            "year",
+            "type"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "examiner_performance_insights_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`insights` TEXT NOT NULL, `period` TEXT NOT NULL, `cycle_id` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`cycle_id`, `period`))",
+        "fields": [
+          {
+            "fieldPath": "insights",
+            "columnName": "insights",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "period",
+            "columnName": "period",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cycle_id",
+            "columnName": "cycle_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updated_at",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "cycle_id",
+            "period"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "schools",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`udise` INTEGER NOT NULL, `school_name` TEXT, `school_id` INTEGER NOT NULL, `is_visited` INTEGER, `district_name` TEXT, `district_id` INTEGER, `block_name` TEXT, `block_id` INTEGER, `nyay_panchayat_name` TEXT, `nyay_panchayat_id` INTEGER, `lat` REAL, `long` REAL, `geo_fence_enabled` INTEGER, PRIMARY KEY(`school_id`))",
+        "fields": [
+          {
+            "fieldPath": "udise",
+            "columnName": "udise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "schoolName",
+            "columnName": "school_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "schoolId",
+            "columnName": "school_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "visitStatus",
+            "columnName": "is_visited",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "district",
+            "columnName": "district_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "districtId",
+            "columnName": "district_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "block",
+            "columnName": "block_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "blockId",
+            "columnName": "block_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nyayPanchayat",
+            "columnName": "nyay_panchayat_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nyayPanchayatId",
+            "columnName": "nyay_panchayat_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "schoolLat",
+            "columnName": "lat",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "schoolLong",
+            "columnName": "long",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "geofencingEnabled",
+            "columnName": "geo_fence_enabled",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "school_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_schools_udise",
+            "unique": true,
+            "columnNames": [
+              "udise"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_schools_udise` ON `${TABLE_NAME}` (`udise`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "school_status_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`udise` INTEGER NOT NULL, `status` TEXT NOT NULL, `updated_at` INTEGER NOT NULL, `cycle_id` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`udise`, `cycle_id`), FOREIGN KEY(`udise`) REFERENCES `schools`(`udise`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "udise",
+            "columnName": "udise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cycleId",
+            "columnName": "cycle_id",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "udise",
+            "cycle_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "schools",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "udise"
+            ],
+            "referencedColumns": [
+              "udise"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "cycle_details",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`end_date` TEXT NOT NULL, `id` INTEGER NOT NULL, `name` TEXT NOT NULL, `start_date` TEXT NOT NULL, `class_1_nipun_percentage` INTEGER NOT NULL, `class_2_nipun_percentage` INTEGER NOT NULL, `class_3_nipun_percentage` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "endDate",
+            "columnName": "end_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "start_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "class1NipunPercentage",
+            "columnName": "class_1_nipun_percentage",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "class2NipunPercentage",
+            "columnName": "class_2_nipun_percentage",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "class3NipunPercentage",
+            "columnName": "class_3_nipun_percentage",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "school_submissions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `udise` INTEGER NOT NULL, `cycle_id` INTEGER NOT NULL DEFAULT 0, FOREIGN KEY(`udise`) REFERENCES `schools`(`udise`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "udise",
+            "columnName": "udise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cycleId",
+            "columnName": "cycle_id",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_school_submissions_udise",
+            "unique": false,
+            "columnNames": [
+              "udise"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_school_submissions_udise` ON `${TABLE_NAME}` (`udise`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "schools",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "udise"
+            ],
+            "referencedColumns": [
+              "udise"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f8c89da93534d04ec206698d809b9a9')"
+    ]
+  }
+}

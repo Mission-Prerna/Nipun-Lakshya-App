@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="red_500">#F44336</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_xx">#A3E3FF</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="amber_500">#FFC107</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="inputbox_color_focused_border">#0282F0</color>
+    <color name="inputbox_color_pressed_border">#0282F0</color>
+    <color name="inputbox_color_disable_border">#40888F97</color>
+    <color name="inputbox_color_other_border">#888F97</color>
+    <color name="inputbox_hint_color">#BCC2C8</color>
+    <color name="text_color_warning_red">#FFD0021B</color>
+    <color name="inputbox_color_error_border">#D0021B</color>
+
+    <color name="colorPrimaryDark">#0D481A</color>
+    <color name="colorPrimary">#303765</color>
+    <color name="colorSecondary">#880E4F</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="colorSecondaryDark">#000d59</color>
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#ffffff</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#8E8E8E</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="loginBkColor">#f0f0f0</color>
+    <color name="black">#000000</color>
+    <color name="black_545454">#545454</color>
+    <!--colors for card-->
+    <color name="button_colors">#303765</color>
+    <color name="whiteCardColor">#fff</color>
+    <color name="disable_button_colors">#cbecea</color>
+    <color name="whiteoff">#606060</color>
+    <color name="bar_active_color">#FFC504</color>
+    <color name="green_33c4b3">#33c4b3</color>
+    <color name="blue_15bdd8">#15bdd8</color>
+    <color name="blue_2e3192">#2e3192</color>
+    <color name="red_8b0000">#8b0000</color>
+    <color name="version_name_color">#515151</color>
+    <color name="gray_border">#E8E8E8</color>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/clStudentDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/month_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.56"
+            android:background="@drawable/border_school_history"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_14sp"
+            android:textStyle="bold"
+            tools:text="महिना" />
+
+        <TextView
+            android:id="@+id/total_students_count_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_school_history"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_14sp"
+            tools:text="कुल\nविद्यार्थी" />
+
+        <TextView
+            android:id="@+id/total_assessments_count_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_school_history"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_14sp"
+            tools:text="विद्यार्थी\nआकलन किए" />
+
+        <TextView
+            android:id="@+id/nipun_student_count_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_school_history"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/blue_31328f"
+            android:textSize="@dimen/text_size_14sp"
+            tools:text="विद्यार्थी\nनिपुण" />
+
+
+    </LinearLayout>
+</layout>

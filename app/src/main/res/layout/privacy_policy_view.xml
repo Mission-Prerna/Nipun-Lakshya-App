@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/privacy_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:letterSpacing="0.0092"
+            android:text="@string/privacy_policy_title"
+            android:textColor="@color/blue"
+            android:textSize="17.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/privacy_filter_title_divider"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_20dp"
+            android:textColor="@color/version_name_color"
+            android:textSize="@dimen/version_name_size" />
+
+
+        <View
+            android:id="@+id/privacy_filter_title_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/privacy_header"
+            android:background="@color/blue" />
+
+        <ScrollView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/privacy_sv"
+            style="@style/scrollbar_shape_style"
+            android:layout_width="match_parent"
+            android:layout_below="@id/privacy_filter_title_divider"
+            android:layout_height="wrap_content"
+            android:scrollbarSize="10dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/color1"
+                    android:textSize="14sp"
+                    android:letterSpacing="0.07"
+                    android:id="@+id/privacy_policy_view"
+                    android:layout_height="wrap_content"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:weightSum="2"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_below="@id/privacy_policy_view"
+                    android:id="@+id/privacy_ll"
+                    android:layout_marginEnd="16dp">
+
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:id="@+id/privacy_check"
+                        android:drawableTint="@color/blue"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"/>
+                    <android.widget.TextView
+                        android:layout_width="0dp"
+                        android:text="मैं सहमत हूँ।"
+                        android:padding="6dp"
+                        android:textSize="18sp"
+                        android:id="@+id/i_accept_text"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/blue"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"/>
+
+                </LinearLayout>
+                <android.widget.Button
+                    android:layout_width="wrap_content"
+                    android:text="आगे बढ़ें"
+                    android:paddingStart="40dp"
+                    android:id="@+id/accept_policy"
+                    android:paddingEnd="40dp"
+                    android:minHeight="265dp"
+                    android:textColor="@color/blue"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_below="@+id/privacy_ll"
+                    android:textSize="15sp"
+                    android:background="@drawable/rounded_border_alternate"
+                    android:layout_height="50dp"/>
+            </RelativeLayout>
+        </ScrollView>
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/privacy_scroller"
+            android:src="@drawable/ic_down_arrow"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+
+            />
+    </RelativeLayout>
+</layout>

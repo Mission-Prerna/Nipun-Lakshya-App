@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DotProgressBar">
+        <attr name="startColor" format="color" />
+        <attr name="endColor" format="color" />
+        <attr name="duration" format="integer" />
+        <attr name="amount" format="integer" />
+        <attr name="circleSize" format="integer" />
+        <attr name="animationDirectionbundle" format="enum">
+            <enum name="right" value="1" />
+            <enum name="left" value="-1" />
+        </attr>
+    </declare-styleable>
+
+    <attr name="customLabel" format="reference" />
+    <attr name="isEnable" format="boolean"></attr>
+
+    <declare-styleable name="SpinnerAttrs">
+        <attr name="isEnable" />
+        <attr name="customLabel" />
+        <attr name="paddingVertical" format="dimension"></attr>
+        <attr name="isSmall" format="boolean"></attr>
+
+
+    </declare-styleable>
+</resources>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scoller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/cta"
+            android:layout_weight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.assessment.common.AssessmentHeaderView
+                    android:id="@+id/header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_height="100dp" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/text_result_heading_style"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/student_scorecard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"/>
+
+                <ImageView
+                    android:id="@+id/gif_iv"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_extra_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+                <ImageView
+                    android:id="@+id/ivNipunBird"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/nipun_banner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gif_iv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_final_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_weight="0.4"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="12dp"
+                    android:scrollbarSize="5dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivNipunBird"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/scorecard_item" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cta"
+            style="@style/button_long_style"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:text="@string/assess_next_student"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/footer_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/footer_height"
+            android:src="@drawable/mpp_card_footer" />
+    </LinearLayout>
+</layout>

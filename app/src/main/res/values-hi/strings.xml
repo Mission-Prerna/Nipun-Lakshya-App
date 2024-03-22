@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name" translatable="false">निपुण लक्ष्य</string>
+    <string name="oh_no">ओह हो!</string>
+    <string name="let_s_start_again">फिर से शुरू करें</string>
+    <string name="knowledge_section">knowledge section</string>
+    <string name="individual_student_result_fail">अभी इस विद्यार्थी को और मेहनत व निरंतर अभ्यास करने की ज़रुरत है</string>
+    <string name="individual_student_result_fail_teacher">कृपया सूची अभ्यास के माध्यम से दक्षताओं पर विद्यार्थी का अभ्यास करायें।</string>
+    <string name="privacy_policy_title">प्राइवेसी पॉलिसी - निपुण लक्ष्य ऐप</string>
+    <string name="want_another_student_assessment">क्या आप किसी अन्य विद्यार्थी के आकलन के साथ आगे बढ़ना चाहते हैं?</string>
+    <string name="start_assessment">आकलन शुरू करें</string>
+    <string name="crash_error_message">नमस्ते! एक अप्रत्याशित तकनीकी समस्या हुई हैं। कृपया ऐप को फिर से शुरू करें ।</string>
+    <string name="up_education_bot">UP Education Bot</string>
+    <string name="error_submission_sync">डेटा सिंक नहीं हुआ हैं।  कृपया दोबारा प्रयास करें। \n यदि कोई समस्या होती है तो कृपया DCT व हेल्पलाइन नंबर को सूचित करें।</string>
+    <string name="privacy_instructions">ऐप का उपयोग करने के लिए आपको गोपनीयता नीति के नियमों और शर्तों को स्वीकार करने के लिए चेकबॉक्स पर क्लिक करना होगा।</string>
+    <string name="okay">ठीक है</string>
+    <string name="unable_to_open_app_form_module_init_failure">Could not start app as Form Module couldn\'t be initialised properly.</string>
+    <string name="please_enter_pin">Please Enter Pin</string>
+    <string name="choose_a_class"><u>कृपया एक कक्षा चुनें</u></string>
+    <string name="class_1">कक्षा 1</string>
+    <string name="class_2">कक्षा 2</string>
+    <string name="class_3">कक्षा 3</string>
+    <string name="month_january">जनवरी</string>
+    <string name="month_february">फरवरी</string>
+    <string name="month_march">मार्च</string>
+    <string name="month_april">अप्रैल</string>
+    <string name="month_may">मई</string>
+    <string name="month_june">जून</string>
+    <string name="month_july">जुलाई</string>
+    <string name="month_august">अगस्त</string>
+    <string name="month_september">सितम्बर</string>
+    <string name="month_october">अक्टूबर</string>
+    <string name="month_november">नवम्बर</string>
+    <string name="month_december">दिसम्बर</string>
+</resources>

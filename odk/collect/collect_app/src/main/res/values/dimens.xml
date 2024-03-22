@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- These can likely all be replaced by Material resources -->
+<resources>
+    <!-- Custom font sizes -->
+    <dimen name="text_size_small">16sp</dimen>
+
+    <!-- touch target -->
+    <dimen name="touch_target_size">48dp</dimen>
+    <dimen name="divider_accidental_tap">8dp</dimen>
+</resources>

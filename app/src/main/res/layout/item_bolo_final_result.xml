@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item_clicked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_student"
+            android:layout_width="0dp"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:includeFontPadding="false"
+            android:letterSpacing=".02"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="student count"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@+id/tv_result"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="some count"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@id/tv_student"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_student"
+            app:layout_constraintTop_toTopOf="@+id/tv_student" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

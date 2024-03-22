@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        style="@style/scrollbar_shape_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background"
+        android:fillViewport="true"
+        android:scrollbarSize="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mpp_background">
+
+            <include
+                android:id="@+id/school_info"
+                layout="@layout/student_information_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/text_result_heading_style"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/score_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/school_info" />
+
+
+            <include
+                android:id="@+id/inc_selected_competency"
+                layout="@layout/layout_selected_competency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toTopOf="@id/score_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <com.samagra.workflowengine.ScoreView
+                android:id="@+id/score_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_semi_med_12"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintBottom_toTopOf="@id/inc_selected_competency1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inc_selected_competency">
+
+            </com.samagra.workflowengine.ScoreView>
+
+            <include
+                android:id="@+id/inc_selected_competency1"
+                layout="@layout/layout_selected_competency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toTopOf="@id/rv_result"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/score_view" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_semi_med_12"
+                android:clipToPadding="false"
+                android:paddingHorizontal="12dp"
+                android:scrollbarSize="5dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toTopOf="@id/iv_banner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inc_selected_competency1"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_odk_result" />
+
+            <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:src="@drawable/ic_score_success"
+                app:layout_constraintBottom_toTopOf="@id/tv_success"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_result" />
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:gravity="center"
+                android:letterSpacing="0.072"
+                android:shadowColor="@color/white"
+                android:shadowDx="10"
+                android:shadowDy="4"
+                android:shadowRadius="8"
+                tools:text="बधाई हो, आपके बालक/बालिका ने कक्षा x  गणित/भाषा के निपुण लक्ष्य को हासिल कर लिए है |"
+                android:textColor="#FC8C45"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/v"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_banner" />
+
+            <View
+                android:id="@+id/v"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_1dp"
+                android:layout_marginHorizontal="@dimen/margin_large"
+                android:layout_marginTop="@dimen/dp_30"
+                android:visibility="visible"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_success" />
+
+            <TextView
+                android:id="@+id/tv_remarks"
+                style="@style/titleViewLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/padding_large"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/mtl_btn_next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v"
+                tools:text="@string/well_done_lets_proceed" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mtl_btn_1"
+                style="@style/button_long_style"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:text="@string/start_nipun_abhyas_for_next_student"
+                app:layout_constraintBottom_toTopOf="@id/mtl_btn_next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_remarks" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mtl_btn_next"
+                style="@style/button_long_style"
+                android:layout_marginBottom="@dimen/margin_extra_large"
+                android:text="@string/finish_assessment"
+                app:layout_constraintBottom_toTopOf="@id/profile__footer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/profile__footer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/footer_height"
+                android:src="@drawable/mpp_card_footer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/bolo_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="inc_selected_competency,score_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

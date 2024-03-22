@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_31328f">#31328f</color>
+    <color name="blue_2f3293">#2F3293</color>
+    <!--    workflow colors -->
+    <color name="text_gray">#9D9C9C</color>
+    <color name="color_19191B">#19191B</color>
+    <color name="color_78BDB0">#78BDB0</color>
+    <color name="color_FDCC32">#FDCC32</color>
+    <color name="color_014D3F">#014D3F</color>
+    <color name="red">#E82A2A</color>
+    <color name="color_306F63">#306F63</color>
+    <color name="color_FAB409">#FAB409</color>
+    <color name="wrong_answer">#C92929</color>
+    <color name="gray">#6e6e6e</color>
+    <color name="color_AAD1CA">#AAD1CA</color>
+    <color name="hint_gray">#F0BFBCBC</color>
+    <color name="version_name_color">#515151</color>
+    <color name="color_A7CAC4">#BFA7CAC4</color>
+    <color name="yellow_dark">#FCE281</color>
+
+    <color name="red_500">#F44336</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_xx">#A3E3FF</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="red_8b0000">#8b0000</color>
+    <color name="color_e2e2e2">#E2E2E2</color>
+    <color name="color_72ba86">#72BA86</color>
+    <color name="color_c98a7a">#C98A7A</color>
+
+    <color name="color_nipun_student_bg">#80009045</color>
+    <color name="color_not_nipun_student_bg">#80B03333</color>
+
+    <color name="color_nipun">#009045</color>
+    <color name="color_not_nipun">#B03333</color>
+</resources>

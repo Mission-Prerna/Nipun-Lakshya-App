@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/mpp_background">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/include_toolbar_assessment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="शैक्षिक चेकलिस्ट: कक्षा में शिक्षक से पूछ कर DIET विद्यार्थी दिये गये प्रश्नों के उत्तर भरे।"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="@color/light_grey"/>
+1
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="4dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="assessmentHomeVm"
+            type="com.samagra.parent.ui.assessmenthome.AssessmentHomeVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#f9f9f9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.core.widget.NestedScrollView
+                    style="@style/scrollbar_shape_style"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fillViewport="true"
+                    android:scrollbarSize="5dp"
+                    app:layout_constraintBottom_toTopOf="@id/mtl_btn_setup_assessment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_sub_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constrainedHeight="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_profile_overview"
+                            android:layout_width="@dimen/width_0dp"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/title_mentor_details"
+                                style="@style/text_title_style"
+                                android:layout_width="match_parent"
+                                android:background="@color/yellow_dark"
+                                android:elevation="2dp"
+                                android:gravity="center"
+                                android:paddingTop="6dp"
+                                android:paddingBottom="2dp"
+                                android:text="@string/teacher_profile"
+                                app:layout_constraintBottom_toTopOf="@id/profileDetailsView"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/bot_fab"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/margin_20dp"
+                                android:backgroundTint="@color/color_yellow"
+                                android:visibility="gone"
+                                app:cardCornerRadius="@dimen/radius_4dp"
+                                app:cardElevation="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/title_mentor_details"
+                                tools:visibility="visible">
+
+                                <ImageView
+                                    android:id="@+id/bot_icon"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    android:layout_marginTop="2dp"
+                                    android:paddingBottom="4dp"
+                                    android:scaleType="fitCenter"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/bot" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <com.samagra.parent.ui.CommonHomeProfileDetailsView
+                                android:id="@+id/profileDetailsView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toStartOf="@id/bot_fab"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/title_mentor_details" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_overview"
+                            android:layout_width="@dimen/width_0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cl_profile_overview">
+                            
+                            <TextView
+                                android:id="@+id/tvSummaryLabel"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                                android:textColor="@color/blue_2f3293"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:text="@string/teacher_assessment_summary_label"
+                                android:background="@color/yellow_dark"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/margin_extra_large"
+                                android:layout_marginVertical="@dimen/margin_extra_large"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvSummaryLabel"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:background="@drawable/dotted_border"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mtl_btn_setup_assessment"
+                    style="@style/button_long_style"
+                    android:textStyle="bold"
+                    android:layout_width="@dimen/width_0dp"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:minLines="2"
+                    android:onClick="@{()-> assessmentHomeVm.onSetupNewAssessmentClicked()}"
+                    android:text="@string/setup_new_assessment_landing_page"
+                    android:textAllCaps="false"
+                    android:minHeight="@dimen/height_button"
+                    app:layout_constraintBottom_toTopOf="@id/mtl_btn_school_assessment_summary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_goneMarginStart="@dimen/margin_long_button" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mtl_btn_school_assessment_summary"
+                    style="@style/button_long_style_2"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/height_button"
+                    android:layout_width="@dimen/width_0dp"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:text="@string/school_assessment_summary_label"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toTopOf="@id/profile__footer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_goneMarginStart="@dimen/margin_long_button" />
+
+                <ImageView
+                    android:id="@+id/profile__footer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/footer_height"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:background="@color/white"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_home_footer"
+                    app:layout_constraintBottom_toTopOf="@id/v2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:id="@+id/v2"
+                    android:layout_width="0dp"
+                    android:layout_height="6dp"
+                    android:background="@color/dark_yellow_FBB040"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

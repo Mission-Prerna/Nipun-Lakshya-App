@@ -1,0 +1,30 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="135dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginHorizontal="@dimen/margin_8dp"
+    android:background="#FDF8BE"
+    android:paddingHorizontal="@dimen/padding_12dp"
+    android:paddingVertical="@dimen/padding_8">
+
+    <TextView
+        android:id="@+id/countTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Count"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/labelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Label"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="normal"/>
+
+</LinearLayout>

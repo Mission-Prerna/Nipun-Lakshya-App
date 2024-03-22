@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:background="@drawable/rounded_border_white_body"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text_student_name_report"
+            android:ellipsize="end"
+            android:maxLength="20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Vidyarthi 1" />
+
+        <TextView
+            android:id="@+id/tv_class"
+            style="@style/text_student_subtext_report"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Class 1" />
+
+        <TextView
+            android:id="@+id/tv_class_div"
+            style="@style/text_student_subtext_report"
+            android:paddingHorizontal="4dp"
+            android:text="•"
+            app:layout_constraintBottom_toBottomOf="@id/tv_class"
+            app:layout_constraintStart_toEndOf="@id/tv_class"
+            app:layout_constraintTop_toTopOf="@id/tv_class"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_roll"
+            style="@style/text_student_subtext_report"
+            app:layout_constraintBottom_toBottomOf="@id/tv_class"
+            app:layout_constraintStart_toEndOf="@id/tv_class_div"
+            app:layout_constraintTop_toTopOf="@id/tv_class"
+            tools:text="Rollnumber: 1" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/text_student_name_report"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="---" />
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_status"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_report_success" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

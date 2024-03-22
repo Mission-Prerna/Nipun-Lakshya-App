@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="विद्यार्थी का अभ्यास - इंटरमीडिएट स्कोर कार्ड"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:background="@drawable/mpp_background"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/total_attempted_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="total" />
+
+                <TextView
+                    android:id="@+id/correct_attempted_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="correct" />
+
+                <TextView
+                    android:id="@+id/incorrect_attempted_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="incorrect" />
+
+                <TextView
+                    android:id="@+id/unattempted_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="unattempted" />
+
+                <TextView
+                    android:id="@+id/skipped_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="skipped" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:cardElevation="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/results_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                tools:listitem="@layout/item_quml_results" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="बहुत बढ़िया, चलिए आगे बढ़ते हैं!"
+            android:textSize="14sp"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/proceed_btn"
+            style="@style/ButtonStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_gravity="center"
+            android:text="आगे बढ़ें"
+            android:layout_marginVertical="20dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        style="@style/assessment_toolbar_style"
+        android:visibility="visible"
+        app:contentInsetStartWithNavigation="@dimen/dimen_20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_backspace_24"
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/margin_20dp"
+            tools:text="@string/assessment"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:paddingTop="3dp"/>
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_20dp"
+            android:textColor="@color/white"
+            tools:text="v4.55"
+            android:textSize="@dimen/version_name_size" />
+
+    </androidx.appcompat.widget.Toolbar>
+</layout>

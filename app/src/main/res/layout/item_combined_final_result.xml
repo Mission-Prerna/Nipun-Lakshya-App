@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item_clicked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_result_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_8dp"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lines="2"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="@string/correct_answers_of_questions"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_result_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_student"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_result_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lines="2"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="@string/words_read_correct"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_result_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_student"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lines="2"
+            android:paddingHorizontal="@dimen/margin_8dp"
+            android:paddingVertical="@dimen/padding_14dp"
+            android:text="#"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_result_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

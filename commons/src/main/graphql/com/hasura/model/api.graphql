@@ -1,0 +1,118 @@
+
+query CompetencyListQuery {
+  competency_mapping(order_by: [{learning_outcome: asc}]) {
+    grade
+    competency_id
+    learning_outcome
+    subject_id
+    flow_state
+  }
+}
+
+query WorkflowRefidsMappingQuery {
+  workflow_refids_mapping(where: {is_active: {_eq: true}}) {
+    competency_id
+    grade
+    is_active
+    ref_ids
+    subject_id
+    type
+    assessment_type_id
+  }
+}
+
+
+mutation updateMentorPin($phone_no: String, $pin: String) {
+  update_mentor(_set: {pin: $pin}, where: {phone_no: {_eq: $phone_no}}) {
+    returning {
+      id
+      designation_id
+      district_name
+      district_id
+      block_town_name
+      block_id
+      officer_name
+      phone_no
+      actor_id
+      teacher_school_list_mapping {
+        school_list {
+          id
+          district
+          district_id
+          block
+          block_id
+          nypanchayat
+          nyay_panchayat_id
+          name
+          udise
+        }
+      }
+    }
+  }
+}
+
+
+query FetchMentorDetails($phone_no: String) {
+  mentor(where: {phone_no: {_eq: $phone_no}}, limit: 1) {
+    id
+    designation_id
+    district_name
+    district_id
+    block_town_name
+    block_id
+    officer_name
+    phone_no
+    actor_id
+    segmentations {
+      segment {
+        bots {
+          bot_id
+        }
+      }
+    }
+    teacher_school_list_mapping {
+      school_list {
+        id
+        district
+        district_id
+        block
+        block_id
+        nypanchayat
+        nyay_panchayat_id
+        name
+        udise
+      }
+    }
+  }
+}
+
+query FetchMetaData {
+  actors {
+    id
+    name
+  }
+  designations{
+    id
+    name
+  }
+  subjects{
+    id
+    name
+  }
+  assessment_types{
+    id
+    name
+  }
+}
+
+query FetchMentorBots($phone_no: String) {
+  mentor(where: {phone_no: {_eq: $phone_no}}, limit: 1) {
+    segmentations {
+      segment {
+        bots {
+          bot_id
+        }
+      }
+    }
+  }
+}

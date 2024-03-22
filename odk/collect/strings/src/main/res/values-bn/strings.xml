@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!--Text for the topmost button on the main screen. It should be short and action-oriented.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Text for an action button on the main screen.-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="added_on_date_at_time">নিদিষ্ট সময় তারিখ যোগ করেন</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="saved_on_date_at_time">নিদিষ্ট সময় তারিখ সংরক্ষিত করেন</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="finalized_on_date_at_time">নিদিষ্ট সময় তারিখ ঠিক করেন</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="sent_on_date_at_time">নিদিষ্ট সময় তারিখ এর মধ্যে পাঠান</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <string name="sending_failed_on_date_at_time">নিদিষ্ট সময় তারিখ এর মধ্যে পাঠানো সফল হয়নি</string>
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--Please format date appropriately for your language: http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html-->
+  <!--A sort option for blank forms. When this option is selected, the form for which a filled instance was last filled will go first.-->
+  <!--Displayed in search boxes for form lists or question types that involve search-->
+  <string name="no_items_display">প্রদর্শন করার মত কিছু পাওয়া যায়নি।</string>
+  <string name="no_items_display_forms">প্রদর্শন করার মত কিছু পাওয়া যায়নি।\n\nTry নতুন ফরম নামিয়ে আবার পুরন করে চেষ্টা করে দেখুন।</string>
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--##############################################
+    # FILL BLANK FORM
+    ##############################################-->
+  <!--Accessibility description of the form map button (e.g. used by screen readers). This button is shown next to every form definition in Fill Blank Form. When tapped, a map of all filled forms for that form definition is shown.-->
+  <string name="finished_disk_scan">খোজা শেষ হয়েছে। সকল ফরম যুক্ত হয়েছে।</string>
+  <string name="loading_form">ফরম লোড হচ্ছে </string>
+  <string name="parse_error">দুঃখিত, ফরম উদ্ধার করা সম্ভব হয়নি।</string>
+  <!--Displayed when loading a form if that form was previously filled but closed because of a crash or system failure-->
+  <!--Displayed in the form filling menu when a form definition specifies multiple languages-->
+  <string name="change_language">ভাষা পরিবর্তন </string>
+  <!--Text for button displayed in the form filling menu to see the form's table of contents-->
+  <string name="view_hierarchy">অনুক্রম  অনুসারে দেখা</string>
+  <!--Text for button displayed in the form filling menu to save the form-->
+  <!--Text of button from the form's table of contents to jump to the beginning of the form-->
+  <string name="jump_to_beginning">ফরম শুরুর স্থানে যান</string>
+  <!--Text of button from the form's table of contents to jump to the end of the form-->
+  <string name="jump_to_end">ফরম শেষের স্থানে যান</string>
+  <!--Text of button from the form's table of contents to navigate out of a group or a repeat-->
+  <string name="jump_to_previous">আগের প্রশ্নে যান</string>
+  <!--Displayed below group names in a form's table of contents-->
+  <!--Displayed below repeat names in a form's table of contents-->
+  <!--This sentence is used in the dialog for adding repeats and will be completed by a singular noun usually. Examples would be ‘Add “observation”?’ or ‘Add “Reading”?’. If the phrase doesn’t make sense in your language you can add a word like “new”, being careful of gender/plural.-->
+  <!--Title of overlay menu displayed when long pressing on a question in a form-->
+  <string name="clearanswer_confirm"> উত্তর মুছে \"%s\" ফেলতে চান?</string>
+  <string name="clear_answer">উত্তর মুছে ফেলুন</string>
+  <string name="clear_answer_ask">উত্তর মুছে ফেলতে চান?</string>
+  <string name="clear_answer_no">বাতিল</string>
+  <string name="discard_answer">জবাটাকে সরান</string>
+  <string name="discard_group">গ্রুপটাকে সরান </string>
+  <string name="delete_repeat">রিপিট অপসারণ</string>
+  <string name="delete_repeat_ask">রিপিট অপসারন করবেন?</string>
+  <string name="delete_repeat_confirm">\"%s\" গ্রুপ এবং এর সকল সাব-গ্রুপ অপসারণ করতে চান?</string>
+  <string name="delete_repeat_no">বাতিল</string>
+  <string name="invalid_answer_error">দুঃখিত,উত্তর গ্রহণযোগ্য নয়।</string>
+  <string name="required_answer_error">দুঃখিত, এই উত্তরটি অপরিহার্য ।</string>
+  <string name="save_enter_data_description">আপনি %s ফরম শেষে দিকে রয়েছে </string>
+  <string name="data_saved_error">দু:খিত, ফরম সংরক্ষিত হয়নি</string>
+  <string name="data_saved_ok">ফরম সংরক্ষিত হয়েছে</string>
+  <string name="save_point_error">ত্রুটি সংরক্ষণ উদ্ধার পয়েন্টঃ %s</string>
+  <!--Dialog title when exiting a drawing view. The name of the kind of drawing will be included-->
+  <string name="quit_application">%s প্রস্থান</string>
+  <!--Used when exiting a form filling session in which a form was not properly loaded. &lt; and &gt; surrounds the text so it will appear as <no form loaded>-->
+  <string name="keep_changes">পরিবর্তন সংরক্ষণকরুন</string>
+  <string name="saving_form">ফরম সংরক্ষন করা হচ্ছে।</string>
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI is incorrect-->
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI mime type is unknown-->
+  <!--Text displayed when audio recording fails to start-->
+  <!--Text displayed when user tries to start recording while the mic is already in use-->
+  <!--Error message displayed when copying media from a temporary directory fails-->
+  <!--Text displayed in the audio bar when background audio recording is explicitly disabled from the options menu. Should be as short as possible. The inserted string is ⋮ which indicates the options menu.-->
+  <!--Error displayed when opened filled form has been deleted on disk-->
+  <!--Error displayed when something bad happens during updating widgets in a field-list group-->
+  <!--##############################################
+    # FORM FEATURES
+    ##############################################-->
+  <!--Name of button displayed when a screen contains multiple questions populated by an external app: https://docs.getodk.org/launch-apps-from-collect/#launching-external-apps-to-populate-multiple-fields-->
+  <string name="launch_app">launch_app</string>
+  <string name="activity_not_found">পরিচালনা করার মত কোন কর্মকাণ্ড পাওয়া যায় নিঃ %s</string>
+  <string name="no_app">অনুরোধকৃত  application অনুপস্থিত. অনুগ্রহ করে ম্যানোয়েলি তত্ত্ব নিন।</string>
+  <string name="launch_printer">প্রিন্টার চালু</string>
+  <string name="no_printer">প্রিন্টার নেই</string>
+  <string name="capture_osm">OpenMapKit চালু করুন</string>
+  <string name="recapture_osm">পুনরায় OSM ট্যাগিং করুন</string>
+  <string name="get_barcode">বারকোড নিন</string>
+  <string name="replace_barcode">বারকোড প্রতিস্থাপন করুন</string>
+  <string name="capture_image">ছবি তোলা </string>
+  <string name="choose_image">ছবি পছন্দ করুন</string>
+  <!--Dialog heading for saving annotated image-->
+  <string name="save_and_close">সংরক্ষণ করেন এবং বন্ধ করেন</string>
+  <string name="sign_button">সাক্ষর নিন।</string>
+  <string name="markup_image">মার্কআপ চিত্র</string>
+  <string name="draw_image">স্কেচ চিত্র</string>
+  <string name="reset_image">রিসেট</string>
+  <string name="set_color">কালার সেট</string>
+  <string name="capture_video">ভিডিও রেকর্ড</string>
+  <string name="choose_video">ভি ডি ও পছন্দ করুন</string>
+  <string name="play_video">ভিডিও চালান</string>
+  <!--Text for button that deletes a file that is the answer to a question-->
+  <!--Text for button that starts recording sound-->
+  <string name="capture_audio">শব্দ রেকর্ড</string>
+  <!--Text for button that lets the user choose a sound file on their device-->
+  <string name="choose_sound">শব্দ নির্বাচন করুন।</string>
+  <!--Description text for button that that pauses recording sound-->
+  <!--Description text for button that that resumes recording sound-->
+  <!--Text next to checkbox to allow the user to toggle audio recording on and off-->
+  <!--Text asking the user to confirm whether they want to stop recording or not (which deletes the recording file)-->
+  <!--Button text for the dialog confirming whether the user wants to disable background recording-->
+  <!--Text warning that user after they're reenabled background audio recording that it won't start again until they re-open the form-->
+  <!--Title for dialog asking the user if they want to delete a file-->
+  <!--Dialog text warning the user they won't be able to recover a file once deleted-->
+  <!--Text for button that stops audio recording-->
+  <!--Text to let the user know a recording is in progress-->
+  <!--Title of Android Notification Channel for audio recording notifications-->
+  <!--Text for button that plays audio clip-->
+  <!--Text to let the user know a file is being saved-->
+  <!--Text in dialog that instructs the user to stop recording audio before leaving the form-->
+  <string name="error_attaching_binary_file">মিডিয়া \"%s\" সংযুক্ত করার সময় ত্রুটি সংঘটিত হয়েছে</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="select_answer">উত্তর নির্বাচন করুন।</string>
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <!--Displayed in form questions for which the user needs to select a value-->
+  <string name="selected">নির্বাচিত</string>
+  <string name="trigger">ঠিক আছে। দয়া করে সামনের দিকে যান।</string>
+  <string name="direction">অভিমুখ: %s</string>
+  <!--Displays dates in specialized calendars with the Gregorian dates in parentheses. This is translated so right-to-left languages can specify the correct order-->
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is invalid-->
+  <string name="file_invalid">ফাইলঃ %s অকার্যকর।</string>
+  <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is missing-->
+  <string name="file_missing">ফাইলঃ %s অনুপস্থিত.</string>
+  <!--Heading for a dialog which prompts the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Label for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Explanation for prompt for the user to identify themselves when making changes to data. See https://docs.getodk.org/form-audit-log/#enumerator-identification.-->
+  <!--Action to close a full screen dialog-->
+  <!--Heading for a dialog which prompts the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <!--Label for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <!--Explanation for prompt for the user to describe why a change was made to data. See https://docs.getodk.org/form-audit-log/#change-tracking.-->
+  <!--Action to save the contents of a full screen dialog-->
+  <!--Button text to select a place from a list presented on a map-->
+  <!--##############################################
+    # GEO
+    ##############################################-->
+  <!--TODO(ping): Delete these openmap_* strings when we're ready to move on from OSMDroid.
+   These strings are only being used to preserve compatibility with pre-existing
+    tile caches, and are not shown in the UI.-->
+  <string name="terrain">ভূখণ্ড</string>
+  <string name="hybrid">হাইব্রিড</string>
+  <string name="satellite">উপগ্রহ</string>
+  <string name="get_location">জিপিএস স্থান চিন্হিত করুন</string>
+  <string name="provider_disabled_error">দুঃখিত, অবস্থান প্রদানকারী সেবা বন্ধ আছে!</string>
+  <!--Action to go to Android settings. Displayed when location providers are disabled.-->
+  <!--Label for a menu item that can be toggled to turn background location tracking on and off during form filling-->
+  <!--Text of an option available when filling out a form. Tapping this option checks the form for constraint or required violations and navigates the user back to the first field with an error.-->
+  <!--%1$s is the time taken so far in hh:mm:ss-->
+  <!--%1$s is the accuracy required for a point to be automatically saved-->
+  <!--%1$s is the number of satellites being used to get location-->
+  <!--The accuracy of a location fix in meters-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in W 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in E 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in S 18°48'8"-->
+  <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in N 18°48'8"-->
+  <string name="start">শুরু</string>
+  <string name="enable_gps">GPS সক্ষম</string>
+  <string name="clear">মুছে ফেলুন।</string>
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <!--Used to display choices for location recording interval in geotrace and geoshape questions-->
+  <!--Used to display choices for accuracy requirements in geotrace and geoshape questions-->
+  <!--Name of an action button-->
+  <!--Name for the location tracking notifications. Will be seen in Android settings.-->
+  <!--Title for notification that lets user know their location is currently being tracked-->
+  <!--Text of button user can press to get help when setting up Reference Layers-->
+  <!--Description for button that zooms to the user's current location on a map-->
+  <!--Description for button that zooms a map so that it shows all items-->
+  <!--Description for button that pauses automatic location recording-->
+  <!--Description for button that removes the last recorded point-->
+  <!--##############################################
+    # SEND FINALIZED FORM
+    ##############################################-->
+  <string name="uploading_data">পাঠানো হচ্ছে ফরম </string>
+  <string name="noselect_error">দুঃখিত, আপনি কোন ফরম  নির্বাচন করেন নি!</string>
+  <string name="no_connection">কোন নেটওয়ার্ক সংযোগ পাওয়া যায় নি</string>
+  <string name="sending_items">%1$s এর %2$s ফরম/(ফরমগুলো) পাঠানো হচ্ছে</string>
+  <string name="send_selected_data">নির্বাচিত ফরমটি পাঠান </string>
+  <string name="server_requires_auth">সার্ভারে প্রমাণীকরণ অপরিহার্য আবশ্যক</string>
+  <string name="upload_results">পাঠানোর ফলাফল</string>
+  <!--Name of option in Send Finalized Form menu to show only unsent forms (default) or show sent and unsent forms-->
+  <string name="change_view">View পরিবর্তন</string>
+  <string name="show_sent_and_unsent_forms">sent ফর্ম ও Unsent ফর্ম দেখা</string>
+  <string name="show_unsent_forms">Unsent ফর্ম দেখা</string>
+  <!--##############################################
+    # GET BLANK FORM
+    ##############################################-->
+  <string name="refresh">সতেজ করা</string>
+  <string name="download">ডাউনলোড করুন </string>
+  <string name="downloading_data">ডাটা সার্ভারের থেকে ডাউনলোড হচ্ছে</string>
+  <string name="fetching_file">নামানো হচ্ছে %1$s.\n\n ফরম %2$s এর %3$s ফরম/(ফরমগুলি)</string>
+  <string name="version">ভার্সন</string>
+  <!--Part of form download dialog. Clicking it displays additional information about a form that failed-->
+  <!--##############################################
+    # GET BLANK FORM - ERROR MESSAGES
+    ##############################################-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
+  <!--##############################################
+    # DELETE SAVED FORM
+    ##############################################-->
+  <!--Title of a section in "Delete Saved Forms" for deleting filled/saved forms (as opposed to blank forms)-->
+  <string name="data">ডাটা</string>
+  <!--Title of a section in "Delete Saved Forms" for deleting blank forms (as opposed to filled/saved forms)-->
+  <string name="forms">ফরমগুলি </string>
+  <string name="delete_confirm">ফরম %s মুছে দিন </string>
+  <string name="delete_file">ফাইল ডিলিট</string>
+  <string name="delete_no">মুছবেন না</string>
+  <string name="delete_yes">ফরম মুছে দিন </string>
+  <string name="file_deleted_error">দুঃখিত, %1$s এর %2$s নির্বাচিত/ (নির্বাচিতগুলো) মুছে ফেলতে ব্যার্থ হয়েছে!</string>
+  <string name="file_deleted_ok">%s ফরম/(ফরমগুলি) সফলভাবে মুছে গেছে!</string>
+  <string name="file_delete_in_progress">দুঃখিত, একটি ফরম মুছে ফেলার প্রক্রিয়া ইতিমধ্যে চলমান!</string>
+  <!--##############################################
+    # UNPROTECTED SETTINGS
+    ##############################################-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section only available in beta or development builds.-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <!--Title of a settings section-->
+  <!--Subtext of a settings section-->
+  <string name="server_preferences">সার্ভার নির্দিষ্টকরণ</string>
+  <!--Label for server type setting-->
+  <string name="server_url">ইউআরএল </string>
+  <!--Title of dialog for configuring server URL-->
+  <string name="url_error">দুঃখিত।ইউ আর এল সঠিক নয়</string>
+  <string name="username">ব্যবহারকারীর নাম।</string>
+  <string name="change_username">ব্যবহারকারীর নাম পরিবর্তন </string>
+  <string name="password">পাসওয়ার্ড</string>
+  <string name="change_password">পাসওয়ার্ড পরিবর্তন </string>
+  <string name="selected_google_account_text">গুগল একাউন্ট</string>
+  <!--To use Google Drive, forms must set a submission URL. If they don't, this URL will be used.-->
+  <!--Description for Fallback submission URL setting-->
+  <string name="font_size">ফন্ট আকার</string>
+  <string name="change_font_size">ফন্ট আকার পরিবর্তন</string>
+  <string name="font_size_extra_large">বিশাল বৃহৎ।</string>
+  <string name="font_size_large">বৃহৎ</string>
+  <string name="font_size_medium">মাঝারি</string>
+  <string name="font_size_small">ক্ষুদ্র</string>
+  <string name="font_size_extra_small">অতি ক্ষুদ্র।</string>
+  <string name="navigation">নেভিগেশান</string>
+  <string name="swipe_navigation">swipe নেভিগেশান</string>
+  <string name="buttons_navigation">buttons নেভিগেশান</string>
+  <string name="swipe_buttons_navigation">swipe buttons নেভিগেশান</string>
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <string name="form_forward">ফর্মের সামনের দিকে</string>
+  <!--Text for navigation button showed at the bottom of a form that's being filled. Try to use a short word common for navigation.-->
+  <!--Heading for the settings category about updating blank forms-->
+  <!--Name of the setting that defines how blank forms are updated from the server.-->
+  <!--One of the possible settings values for "Blank form update mode". Manual update mode means forms have to be explicitly downloaded from Get Blank Forms.-->
+  <!--One of the possible settings values for "Blank form update mode". "Previously downloaded" update mode means forms that have been manually downloaded will be kept up to date.-->
+  <!--One of the possible settings values for "Blank form update mode". "Exactly match server" update mode means that new forms or form updates on the server will be downloaded and forms that the server doesn't know about will be removed.-->
+  <!--Name of the setting that defines how often blank forms are updated from the server.-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Frequency for requesting blank form updates from the server-->
+  <!--Name of setting that defines whether form updates should be automatically downloaded when in "previously downloaded forms only" download mode-->
+  <string name="constraint_behavior">constraint_behavior</string>
+  <!--Name of setting for enabling guidance hints while filling forms. Guidance hints are meant for training or other specialized contexts.-->
+  <!--Guidance hints can be displayed behind an icon that must be tapped to reveal the hint.-->
+  <!--Title for setting to let the user switch between using Collect or another app (on the device) for recording audio-->
+  <!--Displayed when a device property such as the phone number is not available-->
+  <!--Label for an item displayed in the project settings menu to unlock settings-->
+  <!--Label for an item displayed in the project settings menu to indicate that settings are unlocked-->
+  <!--##############################################
+     # PROTECTED SETTINGS
+     ##############################################-->
+  <string name="enter_new_password">পাসওয়ার্ড দিন।</string>
+  <string name="admin_password_changed">অ্যাডমিনের পাসওয়ার্ড পরিবর্তন</string>
+  <string name="admin_password_disabled">অ্যাডমিনের পাসওয়ার্ড disabled</string>
+  <string name="admin_password_incorrect">পাসওয়ার্ড সঠিক হয়নি।</string>
+  <string name="enter_admin_password">এডমিন পাসওয়ার্ড দিন।</string>
+  <string name="found_in_main">প্রধান মেনু্তে পাবেন</string>
+  <string name="reset_project_settings_title">রিসেট</string>
+  <!--Name of a setting that determines whether users can navigate backwards in a form-->
+  <!--Protected setting. When enabled, users are allowed to save forms while filling them. When disabled, users are only allowed to save forms when they reach their end-->
+  <!--##############################################
+     # GOOGLE DRIVE, GOOGLE SHEETS
+     ##############################################-->
+  <!--Title of the screen that lists forms in user's Google Drive-->
+  <!--Title of the screen that lists forms shared with Google Drive user-->
+  <!--Button for navigating across Google Drive folders-->
+  <!--Text shown in dialog when a Google Sheets form upload was canceled before completion-->
+  <!--##############################################
+     # ABOUT
+     ##############################################-->
+  <!--##############################################
+     # SETTINGS IMPORT
+     ##############################################-->
+  <!--##############################################
+     # MISC
+     ##############################################-->
+  <string name="ok">ঠিক আছে</string>
+  <!--Used in many dialogs to dismiss the dialog without taking any action-->
+  <string name="cancel">বাতিল</string>
+  <string name="cancel_loading_form">বাতিল</string>
+  <string name="cancel_location">বাতিল</string>
+  <string name="do_not_change">বাতিল</string>
+  <string name="do_not_exit">প্রস্থান হবেন না?</string>
+  <string name="success">সাফল্য </string>
+  <string name="error_occured">ত্রুটি ঘটেছে</string>
+  <string name="please_wait">দয়া করে কিছু সময় অপেক্ষা করুন।</string>
+  <string name="please_wait_long">দয়া করে অপেক্ষা করুন। এটি শেষ হতে কয়েক মিনিট সময় লাগতে পারে।</string>
+  <!--##############################################
+     # Projects
+     ##############################################-->
+  <!--Title of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <!--Detail text of the dialog shown when attempting to create a project with connection settings that match an existing project-->
+  <!--Button text for adding a duplicate project-->
+  <!--Buton text for switching to an existing project-->
+  <!--Toast text shown when the current project is changed-->
+  <!--Description for screen readers of which project is in use. This is part of the project selection dialog-->
+  <!--Description for screen readers of the action to switch to a different existing project. This is part of the project selection dialog-->
+  <!--##############################################
+     # First launch and initial configuration
+     ##############################################-->
+  <!--Tag line displayed on the first launch screen. The text should be split into two lines with \n. Please
+    select the wording and where to put the \n for maximum impact in your language.-->
+  <!--Text for the button that allows for configuring a project by scanning a QR code. Should be short-->
+  <!--Text for the button that allows for manually entering project details. Should be short-->
+  <!--Immediately followed by "Try Collect" which is a link to create a demo project-->
+  <!--Preceded by "Don't have a project yet?" question-->
+  <!--Error shown when a user tries to open a form that's in a different project-->
+  <!--Error shown when a user tries to open a form when there are no projects-->
+  <!--##############################################
+    # Errors
+    ##############################################-->
+  <!--##############################################
+    # Permissions
+    ##############################################-->
+  <!--An entity is any person, place or thing that a form can be about. This title appears on an experimental settings screen to view entities managed in the current project.-->
+  <!--##############################################
+    # Crash handling
+    ##############################################-->
+  <!--##############################################
+    # Google Drive deprecation
+    ##############################################-->
+  <!--##############################################
+    # Developer tools
+    ##############################################-->
+  <!--Section title in settings-->
+  <!--Option provided in the Developer tools settings to force an application crash-->
+  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--##############################################
+    # Form saved Snackbar
+    ##############################################-->
+</resources>

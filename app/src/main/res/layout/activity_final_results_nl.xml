@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mpp_background">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/include_toolbar_assessment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scroll_bar"
+            style="@style/scrollbar_shape_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:scrollbarSize="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/include_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/school_info"
+                    layout="@layout/student_information_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:layout_constraintBottom_toTopOf="@id/tv_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/text_result_heading_style"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/score_card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/school_info" />
+
+                <ImageView
+                    android:id="@+id/iv_mascot"
+                    style="@style/text_result_heading_style"
+                    android:layout_width="@dimen/mascot_size"
+                    android:layout_height="@dimen/mascot_size"
+                    android:src="@drawable/ic_flying_bird"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+                <LinearLayout
+                    android:id="@+id/ll_title_header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_large"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintBottom_toTopOf="@id/rv_final_result"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_mascot">
+
+                    <TextView
+                        android:id="@+id/tv_title_competency"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_4dp"
+                        android:layout_weight="7"
+                        android:background="@drawable/round_corner_blue_bg"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/margin_4dp"
+                        android:paddingVertical="@dimen/margin_10dp"
+                        android:text="text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_title_nipun"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_4dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/round_corner_blue_bg"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="isNipun"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_final_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:clipToPadding="false"
+                    android:scrollbarSize="5dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    app:layout_constraintBottom_toTopOf="@id/v"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_title_header"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_bolo_final_result_nl" />
+
+                <View
+                    android:id="@+id/v"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/width_1dp"
+                    android:layout_marginHorizontal="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_final_result" />
+
+                <TextView
+                    android:id="@+id/tv_remarks"
+                    style="@style/titleViewLarge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="25dp"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/padding_large"
+                    android:text="@string/take_screen_shot_of_result"
+                    android:textColor="@color/red_500"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mtl_btn_nl_submit"
+                    style="@style/button_long_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:minLines="1"
+                    android:text="@string/go_home"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_remarks"
+                    app:layout_goneMarginStart="@dimen/margin_long_button" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
